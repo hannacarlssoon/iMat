@@ -27,10 +27,10 @@
             <TableColumn fx:id="deleteColumn" prefWidth="50.0" />
         </columns>
       </TableView>
-      <Button layoutX="83.0" layoutY="547.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="159.0" text="Till kassan" />
-      <Label fx:id="totalPrice" layoutX="169.0" layoutY="506.0" prefHeight="32.0" prefWidth="171.0" styleClass="label-price" text="200 kr" />
+      <Button layoutX="83.0" layoutY="547.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="159.0" styleClass="prominentButton" stylesheets="@../../CSS/Hanna.css" text="Till kassan" />
+      <Label fx:id="totalPrice" layoutX="182.0" layoutY="505.0" prefHeight="32.0" prefWidth="171.0" styleClass="label-price" text="200 kr" />
       <Separator layoutX="15.0" layoutY="505.0" prefHeight="3.0" prefWidth="295.0" />
       <Separator layoutX="10.0" layoutY="537.0" prefHeight="3.0" prefWidth="295.0" />
-      <Label layoutX="70.0" layoutY="506.0" prefHeight="32.0" prefWidth="136.0" styleClass="label-price" text="Summa:" />
+      <Label layoutX="63.0" layoutY="505.0" prefHeight="32.0" prefWidth="136.0" styleClass="label-price" text="Summa:" />
    </children>
 </AnchorPane>

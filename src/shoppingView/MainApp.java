@@ -43,7 +43,7 @@ public class MainApp extends Application {
             AnchorPane basketView = (AnchorPane) basketLoader.load();
 
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("listview/view/shoppingView.fxml"));
+            loader.setLocation(MainApp.class.getResource("listview/view/ListView.fxml"));
             AnchorPane listView = (AnchorPane) loader.load();
             ((ListViewController) loader.getController()).setMainApp(this);
             ((ListViewController) loader.getController()).testSearch();

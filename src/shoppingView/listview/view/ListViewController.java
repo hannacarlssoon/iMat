@@ -7,7 +7,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import se.chalmers.ait.dat215.project.Product;
 
 import java.util.List;
 
