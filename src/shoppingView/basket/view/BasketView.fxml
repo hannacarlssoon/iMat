@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="611.0" prefWidth="320.0" styleClass="basket-background" stylesheets="@../../CSS/RaspberryCut.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shoppingView.basket.view.BasketViewController">
+   <children>
+      <Label layoutX="127.0" layoutY="14.0" styleClass="id-header-blue" text="Varukorg" />
+      <ImageView fx:id="basketImage" fitHeight="50.0" fitWidth="40.0" layoutX="43.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../resources/images/iMat_square.png" />
+         </image>
+      </ImageView>
+      <Separator layoutX="27.0" layoutY="63.0" prefHeight="3.0" prefWidth="257.0" />
+      <TableView fx:id="currentItems" layoutX="5.0" layoutY="75.0" prefHeight="420.0" prefWidth="305.0">
+        <columns>
+          <TableColumn fx:id="amountColumn" prefWidth="75.0" text="Kvantitet" />
+          <TableColumn fx:id="productNameColumn" prefWidth="100.0" text="Vara" />
+            <TableColumn fx:id="priceColumn" prefWidth="75.0" text="Pris" />
+            <TableColumn fx:id="deleteColumn" prefWidth="50.0" />
+        </columns>
+      </TableView>
+      <Button layoutX="83.0" layoutY="547.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="159.0" text="Till kassan" />
+      <Label fx:id="totalPrice" layoutX="169.0" layoutY="506.0" prefHeight="32.0" prefWidth="171.0" styleClass="label-price" text="200 kr" />
+      <Separator layoutX="15.0" layoutY="505.0" prefHeight="3.0" prefWidth="295.0" />
+      <Separator layoutX="10.0" layoutY="537.0" prefHeight="3.0" prefWidth="295.0" />
+      <Label layoutX="70.0" layoutY="506.0" prefHeight="32.0" prefWidth="136.0" styleClass="label-price" text="Summa:" />
+   </children>
+</AnchorPane>

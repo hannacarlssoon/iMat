@@ -19,7 +19,7 @@ public class MainApp extends Application {
         //Parent root = fxmlLoader.load();
         Scene scene = new Scene(root, 1366, 768);
 
-        stage.setTitle("iMat");
+        stage.setTitle("shoppingView");
         stage.setScene(scene);
         stage.show();
     }
