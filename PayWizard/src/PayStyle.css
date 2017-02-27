@@ -130,10 +130,6 @@
     -fx-text-fill: #444444;
 }
 
-.noEmailPhone-selected {
-    -fx-background-color: #F5F5F5;
-}
-
 .noEmailPhone-button:hover {
     -fx-background-color: #F5F5F5;
 }

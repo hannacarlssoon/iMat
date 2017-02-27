@@ -255,7 +255,7 @@
          </children></AnchorPane>
       <AnchorPane fx:id="deliveryView" prefHeight="200.0" prefWidth="200.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
          <children>
-            <Label layoutX="463.0" layoutY="15.0" styleClass="label-header" stylesheets="@PayStyle.css" text="Vänligen fyll i din leveransinformation" />
+            <Label layoutX="489.0" layoutY="16.0" styleClass="label-header" stylesheets="@PayStyle.css" text="Vänligen fyll i din leveransinformation" AnchorPane.leftAnchor="489.0" AnchorPane.rightAnchor="435.0" />
             <Button mnemonicParsing="false" onAction="#setPayAtDoor" styleClass="prominentButton" stylesheets="@PayStyle.css" text="Vidare" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
             <Button mnemonicParsing="false" onAction="#setStartPage" styleClass="abutton" text="Tillbaka" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
             <GridPane layoutX="390.0" layoutY="63.0" prefHeight="411.0" prefWidth="512.0">
