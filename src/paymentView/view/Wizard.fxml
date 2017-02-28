@@ -304,7 +304,7 @@
                <graphic>
                   <ImageView fx:id="tabNumberTwo" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@2%20grey.png" />
+                        <Image url="@../../../resources/images/paymentImages/2%20grey.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -313,7 +313,7 @@
                <graphic>
                   <ImageView fx:id="tabNumberThree" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@3%20grey.png" />
+                        <Image url="@../../../resources/images/paymentImages/3%20grey.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -322,7 +322,7 @@
                <graphic>
                   <ImageView fx:id="tabNumberFour" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@4%20grey.png" />
+                        <Image url="@../../../resources/images/paymentImages/4%20grey.png" />
                      </image>
                   </ImageView>
                </graphic>
