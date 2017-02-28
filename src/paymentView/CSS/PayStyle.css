@@ -1,0 +1,276 @@
+.background {
+    -fx-background-color: #FFFFFF;
+}
+
+.background5 {
+    -fx-background-color: #f2f2f2;
+}
+
+.label {
+    -fx-text-fill: #444444;
+    -fx-font-size: 20;
+    -fx-font-family: "Segoe UI Light";
+    -fx-opacity: 0.9;
+}
+
+.label-bright {
+    -fx-text-fill: #444444;
+    -fx-font-size: 22.5;
+    -fx-font-family: "Segoe UI Light";
+    -fx-opacity: 0.9;
+}
+
+.label-header {
+    -fx-text-fill: #444444;
+    -fx-font-size: 25;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-opacity: 0.9;
+}
+
+.label-dash {
+    -fx-font-size: 30;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: black;
+    -fx-opacity: 0.9;
+}
+
+.menu-bar .label {
+    -fx-font-size: 14pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: white;
+    -fx-opacity: 0.9;
+}
+
+.text-field {
+    -fx-font-size: 20;
+    -fx-font-family: "Segoe UI Light";
+    -fx-width: 5px;
+    -fx-height: 5px;
+}
+
+.plusMinusField {
+    -fx-font-family: "Segoe UI";
+    -fx-width: 10;
+    -fx-height: 10;
+}
+
+.imageViewPlus {
+    -fx-width: 5px;
+    -fx-height: 5px;
+}
+
+
+.prominentButton {
+    -fx-background-color: #2E75B6;
+    -fx-border-color: #CCCCCC;
+    -fx-border-width: 0;
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-size: 20;
+    -fx-padding: 5 22 5 22;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-radius: 10 10 10 10;
+}
+
+.prominentButton:hover {
+    -fx-background-color: #1E90FF;
+}
+
+.plus-button {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #444444;
+    -fx-border-width: 1;
+    -fx-border-radius: 0 10 10 0;
+    -fx-background-radius: 0 10 10 0;
+}
+
+.minus-button {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #444444;
+    -fx-border-width: 1;
+    -fx-border-radius: 10 0 0 10;
+    -fx-background-radius: 10 0 0 10;
+}
+
+.trashcanButton {
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-radius: 10 10 10 10;
+}
+
+.buttonWizard {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #878787;
+    -fx-border-width: 0;
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-size: 20;
+    -fx-border-radius: 0 0 0 0;
+}
+
+.activeTab {
+    -fx-background-color: #FFFFFF;
+    -fx-border-width: 0;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: #2E75B6;
+    -fx-border-width: 0 0 0 0;
+}
+
+.information-button {
+    -fx-background-color: #FFFFFF;
+    -fx-border-width: 0;
+}
+
+.noEmailPhone-button {
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #444444;
+    -fx-padding: 5 22 5 22;
+    -fx-border-width: 1;
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-size: 15;
+    -fx-text-fill: #444444;
+}
+
+.noEmailPhone-button:hover {
+    -fx-background-color: #F5F5F5;
+}
+
+.payAtDoor-button {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 10 0 0 10;
+    -fx-border-radius: 10 0 0 10;
+    -fx-border-width: 1;
+    -fx-border-color: #444444;
+    -fx-text-fill: #444444;
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-size: 15;
+}
+
+.payAtDoor-button:hover {
+    -fx-background-color: #F5F5F5;
+}
+
+.creditCard-button {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 0 0 0 0;
+    -fx-border-radius: 0 0 0 0;
+    -fx-border-width: 1 0 1 0;
+    -fx-border-color: #444444;
+    -fx-text-fill: #444444;
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-size: 15;
+}
+
+.creditCard-button:hover {
+    -fx-background-color: #F5F5F5;
+}
+
+.invoice-button {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 0 10 10 0;
+    -fx-border-radius: 0 10 10 0;
+    -fx-border-width: 1;
+    -fx-border-color: #444444;
+    -fx-text-fill: #444444;
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-size: 15;
+}
+
+.invoice-button:hover {
+    -fx-background-color: #F5F5F5;
+}
+
+.activeCreditCard-button {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 0 0 0 0;
+    -fx-border-radius: 0 0 0 0;
+    -fx-border-width: 1 0 1 0;
+    -fx-border-color: #444444;
+    -fx-text-fill: #2E75B6;
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-size: 15;
+}
+
+.activeCreditCard-button:hover {
+    -fx-background-color: #F5F5F5;
+}
+
+.activePayAtDoor-button {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 10 0 0 10;
+    -fx-border-radius: 10 0 0 10;
+    -fx-border-width: 1;
+    -fx-border-color: #444444;
+    -fx-text-fill: #2E75B6;
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-size: 15;
+}
+
+.activePayAtDoor-button:hover {
+    -fx-background-color: #F5F5F5;
+}
+
+.activeInvoice-button {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 0 10 10 0;
+    -fx-border-radius: 0 10 10 0;
+    -fx-border-width: 1;
+    -fx-border-color: #444444;
+    -fx-text-fill: #2E75B6;
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-size: 15;
+}
+
+.activeInvoice-button:hover {
+    -fx-background-color: #F5F5F5;
+}
+
+.delete-button {
+    -fx-border-color: #444444;
+    -fx-border-width: 1;
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-radius: 10 10 10 10;
+    -fx-background-color: #E60000;
+}
+
+.tooltip {
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-size: 20;
+    -fx-text-fill: #444444;
+    -fx-background-color: FFFFFF;
+    -fx-border-width: 1;
+    -fx-border-color: #444444;
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-radius: 10 10 10 10;
+}
+
+.abutton {
+    -fx-padding: 5 22 5 22;
+    -fx-border-color: #444444;
+    -fx-border-width: 1;
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-radius: 10 10 10 10;
+    -fx-background-color: #FFFFFF;
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-size: 20;
+    -fx-text-fill: #444444;
+}
+
+.abutton:hover {
+    -fx-background-color: #F5F5F5;
+}
+
+.cb.context-menu {
+    -fx-background-color: #FFFFFF;
+}
+
+.text-field {
+    -fx-padding: 5 5 5 7;
+}
+
+.text-field-disabled {
+    -fx-background-color: #d9d9d9;
+}
+
+.tab-selected {
+    -fx-background-color: #F5F5F5;
+}
