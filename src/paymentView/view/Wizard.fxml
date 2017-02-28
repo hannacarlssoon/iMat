@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@../CSS/PayStyle.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PaymentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@../CSS/PayStyle.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paymentView.view.PaymentController">
    <children>
       <AnchorPane fx:id="creditCardView" prefHeight="200.0" prefWidth="200.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0">
          <children>
@@ -170,6 +170,86 @@
             </GridPane>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="deliveryView" prefHeight="200.0" prefWidth="200.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+         <children>
+            <Label layoutX="489.0" layoutY="16.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Vänligen fyll i din leveransinformation" AnchorPane.leftAnchor="489.0" AnchorPane.rightAnchor="435.0" />
+            <Button mnemonicParsing="false" onAction="#setPayAtDoor" styleClass="prominentButton" stylesheets="@../CSS/PayStyle.css" text="Vidare" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
+            <Button mnemonicParsing="false" onAction="#setStartPage" styleClass="abutton" text="Tillbaka" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
+            <GridPane layoutX="390.0" layoutY="63.0" prefHeight="411.0" prefWidth="512.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="36.0" prefWidth="240.0" text="Efternamn:" textAlignment="RIGHT" />
+                  <Label alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="240.0" text="Förnamn:" GridPane.rowIndex="1" />
+                  <Label alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="240.0" text="Adress:" GridPane.rowIndex="2" />
+                  <Label alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="240.0" text="Postnummer:" GridPane.rowIndex="3" />
+                  <Label alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="240.0" text="Stad:" GridPane.rowIndex="4" />
+                  <TextField prefHeight="0.0" prefWidth="263.0" styleClass="text-field" stylesheets="@../CSS/PayStyle.css" GridPane.columnIndex="1" />
+                  <TextField prefHeight="0.0" prefWidth="263.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="240.0" text="Email:" GridPane.rowIndex="5" />
+                  <Button fx:id="emailButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#setEmailButton" prefHeight="33.0" prefWidth="122.0" styleClass="noEmailPhone-button" text="Ingen email" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <font>
+                        <Font name="Segoe UI Light" size="13.0" />
+                     </font></Button>
+                  <TextField fx:id="emailTextField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TextField fx:id="phoneTextField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <Label alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="240.0" text="Telefonnummer:" GridPane.rowIndex="7" />
+                  <Button fx:id="phoneButton" mnemonicParsing="false" onAction="#setPhoneButton" prefHeight="33.0" prefWidth="180.0" styleClass="noEmailPhone-button" text="Inget telefonnummer" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+               </children>
+            </GridPane>
+            <CheckBox layoutX="600.0" layoutY="477.0" mnemonicParsing="false" styleClass="label" stylesheets="@../CSS/PayStyle.css" text="Spara uppgifterna" />
+            <Label layoutX="491.0" layoutY="522.0" styleClass="label-bright" stylesheets="@../CSS/PayStyle.css" text="Vänligen fyll i när du vill ha dina matvaror" />
+            <RadioButton fx:id="fm" layoutX="415.0" layoutY="584.0" mnemonicParsing="false" styleClass="label" stylesheets="@../CSS/PayStyle.css" text="Förmiddag">
+               <tooltip>
+                  <Tooltip text="Varorna levereras på förmiddagen mellan 9-12" />
+               </tooltip></RadioButton>
+            <RadioButton fx:id="em" layoutX="566.0" layoutY="584.0" mnemonicParsing="false" styleClass="label" stylesheets="@../CSS/PayStyle.css" text="Eftermiddag">
+               <tooltip>
+                  <Tooltip text="Varorna levereras på eftermiddagen mellan 15 - 18" />
+               </tooltip></RadioButton>
+            <DatePicker layoutX="727.0" layoutY="578.0" />
+            <Button layoutX="904.0" layoutY="298.0" mnemonicParsing="false" style="-fx-border-radius: 25;" styleClass="information-button" stylesheets="@../CSS/PayStyle.css">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/images/paymentImages/information.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Fyll i din email om du vill få kvittot till din mailkorg" />
+               </tooltip>
+            </Button>
+            <Button layoutX="904.0" layoutY="388.0" mnemonicParsing="false" styleClass="information-button">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/images/paymentImages/information.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Fyll i ditt telefonnummer om du vill få sms när varorna är påväg" />
+               </tooltip>
+            </Button>
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="backgroundView" prefHeight="200.0" prefWidth="200.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane layoutX="335.0" layoutY="167.0" prefHeight="500.0" prefWidth="700.0" styleClass="background5" stylesheets="@../CSS/PayStyle.css" AnchorPane.leftAnchor="335.0" AnchorPane.rightAnchor="331.0">
@@ -253,85 +333,5 @@
             <Separator layoutX="335.0" layoutY="167.0" prefHeight="0.0" prefWidth="700.0" />
             <Separator layoutX="335.0" layoutY="666.0" prefWidth="700.0" />
          </children></AnchorPane>
-      <AnchorPane fx:id="deliveryView" prefHeight="200.0" prefWidth="200.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
-         <children>
-            <Label layoutX="489.0" layoutY="16.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Vänligen fyll i din leveransinformation" AnchorPane.leftAnchor="489.0" AnchorPane.rightAnchor="435.0" />
-            <Button mnemonicParsing="false" onAction="#setPayAtDoor" styleClass="prominentButton" stylesheets="@../CSS/PayStyle.css" text="Vidare" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
-            <Button mnemonicParsing="false" onAction="#setStartPage" styleClass="abutton" text="Tillbaka" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
-            <GridPane layoutX="390.0" layoutY="63.0" prefHeight="411.0" prefWidth="512.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="36.0" prefWidth="240.0" text="Efternamn:" textAlignment="RIGHT" />
-                  <Label alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="240.0" text="Förnamn:" GridPane.rowIndex="1" />
-                  <Label alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="240.0" text="Adress:" GridPane.rowIndex="2" />
-                  <Label alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="240.0" text="Postnummer:" GridPane.rowIndex="3" />
-                  <Label alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="240.0" text="Stad:" GridPane.rowIndex="4" />
-                  <TextField prefHeight="0.0" prefWidth="263.0" styleClass="text-field" stylesheets="@../CSS/PayStyle.css" GridPane.columnIndex="1" />
-                  <TextField prefHeight="0.0" prefWidth="263.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Label alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="240.0" text="Email:" GridPane.rowIndex="5" />
-                  <Button fx:id="emailButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#setEmailButton" prefHeight="33.0" prefWidth="122.0" styleClass="noEmailPhone-button" text="Ingen email" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                     <font>
-                        <Font name="Segoe UI Light" size="13.0" />
-                     </font></Button>
-                  <TextField fx:id="emailTextField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <TextField fx:id="phoneTextField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                  <Label alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="240.0" text="Telefonnummer:" GridPane.rowIndex="7" />
-                  <Button fx:id="phoneButton" mnemonicParsing="false" onAction="#setPhoneButton" prefHeight="33.0" prefWidth="180.0" styleClass="noEmailPhone-button" text="Inget telefonnummer" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-               </children>
-            </GridPane>
-            <CheckBox layoutX="600.0" layoutY="477.0" mnemonicParsing="false" styleClass="label" stylesheets="@../CSS/PayStyle.css" text="Spara uppgifterna" />
-            <Label layoutX="491.0" layoutY="522.0" styleClass="label-bright" stylesheets="@../CSS/PayStyle.css" text="Vänligen fyll i när du vill ha dina matvaror" />
-            <RadioButton fx:id="fm" layoutX="415.0" layoutY="584.0" mnemonicParsing="false" styleClass="label" stylesheets="@../CSS/PayStyle.css" text="Förmiddag">
-               <tooltip>
-                  <Tooltip text="Varorna levereras på förmiddagen mellan 9-12" />
-               </tooltip></RadioButton>
-            <RadioButton fx:id="em" layoutX="566.0" layoutY="584.0" mnemonicParsing="false" styleClass="label" stylesheets="@../CSS/PayStyle.css" text="Eftermiddag">
-               <tooltip>
-                  <Tooltip text="Varorna levereras på eftermiddagen mellan 15 - 18" />
-               </tooltip></RadioButton>
-            <DatePicker layoutX="727.0" layoutY="578.0" />
-            <Button layoutX="904.0" layoutY="298.0" mnemonicParsing="false" style="-fx-border-radius: 25;" styleClass="information-button" stylesheets="@../CSS/PayStyle.css">
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../resources/images/paymentImages/information.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <tooltip>
-                  <Tooltip text="Fyll i din email om du vill få kvittot till din mailkorg" />
-               </tooltip>
-            </Button>
-            <Button layoutX="904.0" layoutY="388.0" mnemonicParsing="false" styleClass="information-button">
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../resources/images/paymentImages/information.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <tooltip>
-                  <Tooltip text="Fyll i ditt telefonnummer om du vill få sms när varorna är påväg" />
-               </tooltip>
-            </Button>
-         </children>
-      </AnchorPane>
    </children>
 </AnchorPane>
