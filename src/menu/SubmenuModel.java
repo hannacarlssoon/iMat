@@ -48,58 +48,59 @@ public class SubmenuModel {
     }
 
     private void setFruits(){
-        fruits.add("Frukt");
-        fruits.add("Grönsaker");
-        fruits.add("Rotfrukter");
-        fruits.add("Örter");
-        fruits.add("Bär");
-        fruits.add("Exotisk frukter");
-        fruits.add("Citrusfrukter");
-        fruits.add("Meloner");
+        fruits.add("• Frukt");
+        fruits.add("• Grönsaker");
+        fruits.add("• Rotfrukter");
+        fruits.add("• Örter");
+        fruits.add("• Bär");
+        fruits.add("• Exotisk frukter");
+        fruits.add("• Citrusfrukter");
+        fruits.add("• Meloner");
     }
 
     private void setMeat(){
-        meat.add("Kött");
-        meat.add("Kyckling");
-        meat.add("Fisk");
-        meat.add("Skaldjur");
+        meat.add("• Kött");
+        meat.add("• Kyckling");
+        meat.add("• Fisk");
+        meat.add("• Skaldjur");
     }
 
     private void setDairy(){
-        dairy.add("Mjölk");
-        dairy.add("Ägg");
-        dairy.add("Ost");
-        dairy.add("Yoghurt");
-        dairy.add("Fil");
+        dairy.add("• Mjölk");
+        dairy.add("• Ägg");
+        dairy.add("• Ost");
+        dairy.add("• Yoghurt");
+        dairy.add("• Fil");
     }
 
     private void setDrinks(){
-        drinks.add("Juice");
-        drinks.add("Kaffe & Te");
-        drinks.add("Läsk");
-        drinks.add("Sodavatten");
+        drinks.add("• Juice");
+        drinks.add("• Kaffe & Te");
+        drinks.add("• Läsk");
+        drinks.add("• Sodavatten");
     }
 
     private void setBread(){
-        bread.add("Ljust bröd");
-        bread.add("Grovt bröd");
-        bread.add("Knäckebröd");
-        bread.add("Fikabröd");
+        bread.add("• Ljust bröd");
+        bread.add("• Grovt bröd");
+        bread.add("• Knäckebröd");
+        bread.add("• Fikabröd");
     }
 
     private void setPantry(){
-        pantry.add("Bakning");
-        pantry.add("Bönor & Linser");
-        pantry.add("Nötter & Frön");
-        pantry.add("Kryddor");
-        pantry.add("Kaffe & Te");
-        pantry.add("Pasta");
-        pantry.add("Ris");
+        pantry.add("• Bakning");
+        pantry.add("• Bönor & Linser");
+        pantry.add("• Nötter & Frön");
+        pantry.add("• Kryddor");
+        pantry.add("• Kaffe & Te");
+        pantry.add("• Pasta");
+        pantry.add("• Ris");
+        pantry.add("• Potatis");
     }
 
     private void setSweets(){
-        sweets.add("Godis");
-        sweets.add("Snacks");
-        sweets.add("Kakor & bakverk");
+        sweets.add("• Godis");
+        sweets.add("• Snacks");
+        sweets.add("• Kakor & bakverk");
     }
 }

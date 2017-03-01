@@ -42,11 +42,23 @@ public class PaymentController implements Initializable {
     @FXML private RadioButton fm;
     @FXML private RadioButton em;
 
+    //The different text fields
+    @FXML private TextField firstName;
+    @FXML private TextField lastName;
+    @FXML private TextField address;
+    @FXML private TextField city;
+    @FXML private TextField cityCode;
+
     //The different images for the tabs
     @FXML private ImageView tabNumberOne;
     @FXML private ImageView tabNumberTwo;
     @FXML private ImageView tabNumberThree;
     @FXML private ImageView tabNumberFour;
+    @FXML private ImageView iMat;
+    @FXML private ImageView fmtt;
+    @FXML private ImageView emtt;
+    @FXML private ImageView emailtt;
+    @FXML private ImageView phonett;
 
     //The different images for the pay options
     @FXML private ImageView door;
@@ -77,6 +89,9 @@ public class PaymentController implements Initializable {
     private Image invoiceBlue = new Image("file:resources/images/paymentImages/invoice blue.png");
     private Image ccGrey = new Image("file:resources/images/paymentImages/cc grey.png");
     private Image ccBlue = new Image("file:resources/images/paymentImages/cc blue.png");
+    private Image info = new Image("file:resources/images/paymentImages/information.png");
+    private Image logga = new Image("file:resources/images/iMat.png");
+
 
     //Lists of the values you can choose from when choosing a year and a month for your credit card
     ObservableList<Integer> year = FXCollections.observableArrayList(17, 18, 19, 20, 21, 22, 23);
@@ -90,6 +105,18 @@ public class PaymentController implements Initializable {
         ToggleGroup group = new ToggleGroup();
         fm.setToggleGroup(group);
         em.setToggleGroup(group);
+
+        //Sets the first view
+        tabNumberOne.setImage(oneBlue);
+        tabNumberTwo.setImage(twoGrey);
+        tabNumberThree.setImage(threeGrey);
+        tabNumberFour.setImage(fourGrey);
+        backgroundView.toFront();
+        fmtt.setImage(info);
+        emtt.setImage(info);
+        emailtt.setImage(info);
+        phonett.setImage(info);
+        iMat.setImage(logga);
     }
 
     //Closes the application
@@ -330,4 +357,5 @@ public class PaymentController implements Initializable {
         creditCardButton.getStyleClass().removeAll("activeCreditCard-button");
         invoiceButton.getStyleClass().add("activeInvoice-button");
     }
+
 }

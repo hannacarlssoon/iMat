@@ -99,11 +99,12 @@
 
 .buttonWizard {
     -fx-background-color: #FFFFFF;
-    -fx-border-color: #878787;
     -fx-border-width: 0;
     -fx-font-family: "Segoe UI Light";
     -fx-font-size: 20;
     -fx-border-radius: 0 0 0 0;
+    -fx-opacity: 0.8;
+    -fx-text-fill: #bababa;
 }
 
 .activeTab {

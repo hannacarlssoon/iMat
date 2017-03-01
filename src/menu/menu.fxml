@@ -19,7 +19,7 @@
             <Font name="Segoe UI Light" size="27.0" />
          </font>
       </Button>
-      <AnchorPane id="submenu" fx:id="submenu" layoutY="95.0" prefHeight="58.0" prefWidth="1366.0">
+      <AnchorPane id="submenu" fx:id="submenuPane" layoutY="95.0" prefHeight="58.0" prefWidth="1366.0">
          <children>
             <TextField fx:id="searchField" layoutX="1040.0" layoutY="10.0" onAction="#searchFieldActionPerformed" prefHeight="34.0" prefWidth="312.0" promptText="Sök efter vara...">
                <font>
@@ -65,27 +65,9 @@
             <Font name="Segoe UI Light" size="27.0" />
          </font>
       </Button>
-      <Button fx:id="favoriteItem" layoutX="909.0" layoutY="55.0" mnemonicParsing="false" onAction="#favoriteItemActionPerformed" styleClass="menuItem" text="Favoriter">
+      <Button fx:id="favoriteItem" layoutX="909.0" layoutY="54.0" mnemonicParsing="false" onAction="#favoriteItemActionPerformed" styleClass="menuItem" text="Favoriter">
          <font>
             <Font name="Segoe UI Light" size="27.0" />
-         </font>
-      </Button>
-      <Button fx:id="backButton" layoutX="35.0" layoutY="7.0" mnemonicParsing="false" onAction="#backButtonActionPerformed" text="Bakåt">
-         <styleClass>
-            <String fx:value="arrowButtons" />
-            <String fx:value="leftArrow" />
-         </styleClass>
-         <font>
-            <Font name="Segoe UI Light" size="20.0" />
-         </font>
-      </Button>
-      <Button fx:id="forwardButton" layoutX="113.0" layoutY="7.0" mnemonicParsing="false" onAction="#forwardButtonActionPerformed" text="Framåt">
-         <styleClass>
-            <String fx:value="arrowButtons" />
-            <String fx:value="rightArrow" />
-         </styleClass>
-         <font>
-            <Font name="Segoe UI Light" size="20.0" />
          </font>
       </Button>
       <Button fx:id="logo" layoutX="1139.0" layoutY="18.0" mnemonicParsing="false" onAction="#logoActionPerformed" styleClass="logoButton">
