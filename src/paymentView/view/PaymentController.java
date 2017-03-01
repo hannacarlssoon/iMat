@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import main.Main;
 
 import java.io.IOException;
 import java.net.URL;
@@ -92,6 +93,8 @@ public class PaymentController implements Initializable {
     private Image info = new Image("file:resources/images/paymentImages/information.png");
     private Image logga = new Image("file:resources/images/iMat.png");
 
+    //Main used for returning to store from PaymentView
+    private Main main;
 
     //Lists of the values you can choose from when choosing a year and a month for your credit card
     ObservableList<Integer> year = FXCollections.observableArrayList(17, 18, 19, 20, 21, 22, 23);
@@ -298,6 +301,11 @@ public class PaymentController implements Initializable {
         }
     }
 
+    @FXML
+    protected void returnToStore(){
+        main.switchScene();
+    }
+
     //Sets tab one to selected
     protected void tabOneSelected() {
         tabNumberOne.setImage(oneBlue);
@@ -356,6 +364,10 @@ public class PaymentController implements Initializable {
         payAtDoorButton.getStyleClass().removeAll("activePayAtDoor-button");
         creditCardButton.getStyleClass().removeAll("activeCreditCard-button");
         invoiceButton.getStyleClass().add("activeInvoice-button");
+    }
+
+    public void setMain(Main main) {
+        this.main = main;
     }
 
 }

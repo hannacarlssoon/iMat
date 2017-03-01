@@ -1,6 +1,7 @@
+package main;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
