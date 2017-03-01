@@ -14,71 +14,80 @@
       <Insets />
    </opaqueInsets>
    <children>
-      <Button fx:id="fruitsItem" layoutX="14.0" layoutY="54.0" mnemonicParsing="false" onAction="#fruitsItemActionPerformed" styleClass="menuItem" text="Frukt &amp; Grönt">
-         <font>
-            <Font name="Segoe UI Light" size="27.0" />
-         </font>
-      </Button>
-      <AnchorPane id="submenu" fx:id="submenuPane" layoutY="95.0" prefHeight="58.0" prefWidth="1366.0">
+      <AnchorPane prefHeight="153.0" prefWidth="1366.0">
          <children>
-            <TextField fx:id="searchField" layoutX="1040.0" layoutY="10.0" onAction="#searchFieldActionPerformed" prefHeight="34.0" prefWidth="312.0" promptText="Sök efter vara...">
+            <AnchorPane id="submenu" fx:id="submenuPane" layoutY="95.0" prefHeight="58.0" prefWidth="1366.0" />
+            <Button fx:id="fruitsItem" layoutX="20.0" layoutY="54.0" mnemonicParsing="false" onAction="#fruitsItemActionPerformed" styleClass="menuItem" text="Frukt &amp; Grönt">
+               <font>
+                  <Font name="Segoe UI Light" size="27.0" />
+               </font>
+            </Button>
+            <Button fx:id="meatItem" layoutX="207.0" layoutY="54.0" mnemonicParsing="false" onAction="#meatItemActionPerformed" styleClass="menuItem" text="Kött &amp; Fisk">
+               <font>
+                  <Font name="Segoe UI Light" size="27.0" />
+               </font>
+            </Button>
+            <Button fx:id="dairyItem" layoutX="359.0" layoutY="54.0" mnemonicParsing="false" onAction="#dairyItemActionPerformed" styleClass="menuItem" text="Mejeri">
+               <font>
+                  <Font name="Segoe UI Light" size="27.0" />
+               </font>
+            </Button>
+            <Button fx:id="drinksItem" layoutX="461.0" layoutY="54.0" mnemonicParsing="false" onAction="#drinksItemActionPerformed" styleClass="menuItem" text="Drycker">
+               <font>
+                  <Font name="Segoe UI Light" size="27.0" />
+               </font>
+            </Button>
+            <Button fx:id="breadItem" layoutX="579.0" layoutY="54.0" mnemonicParsing="false" onAction="#breadItemActionPerformed" styleClass="menuItem" text="Bröd">
+               <font>
+                  <Font name="Segoe UI Light" size="27.0" />
+               </font>
+            </Button>
+            <Button fx:id="pantryItem" layoutX="665.0" layoutY="54.0" mnemonicParsing="false" onAction="#pantryItemActionPerformed" styleClass="menuItem" text="Skafferi">
+               <font>
+                  <Font name="Segoe UI Light" size="27.0" />
+               </font>
+            </Button>
+            <Button fx:id="sweetsItem" layoutX="779.0" layoutY="54.0" mnemonicParsing="false" onAction="#sweetsItemActionPerformed" styleClass="menuItem" text="Sötsaker">
+               <font>
+                  <Font name="Segoe UI Light" size="27.0" />
+               </font>
+            </Button>
+            <Button fx:id="favoriteItem" layoutX="900.0" layoutY="54.0" mnemonicParsing="false" onAction="#favoriteItemActionPerformed" styleClass="menuItem" text="Favoriter">
+               <font>
+                  <Font name="Segoe UI Light" size="27.0" />
+               </font>
+            </Button>
+            <Button fx:id="logo" layoutX="1030.0" layoutY="15.0" mnemonicParsing="false" onAction="#logoActionPerformed" styleClass="logoButton">
+               <tooltip>
+                  <Tooltip text="Gå till startsidan" />
+               </tooltip>
+               <graphic>
+                  <ImageView>
+                     <image>
+                        <Image url="@logotype.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="1000.0" layoutY="105.0" prefHeight="37.0" prefWidth="355.0">
+         <children>
+            <TextField fx:id="searchField" onAction="#searchFieldActionPerformed" prefHeight="34.0" prefWidth="355.0" promptText="Sök efter vara...">
                <font>
                   <Font size="18.0" />
-               </font></TextField>
-            <Button fx:id="searchButton" layoutX="1313.0" layoutY="10.0" mnemonicParsing="false" onAction="#searchButtonActionPerformed" prefHeight="37.0" prefWidth="39.0">
+               </font>
+            </TextField>
+            <Button fx:id="searchButton" layoutX="316.0" mnemonicParsing="false" onAction="#searchButtonActionPerformed" prefHeight="37.0" prefWidth="39.0">
                <graphic>
                   <ImageView>
                      <image>
                         <Image url="@search.png" />
                      </image>
                   </ImageView>
-               </graphic></Button>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
-      <Button fx:id="meatItem" layoutX="201.0" layoutY="54.0" mnemonicParsing="false" onAction="#meatItemActionPerformed" styleClass="menuItem" text="Kött &amp; Fisk">
-         <font>
-            <Font name="Segoe UI Light" size="27.0" />
-         </font>
-      </Button>
-      <Button fx:id="dairyItem" layoutX="353.0" layoutY="54.0" mnemonicParsing="false" onAction="#dairyItemActionPerformed" styleClass="menuItem" text="Mejeri">
-         <font>
-            <Font name="Segoe UI Light" size="27.0" />
-         </font>
-      </Button>
-      <Button fx:id="drinksItem" layoutX="455.0" layoutY="54.0" mnemonicParsing="false" onAction="#drinksItemActionPerformed" styleClass="menuItem" text="Drycker">
-         <font>
-            <Font name="Segoe UI Light" size="27.0" />
-         </font>
-      </Button>
-      <Button fx:id="breadItem" layoutX="573.0" layoutY="54.0" mnemonicParsing="false" onAction="#breadItemActionPerformed" styleClass="menuItem" text="Bröd">
-         <font>
-            <Font name="Segoe UI Light" size="27.0" />
-         </font>
-      </Button>
-      <Button fx:id="pantryItem" layoutX="659.0" layoutY="54.0" mnemonicParsing="false" onAction="#pantryItemActionPerformed" styleClass="menuItem" text="Skafferi">
-         <font>
-            <Font name="Segoe UI Light" size="27.0" />
-         </font>
-      </Button>
-      <Button fx:id="sweetsItem" layoutX="773.0" layoutY="54.0" mnemonicParsing="false" onAction="#sweetsItemActionPerformed" styleClass="menuItem" text="Sötsaker">
-         <font>
-            <Font name="Segoe UI Light" size="27.0" />
-         </font>
-      </Button>
-      <Button fx:id="favoriteItem" layoutX="909.0" layoutY="54.0" mnemonicParsing="false" onAction="#favoriteItemActionPerformed" styleClass="menuItem" text="Favoriter">
-         <font>
-            <Font name="Segoe UI Light" size="27.0" />
-         </font>
-      </Button>
-      <Button fx:id="logo" layoutX="1139.0" layoutY="18.0" mnemonicParsing="false" onAction="#logoActionPerformed" styleClass="logoButton">
-         <tooltip>
-            <Tooltip text="Gå till startsidan" />
-         </tooltip>
-      </Button>
-      <ImageView layoutX="1052.0" layoutY="20.0">
-         <image>
-            <Image url="@logotype.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

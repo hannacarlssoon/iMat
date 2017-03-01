@@ -3,22 +3,30 @@ package menu;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Observer;
 
 /**
  * Created by Henrik on 24/02/2017.
  */
 public class SubmenuModel {
-    List<String> fruits = new ArrayList<>();
-    List<String> meat = new ArrayList<>();
-    List<String> dairy = new ArrayList<>();
-    List<String> drinks = new ArrayList<>();
-    List<String> bread = new ArrayList<>();
-    List<String> pantry = new ArrayList<>();
-    List<String> sweets = new ArrayList<>();
+
+    private List<String> fruits = new ArrayList<>();
+    private List<String> meat = new ArrayList<>();
+    private List<String> dairy = new ArrayList<>();
+    private List<String> drinks = new ArrayList<>();
+    private List<String> bread = new ArrayList<>();
+    private List<String> pantry = new ArrayList<>();
+    private List<String> sweets = new ArrayList<>();
 
     LinkedList<List<String>> submenus = new LinkedList<>();
 
-    public SubmenuModel(){
+    private List<String> submenu;
+
+    Menu menu;
+
+    public SubmenuModel(Menu menu){
+        this.menu = menu;
+
         setFruits();
         setMeat();
         setDairy();
@@ -32,8 +40,18 @@ public class SubmenuModel {
         setSubmenus();
     }
 
-    public List<String> getSubmenu(int index){
-        return submenus.get(index);
+    public void setSubmenu(int index){
+        submenu = submenus.get(index);
+
+        int i=0;
+        for(String s:submenu){
+            i = menu.paintSubmenuItem(s,i+5,10);
+        }
+
+    }
+
+    public List<String> getSubmenu(){
+        return submenu;
     }
 
     private void setSubmenus(){
@@ -103,4 +121,5 @@ public class SubmenuModel {
         sweets.add("• Snacks");
         sweets.add("• Kakor & bakverk");
     }
+
 }

@@ -17,6 +17,7 @@ import java.util.List;
 
 public class Menu extends Application {
     MenuController controller;
+    AnchorPane submenuPane;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -25,6 +26,7 @@ public class Menu extends Application {
         Parent root = fxmlLoader.load();
         controller = fxmlLoader.getController();
         controller.setMenu(this);
+        submenuPane = controller.getSubmenuPane();
 
         primaryStage.setTitle("menu");
         primaryStage.setScene(new Scene(root, 1366, 153));
@@ -34,12 +36,11 @@ public class Menu extends Application {
 
     /**
      *
-     * @param pane
      * @param layoutX
      * @param layoutY
      * @return the x-coordinate for
      */
-    public int paintSubmenuItem(AnchorPane pane,String s, int layoutX, int layoutY){
+    public int paintSubmenuItem(String s, int layoutX, int layoutY){
         //create new button & init properties
         Button submenuItem = new Button(s);
         submenuItem.setLayoutX(layoutX);
@@ -54,11 +55,11 @@ public class Menu extends Application {
         });
 
         //add button to anchorPane
-        pane.getChildren().add(submenuItem);
+        submenuPane.getChildren().add(submenuItem);
 
         //update submenu css
-        pane.applyCss();
-        pane.layout();
+        submenuPane.applyCss();
+        submenuPane.layout();
 
         return (int)submenuItem.getLayoutX() +(int)submenuItem.getWidth();
     }

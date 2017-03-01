@@ -30,27 +30,26 @@ public class MenuController implements Initializable{
     @FXML private Button searchButton;
     @FXML private AnchorPane submenuPane;
 
-    //list of all category menu items
+    //list of all menu items
     List<Button> menuItems;
 
     //class for view
     private Menu menu;
     //content for the submenumodel
-    private SubmenuModel submenuModel = new SubmenuModel();
+    private SubmenuModel submenuModel;
 
     private Button selectedSubmenuItem;
 
-    public void paintSubmenu(List<String> submenuList){
-        int i = 0;
-        for(String s:submenuList){
-            i = menu.paintSubmenuItem(submenuPane,s,i+5,10);
-        }
-    }
-
     public void setMenu(Menu menu){
         this.menu = menu;
+        submenuModel = new SubmenuModel(menu);
+
         translateMenuItems();
         structureMenuItems(-1);
+    }
+
+    public AnchorPane getSubmenuPane(){
+        return submenuPane;
     }
 
     public List<Button> getMenuItems(){
@@ -67,7 +66,6 @@ public class MenuController implements Initializable{
 
         return menuItems;
     }
-
 
 
     @FXML public void fruitsItemActionPerformed(ActionEvent event){
@@ -142,22 +140,11 @@ public class MenuController implements Initializable{
     private void menuItemAction(int i){
         structureMenuItems(i);
         emptySubmenu();
-        paintSubmenu(submenuModel.getSubmenu(i));
+        submenuModel.setSubmenu(i);
     }
 
-    public void emptySubmenu(){
-        ObservableList<Node> children = submenuPane.getChildren();
-        List<Node> submenuItems = new ArrayList<Node>();
-
-        if(children.size()>2){
-            for(int i=1;i<children.size();i++){
-                submenuItems.add(children.get(i));
-            }
-        }
-
-        for(Node s:submenuItems){
-            children.remove(s);
-        }
+    private void emptySubmenu(){
+        submenuPane.getChildren().remove(0,submenuPane.getChildren().size());
     }
 
     /**
