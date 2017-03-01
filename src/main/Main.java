@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import menu.Menu;
+import paymentView.view.PaymentController;
 import shoppingView.MainApp;
 import shoppingView.basket.view.BasketViewController;
 
@@ -51,6 +52,8 @@ public class Main extends Application {
         mainPaymentSceneFxmlLoader.setLocation(paymentView.MainApp.class.getResource("view/Wizard.fxml"));
         Parent scene2 = mainPaymentSceneFxmlLoader.load();
         paymentScene = new Scene(scene2, 1366, 768);
+        PaymentController paymentController = mainPaymentSceneFxmlLoader.getController();
+        paymentController.setMain(this);
     }
 
 
