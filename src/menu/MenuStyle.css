@@ -1,40 +1,9 @@
-.arrowButtons {
-    -fx-background-color: #FFFFFF;
-    -fx-border-color: #cccccc;
-}
-.arrowButtons:hover{
-    -fx-background-color: #eeeeee;
-    -fx-text-fill: #000000;
-}
-
-.leftArrow {
-    -fx-border-width: 1;
-    -fx-background-image: url(left-arrow.png);
-    -fx-background-position: 10%;
-    -fx-background-repeat: no-repeat;
-    -fx-text-alignment: left;
-    -fx-border-radius: 10 0 0 10;
-    -fx-background-radius: 10 0 0 10;
-    -fx-padding: 5 5 5 25;
-}
-
-.rightArrow {
-    -fx-border-width: 1 1 1 0;
-    -fx-background-image: url(right-arrow.png);
-    -fx-background-position: 90%;
-    -fx-background-repeat: no-repeat;
-    -fx-text-alignment: left;
-    -fx-border-radius:0 10 10 0;
-    -fx-background-radius: 0 10 10 0;
-    -fx-padding: 5 25 5 5;
-}
-
 .logoButton{
     -fx-background-color: transparent;
     -fx-border-width: 0;
 }
 
-.menuItem:hover{
+.menuItem:hover, .submenuItem:hover{
     -fx-background-color: #eeeeee;
     -fx-text-fill: #000000;
 }
@@ -79,8 +48,15 @@
     -fx-border-radius: 7;
     -fx-background-radius: 7;
 }
-.submenuItem:hover{
+
+.selectedSubmenuItem {
     -fx-text-fill: rgb(47,117,181);
+    -fx-border-color: rgb(47,117,181);
+}
+
+.selectedSubmenuItem:hover{
+    -fx-text-fill: rgb(47,117,181);
+    -fx-background-color: rgb(250,250,250);
     -fx-border-color: rgb(47,117,181);
 }
 

@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 import javafx.scene.control.*;
@@ -15,8 +16,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Menu extends Application {
-    AnchorPane submenu;
-    List<Button> menuItems = new LinkedList<>();
     MenuController controller;
 
     @Override
@@ -24,118 +23,57 @@ public class Menu extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("menu.fxml"));
         Parent root = fxmlLoader.load();
-
         controller = fxmlLoader.getController();
         controller.setMenu(this);
 
         primaryStage.setTitle("menu");
-        primaryStage.setScene(new Scene(root, 1920, 216));
-
-        getNodes(root);
-
-        translateMenuItems();
-
-        structureMenuItems(-1);
+        primaryStage.setScene(new Scene(root, 1366, 153));
 
         primaryStage.show();
-
-
     }
 
     /**
-     * remove all items from the submenu
+     *
+     * @param pane
+     * @param layoutX
+     * @param layoutY
+     * @return the x-coordinate for
      */
-    public void emptySubmenu(){
-        ObservableList<Node> children = submenu.getChildren();
-        List<Node> submenuItems = new ArrayList<Node>();
+    public int paintSubmenuItem(AnchorPane pane,String s, int layoutX, int layoutY){
+        //create new button & init properties
+        Button submenuItem = new Button(s);
+        submenuItem.setLayoutX(layoutX);
+        submenuItem.setLayoutY(layoutY);
+        submenuItem.getStyleClass().add("submenuItem");
 
-        if(children.size()>2){
-            for(int i=2;i<children.size();i++){
-                submenuItems.add(children.get(i));
+        submenuItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                controller.submenuActionPerformed(event);
             }
-        }
+        });
 
-        for(Node s:submenuItems){
-            children.remove(s);
-        }
+        //add button to anchorPane
+        pane.getChildren().add(submenuItem);
+
+        //update submenu css
+        pane.applyCss();
+        pane.layout();
+
+        return (int)submenuItem.getLayoutX() +(int)submenuItem.getWidth();
     }
 
-    public void paintSubmenu(List<String> submenuList){
-        int length = 30;
-        for(String s:submenuList){
-            //create new button & init properties
-            Button submenuItem = new Button(s);
-            submenuItem.setLayoutX(5 + length);
-            submenuItem.setLayoutY(10);
-            submenuItem.getStyleClass().add("submenuItem");
-
-            //add new actionPerformed method
-            submenuItem.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    controller.submenuActionPerformed(event);
-                }
-            });
-
-            //add button to anchorPane
-            submenu.getChildren().add(submenuItem);
-
-            //update submenu css
-            submenu.applyCss();
-            submenu.layout();
-
-            length = length + 10 + (int)submenuItem.getWidth();
-        }
+    public void pushNodeItemToFront(Node node){
+        node.toFront();
     }
 
-    private void getNodes(Parent root){
-        List<Node> nodes = root.getChildrenUnmodifiable();
-
-        ObservableList<String> menuItemStyleClass = nodes.get(0).getStyleClass();
-
-        for(Node node:nodes){
-            if(node instanceof Button && node.getStyleClass().equals(menuItemStyleClass))
-                menuItems.add((Button)node);
-            else if(node instanceof AnchorPane)
-                submenu = (AnchorPane) node;
-        }
+    public void pushNodeItemToBack(Node node){
+        node.toBack();
     }
 
-    private void translateMenuItems(){
-        for(int i=0;i<menuItems.size()-1;i++){
-            menuItems.get(i).setTranslateX(-7*i);
-        }
+    public void translateMenuItem(Button item,int translate){
+        item.setTranslateX(translate);
     }
-
-    /**
-     * places the menuItem with index in front
-     * submenu in front if index is negative
-     * @param index
-     */
-    public void structureMenuItems(int index){
-        int toFront;
-        if(index<0)
-            toFront = 0;
-        else
-            toFront = index;
-
-        for(int i=0;i<menuItems.size();i++){
-            menuItems.get(i).getStyleClass().remove("currentButton");
-            if(i>toFront){
-                menuItems.get(i).toBack();
-            } if(i<toFront){
-                menuItems.get(i).toFront();
-            }
-        }
-
-        submenu.toFront();
-
-        if(index>=0){
-            menuItems.get(index).toFront();
-            menuItems.get(index).getStyleClass().add("currentButton");
-        }
-    }
-
 
     public static void main(String[] args) {
         launch(args);
