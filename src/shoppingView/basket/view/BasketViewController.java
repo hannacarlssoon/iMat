@@ -1,5 +1,7 @@
 package shoppingView.basket.view;
 
+import javafx.event.ActionEvent;
+import main.Main;
 import shoppingView.MainApp;
 import shoppingView.basket.model.Basket;
 import shoppingView.basket.model.BasketItem;
@@ -31,6 +33,7 @@ public class BasketViewController {
     private Label totalPrice;
 
     private MainApp mainApp;
+    private Main main;
 
 
     @FXML
@@ -56,6 +59,11 @@ public class BasketViewController {
         basketImage.setImage(new Image("file:resources/images/basket.png"));
     }
 
+    @FXML
+    private void toCheckout(ActionEvent e){
+        main.switchScene();
+    }
+
     //???
     private void updateSumLabel() {
         double sum = 0;
@@ -69,5 +77,8 @@ public class BasketViewController {
 
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
+    }
+    public void setMain(Main main) {
+        this.main = main;
     }
 }

@@ -29,7 +29,7 @@ public class Menu extends Application {
         controller.setMenu(this);
 
         primaryStage.setTitle("menu");
-        primaryStage.setScene(new Scene(root, 1920, 216));
+        primaryStage.setScene(new Scene(root, 1366, 154));
 
         getNodes(root);
 
