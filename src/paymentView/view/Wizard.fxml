@@ -24,7 +24,7 @@
    <children>
       <AnchorPane fx:id="invoiceView" prefHeight="200.0" prefWidth="200.0" styleClass="background" stylesheets="@../CSS/PayStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0">
          <children>
-            <Button layoutX="1207.0" layoutY="450.0" mnemonicParsing="false" onAction="#setReciptView" styleClass="prominentButton" text="Vidare" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
+            <Button layoutX="1207.0" layoutY="450.0" mnemonicParsing="false" onAction="#setReciptView" styleClass="prominentButton" text="Slutför köp" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
             <Label layoutX="480.0" layoutY="41.0" text="Fakturan kommer till din leveransadress eller nått" />
             <Button layoutX="77.0" layoutY="458.0" mnemonicParsing="false" onAction="#setDeliveryView" styleClass="abutton" text="Tillbaka" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
          </children>
@@ -37,7 +37,7 @@
                </font>
             </CheckBox>
             <Label layoutX="496.0" layoutY="12.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Vänligen fyll i dina kortuppgifter" />
-            <Button mnemonicParsing="false" onAction="#setReciptView" styleClass="prominentButton" stylesheets="@../CSS/PayStyle.css" text="Betala och gå vidare" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
+            <Button mnemonicParsing="false" onAction="#setReciptView" styleClass="prominentButton" stylesheets="@../CSS/PayStyle.css" text="Betala och slutför köp" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
             <Button mnemonicParsing="false" onAction="#setDeliveryView" styleClass="abutton" stylesheets="@../CSS/PayStyle.css" text="Tillbaka" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
             <GridPane layoutX="431.0" layoutY="58.0" prefHeight="93.0" prefWidth="414.0">
               <columnConstraints>
@@ -82,7 +82,7 @@
             <Label layoutX="585.0" layoutY="531.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Välkommen åter!" />
             <Button layoutX="1042.0" layoutY="569.0" mnemonicParsing="false" onAction="#closeAboutActionPerformed" styleClass="prominentButton" stylesheets="@../CSS/PayStyle.css" text="Stäng ner programmet" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
             <Button layoutX="87.0" layoutY="574.0" mnemonicParsing="false" styleClass="abutton" stylesheets="@../CSS/PayStyle.css" text="Tillbaka till affären" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
-            <Label layoutX="356.0" layoutY="21.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Tack för att du handlar hos oss på shoppingView. Här är ditt kvitto:" />
+            <Label layoutX="288.0" layoutY="21.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Tack för att du handlar hos oss på shoppingView. Här är ditt kvitto:" />
             <AnchorPane layoutX="331.0" layoutY="75.0" prefHeight="500.0" prefWidth="700.0" styleClass="background5">
                <children>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="470.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -123,7 +123,7 @@
       <AnchorPane fx:id="defaultPayAtDoor" prefHeight="200.0" prefWidth="200.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
          <children>
             <Label layoutX="416.0" layoutY="166.0" text="Du har valt att betala vid dörren, klicka på vidare för att få kvitto" />
-            <Button mnemonicParsing="false" onAction="#setReciptView" styleClass="prominentButton" stylesheets="@../CSS/PayStyle.css" text="Vidare" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
+            <Button mnemonicParsing="false" onAction="#setReciptView" styleClass="prominentButton" stylesheets="@../CSS/PayStyle.css" text="Slutför köp" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
             <Button mnemonicParsing="false" onAction="#setDeliveryView" styleClass="abutton" text="Tillbaka" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
             <GridPane layoutX="352.0" layoutY="30.0" prefHeight="76.0" prefWidth="660.0">
               <columnConstraints>
@@ -170,86 +170,6 @@
             </GridPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="deliveryView" prefHeight="200.0" prefWidth="200.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
-         <children>
-            <Label layoutX="489.0" layoutY="16.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Vänligen fyll i din leveransinformation" AnchorPane.leftAnchor="489.0" AnchorPane.rightAnchor="435.0" />
-            <Button mnemonicParsing="false" onAction="#setPayAtDoor" styleClass="prominentButton" stylesheets="@../CSS/PayStyle.css" text="Vidare" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
-            <Button mnemonicParsing="false" onAction="#setStartPage" styleClass="abutton" text="Tillbaka" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
-            <GridPane layoutX="390.0" layoutY="63.0" prefHeight="411.0" prefWidth="512.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="36.0" prefWidth="240.0" text="Efternamn:" textAlignment="RIGHT" />
-                  <Label alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="240.0" text="Förnamn:" GridPane.rowIndex="1" />
-                  <Label alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="240.0" text="Adress:" GridPane.rowIndex="2" />
-                  <Label alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="240.0" text="Postnummer:" GridPane.rowIndex="3" />
-                  <Label alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="240.0" text="Stad:" GridPane.rowIndex="4" />
-                  <TextField prefHeight="0.0" prefWidth="263.0" styleClass="text-field" stylesheets="@../CSS/PayStyle.css" GridPane.columnIndex="1" />
-                  <TextField prefHeight="0.0" prefWidth="263.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Label alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="240.0" text="Email:" GridPane.rowIndex="5" />
-                  <Button fx:id="emailButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#setEmailButton" prefHeight="33.0" prefWidth="122.0" styleClass="noEmailPhone-button" text="Ingen email" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                     <font>
-                        <Font name="Segoe UI Light" size="13.0" />
-                     </font></Button>
-                  <TextField fx:id="emailTextField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <TextField fx:id="phoneTextField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                  <Label alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="240.0" text="Telefonnummer:" GridPane.rowIndex="7" />
-                  <Button fx:id="phoneButton" mnemonicParsing="false" onAction="#setPhoneButton" prefHeight="33.0" prefWidth="180.0" styleClass="noEmailPhone-button" text="Inget telefonnummer" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-               </children>
-            </GridPane>
-            <CheckBox layoutX="600.0" layoutY="477.0" mnemonicParsing="false" styleClass="label" stylesheets="@../CSS/PayStyle.css" text="Spara uppgifterna" />
-            <Label layoutX="491.0" layoutY="522.0" styleClass="label-bright" stylesheets="@../CSS/PayStyle.css" text="Vänligen fyll i när du vill ha dina matvaror" />
-            <RadioButton fx:id="fm" layoutX="415.0" layoutY="584.0" mnemonicParsing="false" styleClass="label" stylesheets="@../CSS/PayStyle.css" text="Förmiddag">
-               <tooltip>
-                  <Tooltip text="Varorna levereras på förmiddagen mellan 9-12" />
-               </tooltip></RadioButton>
-            <RadioButton fx:id="em" layoutX="566.0" layoutY="584.0" mnemonicParsing="false" styleClass="label" stylesheets="@../CSS/PayStyle.css" text="Eftermiddag">
-               <tooltip>
-                  <Tooltip text="Varorna levereras på eftermiddagen mellan 15 - 18" />
-               </tooltip></RadioButton>
-            <DatePicker layoutX="727.0" layoutY="578.0" />
-            <Button layoutX="904.0" layoutY="298.0" mnemonicParsing="false" style="-fx-border-radius: 25;" styleClass="information-button" stylesheets="@../CSS/PayStyle.css">
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../resources/images/paymentImages/information.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <tooltip>
-                  <Tooltip text="Fyll i din email om du vill få kvittot till din mailkorg" />
-               </tooltip>
-            </Button>
-            <Button layoutX="904.0" layoutY="388.0" mnemonicParsing="false" styleClass="information-button">
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../resources/images/paymentImages/information.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <tooltip>
-                  <Tooltip text="Fyll i ditt telefonnummer om du vill få sms när varorna är påväg" />
-               </tooltip>
-            </Button>
-         </children>
-      </AnchorPane>
       <AnchorPane fx:id="backgroundView" prefHeight="200.0" prefWidth="200.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane layoutX="335.0" layoutY="167.0" prefHeight="500.0" prefWidth="700.0" styleClass="background5" stylesheets="@../CSS/PayStyle.css" AnchorPane.leftAnchor="335.0" AnchorPane.rightAnchor="331.0">
@@ -287,7 +207,7 @@
             <Button mnemonicParsing="false" onAction="#setDeliveryView" styleClass="prominentButton" text="Vidare" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
             <Button layoutX="50.0" layoutY="691.0" mnemonicParsing="false" styleClass="abutton" text="Fortsätt handla" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
             <Label layoutX="556.0" layoutY="121.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Bekräfta din varukorg" />
-            <Button fx:id="confirmation" layoutX="228.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="266.0" stylesheets="@../CSS/PayStyle.css" text="   Bekräfta varukorgen" AnchorPane.topAnchor="0.0">
+            <Button fx:id="confirmation" layoutX="58.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="266.0" stylesheets="@../CSS/PayStyle.css" text="   Bekräfta varukorgen" AnchorPane.topAnchor="0.0">
                <graphic>
                   <ImageView fx:id="tabNumberOne" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -300,7 +220,7 @@
                   <String fx:value="activeTab" />
                </styleClass>
             </Button>
-            <Button fx:id="delivery" layoutX="505.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="275.0" styleClass="buttonWizard" stylesheets="@../CSS/PayStyle.css" text="   Leveransinformation" AnchorPane.topAnchor="0.0">
+            <Button fx:id="delivery" layoutX="345.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="275.0" styleClass="buttonWizard" stylesheets="@../CSS/PayStyle.css" text="   Leveransinformation" AnchorPane.topAnchor="0.0">
                <graphic>
                   <ImageView fx:id="tabNumberTwo" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -309,7 +229,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="pay" layoutX="776.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="211.0" styleClass="buttonWizard" stylesheets="@../CSS/PayStyle.css" text="   Betalning" AnchorPane.topAnchor="0.0">
+            <Button fx:id="pay" layoutX="638.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="211.0" styleClass="buttonWizard" stylesheets="@../CSS/PayStyle.css" text="   Betalning" AnchorPane.topAnchor="0.0">
                <graphic>
                   <ImageView fx:id="tabNumberThree" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -318,7 +238,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="recipt" layoutX="953.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="214.0" styleClass="buttonWizard" stylesheets="@../CSS/PayStyle.css" text="   Kvitto" AnchorPane.topAnchor="0.0">
+            <Button fx:id="recipt" layoutX="840.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="214.0" styleClass="buttonWizard" stylesheets="@../CSS/PayStyle.css" text="   Kvitto" AnchorPane.topAnchor="0.0">
                <graphic>
                   <ImageView fx:id="tabNumberFour" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -332,6 +252,91 @@
             <Separator layoutX="1033.0" layoutY="627.0" orientation="VERTICAL" prefHeight="40.0" />
             <Separator layoutX="335.0" layoutY="167.0" prefHeight="0.0" prefWidth="700.0" />
             <Separator layoutX="335.0" layoutY="666.0" prefWidth="700.0" />
+            <ImageView fx:id="iMat" fitHeight="150.0" fitWidth="200.0" layoutX="1101.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/images/iMat.png" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
+      <AnchorPane fx:id="deliveryView" prefHeight="200.0" prefWidth="200.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+         <children>
+            <Label layoutX="465.0" layoutY="19.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Vänligen fyll i din leveransinformation" AnchorPane.leftAnchor="465.0" AnchorPane.rightAnchor="459.0" />
+            <Button mnemonicParsing="false" onAction="#setPayAtDoor" styleClass="prominentButton" stylesheets="@../CSS/PayStyle.css" text="Vidare" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
+            <Button mnemonicParsing="false" onAction="#setStartPage" styleClass="abutton" text="Tillbaka" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
+            <CheckBox layoutX="579.0" layoutY="318.0" mnemonicParsing="false" styleClass="label" stylesheets="@../CSS/PayStyle.css" text="Spara uppgifterna" />
+            <Label layoutX="455.0" layoutY="397.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Vänligen fyll i när du vill ha dina matvaror" />
+            <RadioButton fx:id="fm" layoutX="366.0" layoutY="464.0" mnemonicParsing="false" styleClass="label" stylesheets="@../CSS/PayStyle.css" text="Förmiddag" />
+            <RadioButton fx:id="em" layoutX="582.0" layoutY="464.0" mnemonicParsing="false" styleClass="label" stylesheets="@../CSS/PayStyle.css" text="Eftermiddag" />
+            <DatePicker layoutX="825.0" layoutY="461.0" prefHeight="40.0" prefWidth="166.0" />
+            <Button layoutX="1087.0" layoutY="96.0" mnemonicParsing="false" style="-fx-border-radius: 25;" styleClass="information-button" stylesheets="@../CSS/PayStyle.css">
+               <graphic>
+                  <ImageView fx:id="emailtt" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/images/paymentImages/information.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Fyll i din email om du vill få kvittot till din mailkorg" />
+               </tooltip>
+            </Button>
+            <Button layoutX="1087.0" layoutY="213.0" mnemonicParsing="false" styleClass="information-button">
+               <graphic>
+                  <ImageView fx:id="phonett" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/images/paymentImages/information.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Fyll i ditt telefonnummer om du vill få sms när varorna är påväg" />
+               </tooltip>
+            </Button>
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="439.0" layoutY="61.0" prefHeight="36.0" prefWidth="94.0" text="Efternamn:" textAlignment="RIGHT" />
+            <Label alignment="CENTER_RIGHT" layoutX="207.0" layoutY="62.0" prefHeight="36.0" prefWidth="85.0" text="Förnamn:" />
+            <Label alignment="CENTER_RIGHT" layoutX="209.0" layoutY="139.0" prefHeight="36.0" prefWidth="64.0" text="Adress:" />
+            <Label alignment="CENTER_RIGHT" layoutX="211.0" layoutY="217.0" prefHeight="36.0" prefWidth="116.0" text="Postnummer:" />
+            <Label alignment="CENTER_RIGHT" layoutX="350.0" layoutY="219.0" prefHeight="36.0" prefWidth="50.0" text="Stad:" />
+            <Label alignment="CENTER_RIGHT" layoutX="701.0" layoutY="62.0" prefHeight="36.0" prefWidth="52.0" text="Email:" />
+            <Label alignment="CENTER_RIGHT" layoutX="702.0" layoutY="180.0" prefHeight="36.0" prefWidth="140.0" text="Telefonnummer:" />
+            <Button fx:id="emailButton" alignment="CENTER" contentDisplay="CENTER" layoutX="701.0" layoutY="140.0" mnemonicParsing="false" onAction="#setEmailButton" prefHeight="33.0" prefWidth="122.0" styleClass="noEmailPhone-button" text="Ingen email" textAlignment="CENTER">
+               <font>
+                  <Font name="Segoe UI Light" size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="phoneButton" layoutX="702.0" layoutY="257.0" mnemonicParsing="false" onAction="#setPhoneButton" prefHeight="33.0" prefWidth="180.0" styleClass="noEmailPhone-button" text="Inget telefonnummer" AnchorPane.bottomAnchor="378.0" />
+            <TextField fx:id="phoneTextField" layoutX="701.0" layoutY="212.0" prefHeight="40.0" prefWidth="386.0" />
+            <TextField fx:id="emailTextField" layoutX="700.0" layoutY="94.0" prefHeight="40.0" prefWidth="385.0" />
+            <TextField fx:id="city" layoutX="353.0" layoutY="250.0" prefHeight="40.0" prefWidth="289.0" AnchorPane.bottomAnchor="378.0" />
+            <TextField fx:id="cityCode" layoutX="210.0" layoutY="250.0" prefHeight="40.0" prefWidth="120.0" />
+            <TextField fx:id="address" layoutX="211.0" layoutY="172.0" prefHeight="40.0" prefWidth="432.0" />
+            <TextField fx:id="firstName" layoutX="208.0" layoutY="94.0" prefHeight="40.0" prefWidth="206.0" />
+            <TextField fx:id="lastName" layoutX="438.0" layoutY="94.0" prefHeight="40.0" prefWidth="206.0" styleClass="text-field" stylesheets="@../CSS/PayStyle.css" />
+            <Button layoutX="493.0" layoutY="461.0" mnemonicParsing="false" styleClass="information-button">
+               <graphic>
+                  <ImageView fx:id="fmtt" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/images/paymentImages/information.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Varorna levereras på förmiddagen mellan 9-12" />
+               </tooltip>
+            </Button>
+            <Button layoutX="721.0" layoutY="463.0" mnemonicParsing="false" styleClass="information-button">
+               <graphic>
+                  <ImageView fx:id="emtt" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/images/paymentImages/information.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Varorna levereras på eftermiddagen mellan 15 - 18" />
+               </tooltip>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
