@@ -76,6 +76,18 @@
     -fx-background-color: #1E90FF;
 }
 
+.prominentButton:disabled {
+    -fx-background-color: #BABABA;
+    -fx-border-color: #CCCCCC;
+    -fx-border-width: 0;
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-size: 20;
+    -fx-padding: 5 22 5 22;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-radius: 10 10 10 10;
+}
+
 .plus-button {
     -fx-background-color: #FFFFFF;
     -fx-border-color: #444444;

@@ -9,14 +9,20 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import main.Main;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import main.Main;
+import se.chalmers.ait.dat215.project.CreditCard;
+import se.chalmers.ait.dat215.project.Customer;
+
 
 public class PaymentController implements Initializable {
+
+    CreditCard cardInfo;
+    Customer customer;
 
     //The different views
     @FXML private AnchorPane deliveryView;
@@ -42,6 +48,15 @@ public class PaymentController implements Initializable {
     @FXML private TextField phoneTextField;
     @FXML private RadioButton fm;
     @FXML private RadioButton em;
+    @FXML private ChoiceBox cardType;
+    @FXML private CheckBox saveCreditCard;
+    @FXML private TextField CCFirstName;
+    @FXML private TextField CCLastName;
+    @FXML private TextField cvc;
+    @FXML private TextField cardNumber;
+    @FXML private Button deliveryButton;
+    @FXML private Button payButton;
+    @FXML private CheckBox saveDelivery;
 
     //The different text fields
     @FXML private TextField firstName;
@@ -93,12 +108,17 @@ public class PaymentController implements Initializable {
     private Image info = new Image("file:resources/images/paymentImages/information.png");
     private Image logga = new Image("file:resources/images/iMat.png");
 
-    //Main used for returning to store from PaymentView
+    private Tooltip tip = new Tooltip("Du måste fylla i all information innan du kan gå vidare");
+    private Tooltip tip2 = new Tooltip("Du måste fylla i alla rader innan du kan betala och gå vidare");
+    private Tooltip tip3 = new Tooltip("Du måste fylla i all information innan du kan spara");
+
     private Main main;
+
 
     //Lists of the values you can choose from when choosing a year and a month for your credit card
     ObservableList<Integer> year = FXCollections.observableArrayList(17, 18, 19, 20, 21, 22, 23);
     ObservableList<Integer> month = FXCollections.observableArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
+    ObservableList<String> type = FXCollections.observableArrayList("Visa", "Mastercard");
 
     //A method to do something
     @Override
@@ -108,6 +128,8 @@ public class PaymentController implements Initializable {
         ToggleGroup group = new ToggleGroup();
         fm.setToggleGroup(group);
         em.setToggleGroup(group);
+
+        cardType.setItems(type);
 
         //Sets the first view
         tabNumberOne.setImage(oneBlue);
@@ -120,12 +142,101 @@ public class PaymentController implements Initializable {
         emailtt.setImage(info);
         phonett.setImage(info);
         iMat.setImage(logga);
+        tip.getStyleClass().add("tooltip");
+        tip2.getStyleClass().add("tooltip");
+        tip3.getStyleClass().add("tooltip");
+
+        //Sets the saved information
+        firstName.setText(customer.getFirstName());
+        lastName.setText(customer.getLastName());
+        address.setText(customer.getAddress());
+        cityCode.setText(customer.getPostCode());
+        city.setText(customer.getPostAddress());
+        emailTextField.setText(customer.getEmail());
+        phoneTextField.setText(customer.getPhoneNumber());
+        cardNumber.setText(cardInfo.getCardNumber());
+        cvc.setText(cardInfo.getVerificationCode()+"");
+        String fn = "";
+        String en = "";
+        for (int i = 0; i < cardInfo.getHoldersName().length(); i++) {
+            if (cardInfo.getHoldersName().length() < 3) {
+                break;
+            }
+            while (cardInfo.getHoldersName().charAt(i) != ' ') {
+                fn = fn + cardInfo.getHoldersName().charAt(i);
+            }
+            en = en + cardInfo.getHoldersName().charAt(i);
+        }
+        CCFirstName.setText(fn);
+
     }
 
     //Closes the application
     @FXML
     protected void closeAboutActionPerformed(ActionEvent event) throws IOException {
 
+    }
+
+    @FXML
+    protected void disableDeliveryButton() {
+        if (isFirstNameDone() && isCCLastNameDone() && isCityDone() && isAddressDone() && isEmailDone() && isCityCodeDone() && isPhoneDone()) {
+            deliveryButton.setDisable(false);
+        }
+        else {
+            deliveryButton.setDisable(true);
+            deliveryButton.setTooltip(tip);
+        }
+    }
+
+    @FXML
+    protected void disablePayButton() {
+        if (isCCFistNameDone() && isCCLastNameDone() && isCardNumberDone() && isCVCDone()) {
+            payButton.setDisable(false);
+        }
+        else {
+            payButton.setDisable(true);
+            payButton.setTooltip(tip2);
+        }
+    }
+
+
+    @FXML
+    protected void saveCreditCard() {
+        if (isCCFistNameDone() && isCCLastNameDone() && isCardNumberDone() && isCVCDone()) {
+            saveCreditCard.setTooltip(null);
+            saveCreditCard.setDisable(false);
+            cardInfo.setCardNumber(cardNumber.getText());
+            cardInfo.setCardType(cardType.getTypeSelector());
+            cardInfo.setHoldersName(CCFirstName.getText() + " " + CCLastName.getText());
+            cardInfo.setValidMonth((int) monthChoiceBox.getValue());
+            cardInfo.setValidYear((int) yearChoiceBox.getValue());
+            Integer x = Integer.valueOf(cvc.getText());
+            int i = x;
+            cardInfo.setVerificationCode(i);
+        }
+        else {
+            saveCreditCard.setDisable(true);
+            saveCreditCard.setTooltip(tip3);
+        }
+    }
+
+    @FXML
+    protected void saveDeliveryInfo() {
+        if (isFirstNameDone() && isCCLastNameDone() && isCityDone() && isAddressDone() && isEmailDone() && isCityCodeDone() && isPhoneDone()) {
+            saveDelivery.setTooltip(null);
+            saveDelivery.setDisable(false);
+            customer.setAddress(address.getText());
+            customer.setEmail(emailTextField.getText());
+            customer.setPhoneNumber(phoneTextField.getText());
+            customer.setFirstName(firstName.getText());
+            customer.setLastName(lastName.getText());
+            customer.setPostCode(cityCode.getText());
+            customer.setPostAddress(city.getText());
+        }
+        else {
+            saveDelivery.setDisable(true);
+            saveDelivery.setTooltip(tip3);
+        }
     }
 
     //Sets the start page for the paymentView wizard
@@ -301,11 +412,6 @@ public class PaymentController implements Initializable {
         }
     }
 
-    @FXML
-    protected void returnToStore(){
-        main.switchScene();
-    }
-
     //Sets tab one to selected
     protected void tabOneSelected() {
         tabNumberOne.setImage(oneBlue);
@@ -366,8 +472,108 @@ public class PaymentController implements Initializable {
         invoiceButton.getStyleClass().add("activeInvoice-button");
     }
 
+    protected boolean isFirstNameDone() {
+        if (firstName.getText() != null && !firstName.getText().isEmpty() && firstName.getText().matches("[A-Öa-ö]") && firstName.getText().length() > 1) {
+            return true;
+        }
+        return false;
+    }
+
+    protected boolean isLastNameDone() {
+        if (lastName.getText() != null && !lastName.getText().isEmpty() && lastName.getText().matches("[A-Öa-ö]") && lastName.getText().length() > 1) {
+            return true;
+        }
+        return false;
+    }
+
+    protected boolean isAddressDone() {
+        if (address.getText() != null && !address.getText().isEmpty() && address.getText().matches("[0-9]*[A-Öa-ö]") && address.getText().length() > 2) {
+            CharSequence c = address.getCharacters();
+            for (int i = 0; i < c.length(); i++) {
+                if (c.charAt(i) == ' ') {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    protected boolean isPhoneDone() {
+        if (phoneTextField.isDisable()) {
+            return true;
+        }
+        if (phoneTextField.getText() != null && !phoneTextField.getText().isEmpty() && phoneTextField.getText().matches("[0-9]*") && phoneTextField.getText().length() == 10) {
+            return true;
+        }
+        return false;
+    }
+
+    protected boolean isEmailDone() {
+        if (emailTextField.isDisable()) {
+            return true;
+        }
+        if (emailTextField.getText() != null && !emailTextField.getText().isEmpty() && emailTextField.getText().length() > 4) {
+            CharSequence c = emailTextField.getCharacters();
+            int x = 0;
+            int y = 0;
+            for (int i = 0; i < c.length(); i++) {
+                if (c.charAt(i) == '@') {
+                    x++;
+                }
+                if (c.charAt(i) == '.') {
+                    y++;
+                }
+            }
+            if (x == 1 && y > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    protected boolean isCityCodeDone() {
+        if (cityCode.getText() != null && !cityCode.getText().isEmpty() && cityCode.getText().matches("[0-9]*") && cityCode.getText().length() == 5) {
+            return true;
+        }
+        return false;
+    }
+
+    protected boolean isCityDone() {
+        if (city.getText() != null && !city.getText().isEmpty() && city.getText().matches("[A-Öa-ö]") && city.getText().length() > 1) {
+            return true;
+        }
+        return false;
+    }
+
+    protected boolean isCCFistNameDone() {
+        if (CCFirstName.getText() != null && !CCFirstName.getText().isEmpty() && CCFirstName.getText().matches("[A-Öa-ö]") && CCFirstName.getText().length() > 1) {
+            return true;
+        }
+        return false;
+    }
+
+    protected boolean isCCLastNameDone() {
+        if (CCLastName.getText() != null && !CCLastName.getText().isEmpty() && CCLastName.getText().matches("[A-Öa-ö]") && CCLastName.getText().length() > 1) {
+            return true;
+        }
+        return false;
+    }
+
+    protected boolean isCardNumberDone() {
+        if (cardNumber.getText() != null && !cardNumber.getText().isEmpty() && cardNumber.getText().matches("[0-9]*") && cardNumber.getText().length() == 16) {
+            return true;
+        }
+        return false;
+    }
+
+    protected boolean isCVCDone() {
+        if (cvc.getText() != null && !cvc.getText().isEmpty() && cvc.getText().matches("[0-9]*") && cvc.getText().length() == 3) {
+            return true;
+        }
+        return false;
+    }
+
     public void setMain(Main main) {
         this.main = main;
     }
-
 }
