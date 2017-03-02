@@ -1,10 +1,11 @@
 package shoppingView.basket.view;
 
-import javafx.event.ActionEvent;
-import main.Main;
+import se.chalmers.ait.dat215.project.Product;
 import shoppingView.MainApp;
 import shoppingView.basket.model.Basket;
 import shoppingView.basket.model.BasketItem;
+import shoppingView.listview.amountSetter.AmountSetter;
+import shoppingView.listview.deleteButton.DeleteButton;
 import shoppingView.util.PriceUtil;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
@@ -21,19 +22,18 @@ public class BasketViewController {
     @FXML
     private javafx.scene.control.TableView<BasketItem> currentItems;
     @FXML
-    private TableColumn<BasketItem, ComboBox<String>> amountColumn;
+    private TableColumn<BasketItem, AmountSetter> amountColumn;
     @FXML
     private TableColumn<BasketItem, String> productNameColumn;
     @FXML
     private TableColumn<BasketItem, String> priceColumn;
     @FXML
-    private TableColumn<BasketItem, ImageView> deleteColumn;
+    private TableColumn<BasketItem, DeleteButton> deleteColumn;
 
     @FXML
     private Label totalPrice;
 
     private MainApp mainApp;
-    private Main main;
 
 
     @FXML
@@ -43,11 +43,13 @@ public class BasketViewController {
         //Unables selection of rows:
         currentItems.setSelectionModel(null);
 
+        Basket.setBasketViewController(this);
+
         //Init columns
         productNameColumn.setCellValueFactory(cellData -> cellData.getValue().getName());
         priceColumn.setCellValueFactory(cellData -> cellData.getValue().getPriceAsString());
         amountColumn.setCellValueFactory(cellData -> cellData.getValue().getComboBox());
-        deleteColumn.setCellValueFactory(cellData -> cellData.getValue().getDeleteIcon());
+        deleteColumn.setCellValueFactory(cellData -> cellData.getValue().getDeleteButton());
 
         currentItems.getItems().addListener(new ListChangeListener<BasketItem>() {
             @Override
@@ -59,9 +61,11 @@ public class BasketViewController {
         basketImage.setImage(new Image("file:resources/images/basket.png"));
     }
 
-    @FXML
-    private void toCheckout(ActionEvent e){
-        main.switchScene();
+    public void updateColumns() {
+        System.out.println("updateColumns()");
+        Product a = new Product();
+        currentItems.getItems().add(new BasketItem(a, 1));
+        currentItems.getItems().remove(currentItems.getItems().size() - 1);
     }
 
     //???
@@ -69,7 +73,7 @@ public class BasketViewController {
         double sum = 0;
         System.out.println("Updating!");
         for (BasketItem item : Basket.getInstance().getItems()) {
-            sum += item.getPrice() * item.getAmount();
+            sum += item.getPrice();
         }
         totalPrice.textProperty().setValue(PriceUtil.toPriceFormat(sum));
     }
@@ -77,8 +81,5 @@ public class BasketViewController {
 
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
-    }
-    public void setMain(Main main) {
-        this.main = main;
     }
 }

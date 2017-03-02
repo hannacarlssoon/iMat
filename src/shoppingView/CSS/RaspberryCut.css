@@ -167,6 +167,12 @@
     -fx-padding: 1 0 0 0;
 }
 
+.product-pane {
+    //-fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 0);
+    -fx-background-radius: 5px, 5px, 5px, 5px;
+}
+
 .menu-bar {
     //-fx-background-color: derive(#1d1d1d,20%);
     -fx-background-color: rgb(255, 0, 0, 0.9);

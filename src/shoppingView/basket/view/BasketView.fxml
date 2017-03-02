@@ -19,7 +19,7 @@
          </image>
       </ImageView>
       <Separator layoutX="27.0" layoutY="63.0" prefHeight="3.0" prefWidth="257.0" />
-      <TableView fx:id="currentItems" layoutX="5.0" layoutY="75.0" prefHeight="420.0" prefWidth="305.0">
+      <TableView fx:id="currentItems" layoutX="5.0" layoutY="75.0" prefHeight="420.0" prefWidth="305.0" AnchorPane.bottomAnchor="116.0" AnchorPane.topAnchor="75.0">
         <columns>
           <TableColumn fx:id="amountColumn" prefWidth="75.0" text="Kvantitet" />
           <TableColumn fx:id="productNameColumn" prefWidth="100.0" text="Vara" />
@@ -27,10 +27,10 @@
             <TableColumn fx:id="deleteColumn" prefWidth="50.0" />
         </columns>
       </TableView>
-      <Button layoutX="83.0" layoutY="547.0" mnemonicParsing="false" onAction="#toCheckout" prefHeight="50.0" prefWidth="159.0" styleClass="prominentButton" stylesheets="@../../CSS/Hanna.css" text="Till kassan" />
-      <Label fx:id="totalPrice" layoutX="182.0" layoutY="505.0" prefHeight="32.0" prefWidth="171.0" styleClass="label-price" text="200 kr" />
-      <Separator layoutX="15.0" layoutY="505.0" prefHeight="3.0" prefWidth="295.0" />
-      <Separator layoutX="10.0" layoutY="537.0" prefHeight="3.0" prefWidth="295.0" />
-      <Label layoutX="63.0" layoutY="505.0" prefHeight="32.0" prefWidth="136.0" styleClass="label-price" text="Summa:" />
+      <Button layoutX="83.0" layoutY="547.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="159.0" styleClass="prominentButton" stylesheets="@../../CSS/Hanna.css" text="Till kassan" AnchorPane.bottomAnchor="14.0" />
+      <Label fx:id="totalPrice" layoutX="182.0" layoutY="505.0" prefHeight="32.0" prefWidth="171.0" styleClass="label-price" text="200 kr" AnchorPane.bottomAnchor="74.0" />
+      <Separator layoutX="15.0" layoutY="505.0" prefHeight="3.0" prefWidth="295.0" AnchorPane.bottomAnchor="103.0" />
+      <Separator layoutX="10.0" layoutY="537.0" prefHeight="3.0" prefWidth="295.0" AnchorPane.bottomAnchor="103.0" />
+      <Label layoutX="63.0" layoutY="505.0" prefHeight="32.0" prefWidth="136.0" styleClass="label-price" text="Summa:" AnchorPane.bottomAnchor="74.0" />
    </children>
 </AnchorPane>

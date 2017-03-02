@@ -1,5 +1,6 @@
 package shoppingView.basket.model;
 
+import shoppingView.basket.view.BasketViewController;
 import shoppingView.util.PriceUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,6 +10,15 @@ public final class Basket {
 
     private static Basket basket;
     private ObservableList<BasketItem> items;
+    private static BasketViewController basketViewController;
+
+    public static void setBasketViewController(BasketViewController basketViewController) {
+        Basket.basketViewController = basketViewController;
+    }
+
+    public static void updateBasket() {
+        basketViewController.updateColumns();
+    }
 
     public static Basket getInstance() {
         if (basket == null) {
@@ -30,12 +40,12 @@ public final class Basket {
     public void addItem(BasketItem newItem) {
         for (BasketItem item : items) {
             if (item.getProduct().equals(newItem.getProduct())) {
-                //item.addAmount(newItem.getAmount());
+                item.addAmount(newItem.getAmount());
                 return;
             }
         }
 
-        items.add(newItem);
+        items.add(0, newItem);
     }
 
     public BasketItem removeItem(Product productToRemove) {

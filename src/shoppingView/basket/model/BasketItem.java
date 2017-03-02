@@ -1,5 +1,8 @@
 package shoppingView.basket.model;
 
+import shoppingView.basket.view.BasketViewController;
+import shoppingView.listview.amountSetter.AmountSetter;
+import shoppingView.listview.deleteButton.DeleteButton;
 import shoppingView.util.AmountUtil;
 import shoppingView.util.PriceUtil;
 import javafx.beans.property.ObjectProperty;
@@ -20,6 +23,7 @@ public class BasketItem {
     private Product product;
     private int amount;
     private ComboBox<String> box;
+    private AmountSetter amountSetter;
     private SimpleStringProperty price;
 
     public BasketItem(Product product, int amount) {
@@ -32,8 +36,11 @@ public class BasketItem {
     }
 
     public StringProperty getPriceAsString() {
-        String priceString = PriceUtil.toPriceFormat(getPrice());
-        price = new SimpleStringProperty(priceString);
+        //String priceString = PriceUtil.toPriceFormat(getPrice());
+        //price = new SimpleStringProperty(priceString);
+
+        String priceString = PriceUtil.toPriceFormat(product.getPrice());
+        price = new SimpleStringProperty(amount + " x " + priceString);
         return price;
     }
 
@@ -45,21 +52,14 @@ public class BasketItem {
         return amount;
     }
 
-    public ObjectProperty<ComboBox<String>> getComboBox() {
-        box = AmountUtil.createAmountBox(product, amount);
-        box.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                amount = AmountUtil.amountFromString(newValue);
-                price.setValue("Hej"); //Varför funkar detta??
-            }
-        });
+    public void setAmountSetter(AmountSetter amountSetter) {
+        this.amountSetter = amountSetter;
+    }
 
-        box.getStyleClass().add("combo-box-amount-basket");
+    public ObjectProperty<AmountSetter> getComboBox() {
 
-        ObjectProperty<ComboBox<String>> propertyBox = new SimpleObjectProperty<ComboBox<String>>(box);
-
-        return propertyBox;
+        //return propertyBox;
+        return new SimpleObjectProperty<AmountSetter>(new AmountSetter(product.getProductId(), amount, this));
     }
 
     public StringProperty getName() {
@@ -68,23 +68,15 @@ public class BasketItem {
 
     public void addAmount(int amountToAdd) {
         amount += amountToAdd;
+        amountSetter.updateAmount();
+        Basket.updateBasket();
     }
 
-    public ObservableValue<ImageView> getDeleteIcon() {
-        ImageView image = new ImageView(new Image("file:resources/images/trash.png"));
-        image.setFitHeight(20);
-        image.setFitWidth(20);
+    public ObservableValue<DeleteButton> getDeleteButton() {
+        DeleteButton button = new DeleteButton(this);
 
+        ObjectProperty<DeleteButton> propertyButton = new SimpleObjectProperty<DeleteButton>(button);
 
-        image.onMouseClickedProperty().setValue(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                System.out.println("Delete clicked.");
-            }
-        });
-
-        ObjectProperty<ImageView> propertyImage = new SimpleObjectProperty<ImageView>(image);
-
-        return propertyImage;
+        return propertyButton;
     }
 }

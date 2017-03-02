@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="28.0" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="minusButton" onAction="#delete" layoutX="4.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-padding: 0 0 0 0;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <graphic>
+            <ImageView fx:id="minusIcon" fitHeight="25.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</fx:root>

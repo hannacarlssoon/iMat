@@ -92,6 +92,15 @@
     -fx-background-radius: 10 0 0 10;
 }
 
+.plus-button-small {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #444444;
+    -fx-border-width: 1;
+    -fx-border-radius: 0 10 10 0;
+    -fx-background-radius: 0 10 10 0;
+    -fx-padding: 0 0 0 0;
+}
+
 .trashcanButton {
     -fx-border-radius: 10 10 10 10;
     -fx-background-radius: 10 10 10 10;

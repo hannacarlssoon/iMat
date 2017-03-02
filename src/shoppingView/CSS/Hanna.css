@@ -45,6 +45,10 @@
    -fx-text-fill: #444444;
 }
 
+.abutton-productview {
+    -fx-padding: 0 0 0 0;
+}
+
 .abutton:hover {
    -fx-background-color: #F5F5F5;
 }
@@ -71,4 +75,8 @@
    -fx-border-radius: 10 10 10 10;
    -fx-background-radius: 10 10 10 10;
    -fx-background-color: #E60000;
+}
+
+.small-amount-field {
+    -fx-font-size: 10pt;
 }

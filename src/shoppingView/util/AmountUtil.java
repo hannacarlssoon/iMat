@@ -25,6 +25,10 @@ public class AmountUtil {
         return amountList;
     }
 
+    public static String createAmountString(Product product, int amount) {
+        return amount + " " + product.getUnitSuffix();
+    }
+
     public static int amountFromString(String amountString) {
         String number = amountString.split(" ")[0];
         return Integer.parseInt(number);

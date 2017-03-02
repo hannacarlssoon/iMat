@@ -1,5 +1,7 @@
 package shoppingView.listview.productsquare.view;
 
+import javafx.scene.control.TextField;
+import se.chalmers.ait.dat215.project.ShoppingCart;
 import shoppingView.MainApp;
 import shoppingView.basket.model.Basket;
 import shoppingView.basket.model.BasketItem;
@@ -32,7 +34,11 @@ public class ProductView extends AnchorPane {
     @FXML
     private Label price;
     @FXML
-    private ComboBox<String> amount;
+    private TextField amountField;
+    @FXML
+    private ImageView plusIcon;
+    @FXML
+    private ImageView minusIcon;
 
     private Product product;
 
@@ -68,6 +74,12 @@ public class ProductView extends AnchorPane {
         setImage();
         setProductName();
         setUpAmounts();
+        setIcons();
+    }
+
+    private void setIcons() {
+        plusIcon.setImage(new Image("file:resources/images/paymentImages/plus.png"));
+        minusIcon.setImage(new Image("file:resources/images/paymentImages/minus.png"));
     }
 
     private void setProductName() {
@@ -80,16 +92,22 @@ public class ProductView extends AnchorPane {
     }
 
     private void setUpAmounts() {
-        amount.getItems().setAll(AmountUtil.createAmountList(product));
-        amount.setValue(amount.getItems().get(0));
-        setPrice(amount.getValue());
+        //Real code:
+        amountField.textProperty().setValue(AmountUtil.createAmountString(product, 1));
+    }
 
-        amount.valueProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                setPrice(newValue);
-            }
-        });
+    @FXML
+    private void incAmount() {
+        int newAmount = AmountUtil.amountFromString(amountField.textProperty().get());
+        amountField.textProperty().setValue(AmountUtil.createAmountString(product, newAmount + 1));
+    }
+
+    @FXML
+    private void decAmount() {
+        int newAmount = AmountUtil.amountFromString(amountField.textProperty().get());
+        if (newAmount > 1) {
+            amountField.textProperty().setValue(AmountUtil.createAmountString(product, newAmount - 1));
+        }
     }
 
     private void setPrice(String newAmount) {
@@ -101,7 +119,9 @@ public class ProductView extends AnchorPane {
     @FXML
     private void addProductToBasket() {
         Basket.getInstance().addItem(
-                new BasketItem(product, AmountUtil.amountFromString(amount.getValue())));
+                new BasketItem(product, AmountUtil.amountFromString(amountField.textProperty().getValue())));
+        setUpAmounts();
+        
     }
 
 /*
