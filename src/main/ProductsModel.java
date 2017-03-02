@@ -14,7 +14,14 @@ public class ProductsModel extends Observable{
     private List<Product> products;
     private List<Product> allProducts;
     private static final IMatDataHandler handler = IMatDataHandler.getInstance();
+    private static final ProductsModel INSTANCE = new ProductsModel();
 
+    private ProductsModel(){}
+
+    public static ProductsModel getInstance()
+    {
+        return INSTANCE;
+    }
     public void setProducts(String[] categories){
         products = new ArrayList<>();
         for(String s:categories){

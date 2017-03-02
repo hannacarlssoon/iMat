@@ -41,10 +41,6 @@ public class Menu extends Application {
         return root;
     }
 
-    public FXMLLoader getMenuFXMLLoader(){
-        return fxmlLoader;
-    }
-
     /**
      *
      * @param layoutX layoutX property

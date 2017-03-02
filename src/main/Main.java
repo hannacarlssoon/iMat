@@ -19,6 +19,8 @@ public class Main extends Application {
     private Scene shoppingScene;
     private Scene paymentScene;
 
+    private ProductsModel productsModel;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
@@ -36,8 +38,6 @@ public class Main extends Application {
 
         Menu menu = new Menu();
         menu.start(primaryStage);
-        //FXMLLoader mainMenuFxmlLoader =  menu.getMenuFXMLLoader();
-        //mainMenuFxmlLoader.setLocation(Menu.class.getResource("menu.fxml"));
         setMenuHolderContent(menu.getRoot());
 
         FXMLLoader mainListFxmlLoader = new FXMLLoader();

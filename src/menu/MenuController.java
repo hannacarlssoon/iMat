@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import main.*;
 
 import main.ProductsModel;
 
@@ -36,11 +37,14 @@ public class MenuController implements Initializable{
     //content for the submenumodel
     private SubmenuModel submenuModel;
 
-    //
+    private Button selectedMainMenuItem;
+
     private Button selectedSubmenuItem;
 
     //model for products
     ProductsModel productsModel;
+
+    private List<String[]> categories;
 
 
     @Override
@@ -49,8 +53,10 @@ public class MenuController implements Initializable{
     }
 
     public void setMenu(Menu menu){
+        this.productsModel = ProductsModel.getInstance();
         this.menu = menu;
         submenuModel = new SubmenuModel(menu);
+        categories = getCategories();
 
         translateMenuItems();
         structureMenuItems(-1);
@@ -75,54 +81,53 @@ public class MenuController implements Initializable{
         return menuItems;
     }
 
+    private List<String[]> getCategories(){
+        List<String[]> list = new ArrayList<>();
+
+        list.add(new String[] {"FRUIT","CABBAGE","CITRUS_FRUIT","HERB","ROOT_VEGETABLE","POD","MELONS","VEGETABLE_FRUIT","BERRY"});
+        list.add(new String[] {"FISH","MEAT"});
+        list.add(new String[] {"DAIRIES"});
+        list.add(new String[] {"HOT_DRINKS","COLD_DRINKS"});
+        list.add(new String[] {"BREAD"});
+        list.add(new String[] {"FLOUR_SUGAR_SALT","NUTS_AND_SEEDS","PASTA","POTATO_RICE"});
+        list.add(new String[] {"SWEET"});
+        list.add(new String[] {});
+
+        return list;
+
+    }
+
 
     @FXML public void fruitsItemActionPerformed(ActionEvent event){
         menuItemAction(0);
-        String[] strings = {"FRUIT","CABBAGE","CITRUS_FRUIT","HERB","ROOT_VEGETABLE","POD","MELONS","VEGETABLE_FRUIT","BERRY"};
-        productsModel.setProducts(strings);
     }
 
     @FXML public void meatItemActionPerformed(ActionEvent event){
-        String[] strings = {"FISH","MEAT"};
-        productsModel.setProducts(strings);
         menuItemAction(1);
     }
 
     @FXML public void dairyItemActionPerformed(ActionEvent event){
-        String[] strings = {"DAIRIES"};
-        productsModel.setProducts(strings);
         menuItemAction(2);
     }
 
     @FXML public void drinksItemActionPerformed(ActionEvent event){
-        String[] strings = {"HOT_DRINKS","COLD_DRINKS"};
-        productsModel.setProducts(strings);
         menuItemAction(3);
     }
 
     @FXML public void breadItemActionPerformed(ActionEvent event){
-        String[] strings = {"BREAD"};
-        productsModel.setProducts(strings);
         menuItemAction(4);
     }
 
     @FXML public void pantryItemActionPerformed(ActionEvent event){
-        String[] strings = {"FLOUR_SUGAR_SALT","NUTS_AND_SEEDS","PASTA","POTATO_RICE"};
-        productsModel.setProducts(strings);
         menuItemAction(5);
     }
 
     @FXML public void sweetsItemActionPerformed(ActionEvent event){
-        String[] strings = {"SWEETS"};
-        productsModel.setProducts(strings);
         menuItemAction(6);
     }
 
     @FXML public void favoriteItemActionPerformed(ActionEvent event){
-        productsModel.setFavoritesAsProducts();
-        emptySubmenu();
         structureMenuItems(7);
-        menu.pushNodeItemToFront(favoriteItem);
     }
 
     @FXML public void logoActionPerformed(ActionEvent event){
@@ -145,23 +150,40 @@ public class MenuController implements Initializable{
         if(selectedSubmenuItem!=null)
             selectedSubmenuItem.getStyleClass().remove("selectedSubmenuItem");
 
+        if(((Button)event.getSource()).getText().equals("Alla"))
+            menuItemAction(menuItems.indexOf(selectedMainMenuItem));
+
         Button submenuItem = (Button)event.getSource();
         submenuItem.getStyleClass().add("selectedSubmenuItem");
         selectedSubmenuItem = submenuItem;
 
         String itemText = submenuItem.getText().substring(2).toLowerCase();
         System.out.println(itemText);
-        //TODO: add action
     }
 
     private void menuItemAction(int i){
+
+        productsModel.setProducts(categories.get(i));
+
+        selectedSubmenuItem = menuItems.get(i);
+
         structureMenuItems(i);
+
         emptySubmenu();
+
         submenuModel.setSubmenu(i);
+
+        setFirstSubmenuItemSelected();
     }
 
     private void emptySubmenu(){
         submenuPane.getChildren().remove(0,submenuPane.getChildren().size());
+    }
+
+    private void setFirstSubmenuItemSelected(){
+        Button submenuItem = (Button)submenuPane.getChildren().get(0);
+        submenuItem.getStyleClass().add("selectedSubmenuItem");
+        selectedSubmenuItem = submenuItem;
     }
 
     /**
