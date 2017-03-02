@@ -9,7 +9,6 @@ import shoppingView.listview.deleteButton.DeleteButton;
 import shoppingView.util.PriceUtil;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.image.Image;
@@ -73,7 +72,7 @@ public class BasketViewController {
         double sum = 0;
         System.out.println("Updating!");
         for (BasketItem item : Basket.getInstance().getItems()) {
-            sum += item.getPrice();
+            sum += item.getTotal();
         }
         totalPrice.textProperty().setValue(PriceUtil.toPriceFormat(sum));
     }

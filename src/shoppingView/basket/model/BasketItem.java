@@ -31,12 +31,12 @@ public class BasketItem {
         this.amount = amount;
     }
 
-    public double getPrice() {
+    public double getTotal() {
         return product.getPrice() * amount;
     }
 
     public StringProperty getPriceAsString() {
-        //String priceString = PriceUtil.toPriceFormat(getPrice());
+        //String priceString = PriceUtil.toPriceFormat(getTotal());
         //price = new SimpleStringProperty(priceString);
 
         String priceString = PriceUtil.toPriceFormat(product.getPrice());

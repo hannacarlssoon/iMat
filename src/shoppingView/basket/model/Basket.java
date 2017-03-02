@@ -66,7 +66,7 @@ public final class Basket {
     public double getTotalSum() {
         double totalSum = 0;
         for (BasketItem item : items) {
-            totalSum += item.getPrice();
+            totalSum += item.getTotal();
         }
         return totalSum;
     }
@@ -74,4 +74,6 @@ public final class Basket {
     public String getTotalSumAsString() {
         return PriceUtil.toPriceFormat(getTotalSum());
     }
+
+
 }

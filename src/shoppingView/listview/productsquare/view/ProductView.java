@@ -1,6 +1,8 @@
 package shoppingView.listview.productsquare.view;
 
+import javafx.animation.*;
 import javafx.scene.control.TextField;
+import javafx.util.Duration;
 import se.chalmers.ait.dat215.project.ShoppingCart;
 import shoppingView.MainApp;
 import shoppingView.basket.model.Basket;
@@ -39,6 +41,8 @@ public class ProductView extends AnchorPane {
     private ImageView plusIcon;
     @FXML
     private ImageView minusIcon;
+    @FXML
+    private AnchorPane addedPane;
 
     private Product product;
 
@@ -97,9 +101,34 @@ public class ProductView extends AnchorPane {
     }
 
     @FXML
+    private void showAddedPane() {
+//        FadeTransition ft = new FadeTransition(Duration.millis(1000), addedPane);
+//        ft.setFromValue(0.0);
+//        ft.setToValue(1.0);
+//        //ft.setCycleCount(Timeline.INDEFINITE);
+//        //ft.setAutoReverse(true);
+//        ft.play();
+
+        addedPane.prefHeightProperty().setValue(0);
+        KeyValue keyValue1  = new KeyValue(addedPane.prefHeightProperty(), 30, Interpolator.EASE_OUT);
+        KeyValue keyValueFade  = new KeyValue(addedPane.opacityProperty(), 1.0, Interpolator.EASE_OUT);
+
+        KeyFrame keyFrame1  = new KeyFrame(Duration.millis(500), keyValue1);
+        KeyFrame keyFrameFade  = new KeyFrame(Duration.millis(500), keyValueFade);
+
+        Timeline timeline  = new Timeline();
+        //timeline.setCycleCount(Timeline.INDEFINITE);
+        //timeline.setAutoReverse(true);
+        timeline.getKeyFrames().addAll(keyFrame1, keyFrameFade);
+        timeline.play();
+    }
+
+    @FXML
     private void incAmount() {
         int newAmount = AmountUtil.amountFromString(amountField.textProperty().get());
         amountField.textProperty().setValue(AmountUtil.createAmountString(product, newAmount + 1));
+        //Remove:
+        showAddedPane();
     }
 
     @FXML
