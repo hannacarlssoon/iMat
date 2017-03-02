@@ -26,7 +26,7 @@
          <children>
             <Label layoutX="585.0" layoutY="531.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Välkommen åter!" />
             <Button layoutX="1042.0" layoutY="569.0" mnemonicParsing="false" onAction="#closeAboutActionPerformed" styleClass="prominentButton" stylesheets="@../CSS/PayStyle.css" text="Stäng ner programmet" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
-            <Button layoutX="87.0" layoutY="574.0" mnemonicParsing="false" onAction="#returnToStore" styleClass="abutton" stylesheets="@../CSS/PayStyle.css" text="Tillbaka till affären" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
+            <Button layoutX="87.0" layoutY="574.0" mnemonicParsing="false" styleClass="abutton" stylesheets="@../CSS/PayStyle.css" text="Tillbaka till affären" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
             <Label layoutX="288.0" layoutY="21.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Tack för att du handlar hos oss på shoppingView. Här är ditt kvitto:" />
             <AnchorPane layoutX="331.0" layoutY="75.0" prefHeight="500.0" prefWidth="700.0" styleClass="background5">
                <children>
@@ -150,7 +150,7 @@
                </children>
             </AnchorPane>
             <Button mnemonicParsing="false" onAction="#setDeliveryView" styleClass="prominentButton" text="Vidare" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
-            <Button layoutX="50.0" layoutY="691.0" mnemonicParsing="false" onAction="#returnToStore" styleClass="abutton" text="Fortsätt handla" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
+            <Button layoutX="50.0" layoutY="691.0" mnemonicParsing="false" styleClass="abutton" text="Fortsätt handla" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
             <Label layoutX="556.0" layoutY="121.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Bekräfta din varukorg" />
             <Button fx:id="confirmation" layoutX="58.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="266.0" stylesheets="@../CSS/PayStyle.css" text="   Bekräfta varukorgen" AnchorPane.topAnchor="0.0">
                <graphic>

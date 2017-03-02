@@ -17,12 +17,13 @@ import java.util.ResourceBundle;
 import main.Main;
 import se.chalmers.ait.dat215.project.CreditCard;
 import se.chalmers.ait.dat215.project.Customer;
-
+import se.chalmers.ait.dat215.project.IMatDataHandler;
 
 public class PaymentController implements Initializable {
 
-    CreditCard cardInfo;
-    Customer customer;
+    IMatDataHandler instance = IMatDataHandler.getInstance();
+    CreditCard cardInfo = instance.getCreditCard();
+    Customer customer = instance.getCustomer();
 
     //The different views
     @FXML private AnchorPane deliveryView;
