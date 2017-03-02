@@ -577,4 +577,9 @@ public class PaymentController implements Initializable {
     public void setMain(Main main) {
         this.main = main;
     }
+
+    @FXML
+    protected void returnToStore(){
+        main.switchScene();
+    }
 }
