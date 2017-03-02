@@ -7,7 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import menu.Menu;
+import menu.*;
 import paymentView.view.PaymentController;
 import shoppingView.MainApp;
 import shoppingView.basket.view.BasketViewController;
@@ -18,6 +18,8 @@ public class Main extends Application {
     private Stage primaryStage;
     private Scene shoppingScene;
     private Scene paymentScene;
+
+    private ProductsModel productsModel;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -34,9 +36,9 @@ public class Main extends Application {
         primaryStage.getIcons().add(new Image("file:resources/images/iMat_square.png"));
         primaryStage.show();
 
-        FXMLLoader mainMenuFxmlLoader = new FXMLLoader();
-        mainMenuFxmlLoader.setLocation(Menu.class.getResource("menu.fxml"));
-        setMenuHolderContent(mainMenuFxmlLoader.load());
+        Menu menu = new Menu();
+        menu.start(primaryStage);
+        setMenuHolderContent(menu.getRoot());
 
         FXMLLoader mainListFxmlLoader = new FXMLLoader();
         mainListFxmlLoader.setLocation(MainApp.class.getResource("listview/view/ListView.fxml"));

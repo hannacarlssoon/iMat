@@ -18,7 +18,7 @@ public class SubmenuModel {
     private List<String> pantry = new ArrayList<>();
     private List<String> sweets = new ArrayList<>();
 
-    LinkedList<List<String>> submenus = new LinkedList<>();
+    private LinkedList<List<String>> submenus = new LinkedList<>();
 
     private List<String> submenu;
 
@@ -34,8 +34,6 @@ public class SubmenuModel {
         setBread();
         setPantry();
         setSweets();
-
-        //add empty list for favorites
 
         setSubmenus();
     }
@@ -66,6 +64,7 @@ public class SubmenuModel {
     }
 
     private void setFruits(){
+        fruits.add("• Alla");
         fruits.add("• Frukt");
         fruits.add("• Grönsaker");
         fruits.add("• Rotfrukter");
@@ -77,6 +76,7 @@ public class SubmenuModel {
     }
 
     private void setMeat(){
+        meat.add("• Alla");
         meat.add("• Kött");
         meat.add("• Kyckling");
         meat.add("• Fisk");
@@ -84,6 +84,7 @@ public class SubmenuModel {
     }
 
     private void setDairy(){
+        dairy.add("• Alla");
         dairy.add("• Mjölk");
         dairy.add("• Ägg");
         dairy.add("• Ost");
@@ -92,6 +93,7 @@ public class SubmenuModel {
     }
 
     private void setDrinks(){
+        drinks.add("• Alla");
         drinks.add("• Juice");
         drinks.add("• Kaffe & Te");
         drinks.add("• Läsk");
@@ -99,6 +101,7 @@ public class SubmenuModel {
     }
 
     private void setBread(){
+        bread.add("• Alla");
         bread.add("• Ljust bröd");
         bread.add("• Grovt bröd");
         bread.add("• Knäckebröd");
@@ -106,6 +109,7 @@ public class SubmenuModel {
     }
 
     private void setPantry(){
+        pantry.add("• Alla");
         pantry.add("• Bakning");
         pantry.add("• Bönor & Linser");
         pantry.add("• Nötter & Frön");
@@ -117,6 +121,7 @@ public class SubmenuModel {
     }
 
     private void setSweets(){
+        sweets.add("• Alla");
         sweets.add("• Godis");
         sweets.add("• Snacks");
         sweets.add("• Kakor & bakverk");

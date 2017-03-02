@@ -16,29 +16,36 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Menu extends Application {
-    MenuController controller;
-    AnchorPane submenuPane;
+    private MenuController controller;
+    private AnchorPane submenuPane;
+    private FXMLLoader fxmlLoader;
+    private Parent root;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("menu.fxml"));
-        Parent root = fxmlLoader.load();
+        root = fxmlLoader.load();
+
         controller = fxmlLoader.getController();
         controller.setMenu(this);
+
         submenuPane = controller.getSubmenuPane();
 
-        primaryStage.setTitle("menu");
-        primaryStage.setScene(new Scene(root, 1366, 153));
+        //primaryStage.setTitle("menu");
+        //primaryStage.setScene(new Scene(root, 1366, 153));
+        //primaryStage.show();
+    }
 
-        primaryStage.show();
+    public Parent getRoot(){
+        return root;
     }
 
     /**
      *
-     * @param layoutX
-     * @param layoutY
-     * @return the x-coordinate for
+     * @param layoutX layoutX property
+     * @param layoutY layoutY property
+     * @return the rightmost x pos of the menu item
      */
     public int paintSubmenuItem(String s, int layoutX, int layoutY){
         //create new button & init properties
@@ -47,6 +54,7 @@ public class Menu extends Application {
         submenuItem.setLayoutY(layoutY);
         submenuItem.getStyleClass().add("submenuItem");
 
+        //add action
         submenuItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
