@@ -25,7 +25,7 @@
 /* The main scrollbar **thumb** CSS class which we drag every time (movable) */
 .mylistview .scroll-bar:horizontal .thumb,
 .mylistview .scroll-bar:vertical .thumb {
-    -fx-background-color:derive(#57ABFF,50%); //derive(black,90%);
+    -fx-background-color: derive(black,90%); //derive(#57ABFF,50%); //derive(black,90%);
     -fx-background-insets: 0, 0, 0;
     -fx-background-radius: 0em;
 
@@ -41,7 +41,7 @@
 .mylistview .scroll-bar:horizontal:pressed .track ,
 .mylistview .scroll-bar:vertical:hover .track,
 .mylistview .scroll-bar:vertical:pressed .track{
-     //-fx-background-color: derive(#434343,20%);
+     //-fx-background-color: derive(black,70%); //derive(#434343,20%);
 
      -fx-opacity: 0.2;
      -fx-background-radius: 0em;
@@ -51,7 +51,7 @@
 /* The main scrollbar **thumb** CSS class on event of "hover" and "pressed" */
 .mylistview .scroll-bar .thumb:hover,
 .mylistview .scroll-bar .thumb:pressed{
-    -fx-background-color: #57ABFF;
+    -fx-background-color: derive(black,70%); //#57ABFF;
 }
 
 .mylistview .increment-button:hover ,.mylistview .decrement-button:hover {

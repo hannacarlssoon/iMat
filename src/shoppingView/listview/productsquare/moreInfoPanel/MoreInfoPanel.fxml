@@ -12,13 +12,34 @@
 
 <javafx.scene.layout.AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="355.0" prefWidth="421.0" style="-fx-background-color: white;" styleClass="modalpanel" stylesheets="@../../../CSS/RaspberryCut.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shoppingView.listview.productsquare.moreInfoPanel.MoreInfoPanelController">
    <children>
-      <ImageView fx:id="image" fitHeight="173.0" fitWidth="236.0" layoutX="16.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="54.0" />
-      <Label fx:id="productName" alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="32.0" prefWidth="180.0" styleClass="id-header-blue" text="Potatis, 250 g" textAlignment="CENTER" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+      <ImageView fx:id="image" fitHeight="173.0" fitWidth="236.0" layoutX="14.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="46.0" />
+      <Label fx:id="productName" alignment="CENTER" layoutX="257.0" layoutY="74.0" prefHeight="87.0" prefWidth="141.0" styleClass="id-header-blue" text="Potatis, 250 g" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="257.0" AnchorPane.topAnchor="74.0" />
       <Button layoutX="304.0" layoutY="296.0" mnemonicParsing="false" onAction="#addButtonClicked" prefHeight="45.0" prefWidth="103.0" styleClass="button-vara" text="Lägg till" AnchorPane.bottomAnchor="14.0" />
       <ComboBox fx:id="amount" layoutX="211.0" layoutY="299.0" prefHeight="39.0" prefWidth="70.0" visible="false" />
-      <Button layoutX="14.0" layoutY="293.0" mnemonicParsing="false" onAction="#returnButtonClicked" prefHeight="45.0" prefWidth="155.0" styleClass="button-vara" text="Tillbaka" />
-      <Label fx:id="description" layoutX="17.0" layoutY="206.0" prefHeight="87.0" prefWidth="389.0" style="-fx-text-fill: black;" text="Information om produkten." />
-      <Label fx:id="price" layoutX="260.0" layoutY="88.0" prefHeight="67.0" prefWidth="95.0" styleClass="label-price" text="50 kr" />
-      <AnchorPane fx:id="comboPane" layoutX="209.0" layoutY="296.0" prefHeight="67.0" prefWidth="95.0" AnchorPane.bottomAnchor="-8.0" />
+      <Button layoutX="348.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnButtonClicked" prefHeight="45.0" prefWidth="53.0" styleClass="button-vara" text="Tillbaka" />
+      <Label fx:id="description" layoutX="17.0" layoutY="207.0" prefHeight="87.0" prefWidth="389.0" style="-fx-text-fill: black;" text="Information om produkten." />
+      <AnchorPane fx:id="comboPane" layoutX="209.0" layoutY="296.0" prefHeight="67.0" prefWidth="95.0" AnchorPane.bottomAnchor="-8.0">
+         <children>
+            <Label fx:id="price" layoutX="14.0" layoutY="-14.0" prefHeight="67.0" prefWidth="95.0" styleClass="label-price" text="50 kr" />
+         </children></AnchorPane>
+      <Button fx:id="minusButton" layoutX="17.0" layoutY="296.0" mnemonicParsing="false" onAction="#decAmount" prefHeight="45.0" prefWidth="46.0" style="-fx-padding: 0 0 0 0;" styleClass="minus-button" stylesheets="@../../../../paymentView/CSS/PayStyle.css">
+         <graphic>
+            <ImageView fx:id="minusIcon" fitHeight="25.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../resources/images/paymentImages/minus.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="plusButton" layoutX="155.0" layoutY="294.0" mnemonicParsing="false" onAction="#incAmount" prefHeight="45.0" prefWidth="46.0" style="-fx-padding: 0 0 0 0;" styleClass="plus-button" stylesheets="@../../../../paymentView/CSS/PayStyle.css">
+         <graphic>
+            <ImageView fx:id="plusIcon" fitHeight="32.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" styleClass="imageViewPlus">
+               <image>
+                  <Image url="@../../../../../resources/images/paymentImages/plus.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <TextField fx:id="amountField" alignment="CENTER" layoutX="63.0" layoutY="294.0" prefHeight="45.0" prefWidth="98.0" />
    </children>
 </javafx.scene.layout.AnchorPane>

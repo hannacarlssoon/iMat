@@ -62,15 +62,6 @@ public class ProductView extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
-        setOnKeyPressed(new EventHandler<KeyEvent>() {
-
-            @Override
-            public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.RIGHT) {
-
-                }
-            }
-        });
 
         List<Product> products = IMatDataHandler.getInstance().getProducts();
         product = products.get(productID);
@@ -79,11 +70,13 @@ public class ProductView extends AnchorPane {
         setProductName();
         setUpAmounts();
         setIcons();
+
+        price.textProperty().setValue(PriceUtil.toPriceFormat(product.getPrice()));
     }
 
     private void setIcons() {
-        plusIcon.setImage(new Image("file:resources/images/paymentImages/plus.png"));
-        minusIcon.setImage(new Image("file:resources/images/paymentImages/minus.png"));
+        plusIcon.setImage(new Image("file:resources/images/paymentImages/add grey.png"));
+        minusIcon.setImage(new Image("file:resources/images/paymentImages/remove grey.png"));
     }
 
     private void setProductName() {
@@ -113,8 +106,8 @@ public class ProductView extends AnchorPane {
         KeyValue keyValue1  = new KeyValue(addedPane.prefHeightProperty(), 30, Interpolator.EASE_OUT);
         KeyValue keyValueFade  = new KeyValue(addedPane.opacityProperty(), 1.0, Interpolator.EASE_OUT);
 
-        KeyFrame keyFrame1  = new KeyFrame(Duration.millis(500), keyValue1);
-        KeyFrame keyFrameFade  = new KeyFrame(Duration.millis(500), keyValueFade);
+        KeyFrame keyFrame1  = new KeyFrame(Duration.millis(400), keyValue1);
+        KeyFrame keyFrameFade  = new KeyFrame(Duration.millis(550), keyValueFade);
 
         Timeline timeline  = new Timeline();
         //timeline.setCycleCount(Timeline.INDEFINITE);
@@ -124,11 +117,26 @@ public class ProductView extends AnchorPane {
     }
 
     @FXML
+    public void hideAddedPane() {
+        KeyValue keyValue1  = new KeyValue(addedPane.prefHeightProperty(), 0, Interpolator.EASE_OUT);
+        KeyValue keyValueFade  = new KeyValue(addedPane.opacityProperty(), 0.0, Interpolator.EASE_OUT);
+
+        KeyFrame keyFrame1  = new KeyFrame(Duration.millis(400), keyValue1);
+        KeyFrame keyFrameFade  = new KeyFrame(Duration.millis(550), keyValueFade);
+
+        Timeline timeline  = new Timeline();
+        //timeline.setCycleCount(Timeline.INDEFINITE);
+        //timeline.setAutoReverse(true);
+        timeline.getKeyFrames().addAll(keyFrame1, keyFrameFade);
+        timeline.play();
+
+    }
+
+    @FXML
     private void incAmount() {
         int newAmount = AmountUtil.amountFromString(amountField.textProperty().get());
         amountField.textProperty().setValue(AmountUtil.createAmountString(product, newAmount + 1));
         //Remove:
-        showAddedPane();
     }
 
     @FXML
@@ -147,10 +155,13 @@ public class ProductView extends AnchorPane {
 
     @FXML
     private void addProductToBasket() {
+        if (!Basket.getInstance().contains(product)) {
+            showAddedPane();
+        }
+
         Basket.getInstance().addItem(
-                new BasketItem(product, AmountUtil.amountFromString(amountField.textProperty().getValue())));
+                new BasketItem(product, AmountUtil.amountFromString(amountField.textProperty().getValue()), this));
         setUpAmounts();
-        
     }
 
 /*

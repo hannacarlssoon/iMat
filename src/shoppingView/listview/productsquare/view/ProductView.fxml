@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.net.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
@@ -14,8 +15,11 @@
    <children>
       <ImageView fx:id="image" fitHeight="135.0" fitWidth="180.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
       <Label fx:id="productName" alignment="CENTER" layoutX="14.0" layoutY="149.0" prefHeight="32.0" prefWidth="180.0" styleClass="id-header-blue" text="Potatis" textAlignment="CENTER" />
-      <Button fx:id="addButton" layoutX="17.0" layoutY="287.0" mnemonicParsing="false" onAction="#addProductToBasket" prefHeight="35.0" prefWidth="180.0" styleClass="button-vara" text="Lägg till" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" />
-      <Hyperlink alignment="CENTER" layoutX="102.0" layoutY="192.0" onAction="#showMoreInfoPanel" prefHeight="35.0" prefWidth="92.0" style="-fx-font-size: 18;" text="Mer info" textAlignment="CENTER" AnchorPane.leftAnchor="102.0" AnchorPane.rightAnchor="14.0" />
+      <Button fx:id="addButton" layoutX="17.0" layoutY="287.0" mnemonicParsing="false" onAction="#addProductToBasket" prefHeight="35.0" prefWidth="180.0" styleClass="abutton-add" stylesheets="@../../../CSS/Hanna.css" text="Lägg till" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" />
+      <Hyperlink alignment="CENTER" layoutX="103.0" layoutY="191.0" onAction="#showMoreInfoPanel" prefHeight="35.0" prefWidth="92.0" text="Mer info" textAlignment="CENTER" underline="true" AnchorPane.leftAnchor="103.0" AnchorPane.rightAnchor="13.0">
+         <font>
+            <Font size="19.0" />
+         </font></Hyperlink>
       <Label fx:id="price" layoutX="16.0" layoutY="186.0" prefHeight="47.0" prefWidth="73.0" styleClass="label-price" text="50 kr" />
       <TextField fx:id="amountField" alignment="CENTER" layoutX="57.0" layoutY="233.0" prefHeight="45.0" prefWidth="98.0" AnchorPane.rightAnchor="53.0" AnchorPane.topAnchor="233.0" />
       <Button fx:id="plusButton" layoutX="149.0" layoutY="233.0" mnemonicParsing="false" onAction="#incAmount" prefHeight="45.0" prefWidth="46.0" style="-fx-padding: 0 0 0 0;" styleClass="plus-button" stylesheets="@../../../../paymentView/CSS/PayStyle.css" AnchorPane.leftAnchor="149.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="233.0">
@@ -37,9 +41,6 @@
          </graphic>
       </Button>
       <ComboBox fx:id="amount" layoutX="60.0" layoutY="7.0" prefWidth="150.0" visible="false" />
-      <AnchorPane fx:id="addedPane" layoutY="-2.0" opacity="0.0" prefHeight="57.0" prefWidth="208.0" style="-fx-background-color: green;">
-         <children>
-            <Label layoutX="58.0" prefHeight="57.0" prefWidth="92.0" style="-fx-text-fill: black;" text="Label" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="58.0" AnchorPane.rightAnchor="58.0" AnchorPane.topAnchor="0.0" />
-         </children></AnchorPane>
+      <AnchorPane fx:id="addedPane" layoutY="-2.0" opacity="0.0" prefHeight="50.0" prefWidth="208.0" style="-fx-background-color: #4ce600;" />
    </children>
 </fx:root>
