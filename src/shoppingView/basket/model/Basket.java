@@ -1,6 +1,7 @@
 package shoppingView.basket.model;
 
 import shoppingView.basket.view.BasketViewController;
+import shoppingView.listview.productsquare.view.ProductView;
 import shoppingView.util.PriceUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -46,6 +47,15 @@ public final class Basket {
         }
 
         items.add(0, newItem);
+    }
+
+    public boolean contains(Product product) {
+        for (BasketItem item : items) {
+            if (item.getProduct().equals(product)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public BasketItem removeItem(Product productToRemove) {

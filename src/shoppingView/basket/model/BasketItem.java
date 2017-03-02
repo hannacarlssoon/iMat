@@ -3,6 +3,7 @@ package shoppingView.basket.model;
 import shoppingView.basket.view.BasketViewController;
 import shoppingView.listview.amountSetter.AmountSetter;
 import shoppingView.listview.deleteButton.DeleteButton;
+import shoppingView.listview.productsquare.view.ProductView;
 import shoppingView.util.AmountUtil;
 import shoppingView.util.PriceUtil;
 import javafx.beans.property.ObjectProperty;
@@ -25,10 +26,17 @@ public class BasketItem {
     private ComboBox<String> box;
     private AmountSetter amountSetter;
     private SimpleStringProperty price;
+    private ProductView productView;
 
     public BasketItem(Product product, int amount) {
         this.product = product;
         this.amount = amount;
+    }
+
+    public BasketItem(Product product, int amount, ProductView productView) {
+        this.product = product;
+        this.amount = amount;
+        this.productView = productView;
     }
 
     public double getTotal() {
@@ -78,5 +86,9 @@ public class BasketItem {
         ObjectProperty<DeleteButton> propertyButton = new SimpleObjectProperty<DeleteButton>(button);
 
         return propertyButton;
+    }
+
+    public void hideAddedPane() {
+        productView.hideAddedPane();
     }
 }

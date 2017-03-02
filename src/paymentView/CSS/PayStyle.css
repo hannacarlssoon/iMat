@@ -96,6 +96,14 @@
     -fx-background-radius: 0 10 10 0;
 }
 
+.plus-button:hover {
+    -fx-background-color: #DDDDDD;
+}
+
+.plus-button:pressed, .plus-button:default:hover:pressed {
+  -fx-background-color: #999999;
+}
+
 .minus-button {
     -fx-background-color: #FFFFFF;
     -fx-border-color: #444444;
@@ -104,6 +112,13 @@
     -fx-background-radius: 10 0 0 10;
 }
 
+.minus-button:hover {
+    -fx-background-color: #DDDDDD;
+}
+
+.minus-button:pressed, .minus-button:default:hover:pressed {
+  -fx-background-color: #999999;
+}
 .plus-button-small {
     -fx-background-color: #FFFFFF;
     -fx-border-color: #444444;

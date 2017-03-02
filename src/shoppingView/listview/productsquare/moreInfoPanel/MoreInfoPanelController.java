@@ -1,5 +1,6 @@
 package shoppingView.listview.productsquare.moreInfoPanel;
 
+import javafx.scene.control.TextField;
 import shoppingView.MainApp;
 import shoppingView.basket.model.Basket;
 import shoppingView.basket.model.BasketItem;
@@ -28,6 +29,8 @@ public class MoreInfoPanelController {
     private Label price;
     @FXML
     private AnchorPane comboPane;
+    @FXML
+    private TextField amountField;
 
     private Stage panelStage;
     private Product product;
@@ -60,6 +63,21 @@ public class MoreInfoPanelController {
     private void setImage() {
         String imageName = product.getImageName();
         image.setImage(new Image("file:resources/images/products/" + imageName));
+    }
+
+    @FXML
+    private void incAmount() {
+        int newAmount = AmountUtil.amountFromString(amountField.textProperty().get());
+        amountField.textProperty().setValue(AmountUtil.createAmountString(product, newAmount + 1));
+        //Remove:
+    }
+
+    @FXML
+    private void decAmount() {
+        int newAmount = AmountUtil.amountFromString(amountField.textProperty().get());
+        if (newAmount > 1) {
+            amountField.textProperty().setValue(AmountUtil.createAmountString(product, newAmount - 1));
+        }
     }
 
     private void initAmountBox() {
