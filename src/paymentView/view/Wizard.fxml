@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
@@ -25,63 +20,8 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@../CSS/PayStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paymentView.view.PaymentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@../CSS/PayStyle.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paymentView.view.PaymentController">
    <children>
-      <AnchorPane fx:id="invoiceView" prefHeight="200.0" prefWidth="200.0" styleClass="background" stylesheets="@../CSS/PayStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0">
-         <children>
-            <Button layoutX="1207.0" layoutY="450.0" mnemonicParsing="false" onAction="#setReciptView" styleClass="prominentButton" text="Slutför köp" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
-            <Label layoutX="480.0" layoutY="41.0" text="Fakturan kommer till din leveransadress eller nått" />
-            <Button layoutX="77.0" layoutY="458.0" mnemonicParsing="false" onAction="#setDeliveryView" styleClass="abutton" text="Tillbaka" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="creditCardView" prefHeight="200.0" prefWidth="200.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0">
-         <children>
-            <CheckBox layoutX="509.0" layoutY="336.0" mnemonicParsing="false" styleClass="label" stylesheets="@../CSS/PayStyle.css" text="Spara mina kortuppgifter tills nästa gång">
-               <font>
-                  <Font name="Segoe UI Light" size="13.0" />
-               </font>
-            </CheckBox>
-            <Label layoutX="496.0" layoutY="12.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Vänligen fyll i dina kortuppgifter" />
-            <Button mnemonicParsing="false" onAction="#setReciptView" styleClass="prominentButton" stylesheets="@../CSS/PayStyle.css" text="Betala och slutför köp" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
-            <Button mnemonicParsing="false" onAction="#setDeliveryView" styleClass="abutton" stylesheets="@../CSS/PayStyle.css" text="Tillbaka" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
-            <GridPane layoutX="431.0" layoutY="58.0" prefHeight="93.0" prefWidth="414.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="186.0" text="Efternamn:" />
-                  <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="186.0" text="Förnamn:" GridPane.rowIndex="1" />
-                  <TextField styleClass="text-field" GridPane.columnIndex="1" />
-                  <TextField prefHeight="17.0" prefWidth="176.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-               </children>
-            </GridPane>
-            <GridPane layoutX="452.0" layoutY="162.0" prefHeight="163.0" prefWidth="162.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="235.0" text="År/Månad:" GridPane.rowIndex="1" />
-                  <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="449.0" text="CVC:" GridPane.rowIndex="2" />
-                  <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="238.0" text="Kortnummer:" />
-               </children>
-            </GridPane>
-            <TextField layoutX="637.0" layoutY="173.0" />
-            <ChoiceBox fx:id="yearChoiceBox" layoutX="637.0" layoutY="223.0" onMousePressed="#initializeYear" prefHeight="44.0" prefWidth="62.0" styleClass="cb" />
-            <ChoiceBox fx:id="monthChoiceBox" layoutX="721.0" layoutY="223.0" onMousePressed="#initializeMonth" prefHeight="44.0" prefWidth="62.0" />
-            <TextField layoutX="637.0" layoutY="280.0" prefHeight="37.0" prefWidth="53.0" />
-            <Label layoutX="704.0" layoutY="221.0" prefHeight="35.0" prefWidth="11.0" styleClass="label-dash" stylesheets="@../CSS/PayStyle.css" text="/" />
-         </children>
-      </AnchorPane>
       <AnchorPane fx:id="reciptView" prefHeight="200.0" prefWidth="200.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
          <children>
             <Label layoutX="585.0" layoutY="531.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Välkommen åter!" />
@@ -263,12 +203,70 @@
                </image>
             </ImageView>
          </children></AnchorPane>
+      <AnchorPane fx:id="invoiceView" prefHeight="200.0" prefWidth="200.0" styleClass="background" stylesheets="@../CSS/PayStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0">
+         <children>
+            <Button layoutX="1207.0" layoutY="450.0" mnemonicParsing="false" onAction="#setReciptView" styleClass="prominentButton" text="Slutför köp" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
+            <Label layoutX="480.0" layoutY="41.0" text="Fakturan kommer till din leveransadress eller nått" />
+            <Button layoutX="77.0" layoutY="458.0" mnemonicParsing="false" onAction="#setDeliveryView" styleClass="abutton" text="Tillbaka" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="creditCardView" prefHeight="200.0" prefWidth="200.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0">
+         <children>
+            <CheckBox fx:id="saveCreditCard" layoutX="502.0" layoutY="380.0" mnemonicParsing="false" onAction="#saveCreditCard" styleClass="label" stylesheets="@../CSS/PayStyle.css" text="Spara mina kortuppgifter tills nästa gång">
+               <font>
+                  <Font name="Segoe UI Light" size="13.0" />
+               </font>
+            </CheckBox>
+            <Label layoutX="496.0" layoutY="12.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Vänligen fyll i dina kortuppgifter" />
+            <Button fx:id="payButton" mnemonicParsing="false" onAction="#setReciptView" styleClass="prominentButton" stylesheets="@../CSS/PayStyle.css" text="Betala och slutför köp" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
+            <Button mnemonicParsing="false" onAction="#setDeliveryView" styleClass="abutton" stylesheets="@../CSS/PayStyle.css" text="Tillbaka" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
+            <GridPane layoutX="431.0" layoutY="58.0" prefHeight="93.0" prefWidth="414.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="186.0" text="Efternamn:" />
+                  <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="186.0" text="Förnamn:" GridPane.rowIndex="1" />
+                  <TextField fx:id="CCFirstName" styleClass="text-field" GridPane.columnIndex="1" />
+                  <TextField fx:id="CCLastName" prefHeight="17.0" prefWidth="176.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+            <GridPane layoutX="452.0" layoutY="162.0" prefHeight="190.0" prefWidth="162.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="235.0" text="År/Månad:" GridPane.rowIndex="2" />
+                  <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="449.0" text="CVC:" GridPane.rowIndex="3" />
+                  <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="238.0" text="Kortnummer:" GridPane.rowIndex="1" />
+                  <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="179.0" text="Korttyp:" />
+               </children>
+            </GridPane>
+            <TextField fx:id="cardNumber" layoutX="637.0" layoutY="215.0" />
+            <ChoiceBox fx:id="yearChoiceBox" layoutX="637.0" layoutY="261.0" onMousePressed="#initializeYear" prefHeight="44.0" prefWidth="62.0" styleClass="cb" />
+            <ChoiceBox fx:id="monthChoiceBox" layoutX="721.0" layoutY="262.0" onMousePressed="#initializeMonth" prefHeight="44.0" prefWidth="62.0" />
+            <TextField fx:id="cvc" layoutX="637.0" layoutY="311.0" prefHeight="37.0" prefWidth="53.0" />
+            <Label layoutX="704.0" layoutY="258.0" prefHeight="35.0" prefWidth="11.0" styleClass="label-dash" stylesheets="@../CSS/PayStyle.css" text="/" />
+            <ChoiceBox fx:id="cardType" layoutX="638.0" layoutY="165.0" prefWidth="150.0" />
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="deliveryView" prefHeight="200.0" prefWidth="200.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
          <children>
-            <Label layoutX="465.0" layoutY="19.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Vänligen fyll i din leveransinformation" AnchorPane.leftAnchor="465.0" AnchorPane.rightAnchor="459.0" />
-            <Button mnemonicParsing="false" onAction="#setPayAtDoor" styleClass="prominentButton" stylesheets="@../CSS/PayStyle.css" text="Vidare" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
+            <Label layoutX="465.0" layoutY="14.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Vänligen fyll i din leveransinformation" AnchorPane.leftAnchor="465.0" AnchorPane.rightAnchor="459.0" />
+            <Button fx:id="deliveryButton" mnemonicParsing="false" onAction="#setPayAtDoor" styleClass="prominentButton" stylesheets="@../CSS/PayStyle.css" text="Vidare" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
             <Button mnemonicParsing="false" onAction="#setStartPage" styleClass="abutton" text="Tillbaka" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
-            <CheckBox layoutX="579.0" layoutY="318.0" mnemonicParsing="false" styleClass="label" stylesheets="@../CSS/PayStyle.css" text="Spara uppgifterna" />
+            <CheckBox fx:id="saveDelivery" layoutX="579.0" layoutY="318.0" mnemonicParsing="false" onAction="#saveDeliveryInfo" styleClass="label" stylesheets="@../CSS/PayStyle.css" text="Spara uppgifterna" />
             <Label layoutX="455.0" layoutY="397.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Vänligen fyll i när du vill ha dina matvaror" />
             <RadioButton fx:id="fm" layoutX="366.0" layoutY="464.0" mnemonicParsing="false" styleClass="label" stylesheets="@../CSS/PayStyle.css" text="Förmiddag" />
             <RadioButton fx:id="em" layoutX="582.0" layoutY="464.0" mnemonicParsing="false" styleClass="label" stylesheets="@../CSS/PayStyle.css" text="Eftermiddag" />
