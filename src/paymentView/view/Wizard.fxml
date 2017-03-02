@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
@@ -160,94 +161,6 @@
             <Button layoutX="77.0" layoutY="458.0" mnemonicParsing="false" onAction="#setDeliveryView" styleClass="abutton" text="Tillbaka" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="backgroundView" prefHeight="200.0" prefWidth="200.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <AnchorPane layoutX="335.0" layoutY="167.0" prefHeight="500.0" prefWidth="700.0" styleClass="background5" stylesheets="@../CSS/PayStyle.css" AnchorPane.leftAnchor="335.0" AnchorPane.rightAnchor="331.0">
-               <children>
-                  <Pane layoutX="-1.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="470.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <Label layoutX="8.0" text="Antal" />
-                        <Label layoutX="132.0" text="Vara" />
-                        <Label layoutX="516.0" text="Pris" />
-                        <Label layoutX="631.0" text="Ta bort" />
-                        <Separator layoutX="121.0" orientation="VERTICAL" prefHeight="30.0" />
-                        <Separator layoutX="505.0" orientation="VERTICAL" prefHeight="30.0" />
-                        <Separator layoutX="620.0" orientation="VERTICAL" prefHeight="30.0" />
-                     </children>
-                  </Pane>
-                  <AnchorPane layoutX="215.0" layoutY="285.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="460.0">
-                     <children>
-                        <Separator layoutX="505.0" layoutY="1.0" orientation="VERTICAL" prefHeight="38.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        <Label layoutX="404.0" layoutY="2.0" styleClass="label-header" text="Summa:" />
-                        <Label alignment="CENTER" layoutX="513.0" layoutY="1.0" prefHeight="36.0" prefWidth="182.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Totalt pris" />
-                        <Separator layoutX="-1.0" orientation="VERTICAL" prefHeight="40.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="222.0" layoutY="101.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
-                     <children>
-                        <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-                          </content>
-                        </ScrollPane>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </AnchorPane>
-            <Button mnemonicParsing="false" onAction="#setDeliveryView" styleClass="prominentButton" text="Vidare" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
-            <Button layoutX="50.0" layoutY="691.0" mnemonicParsing="false" onAction="#returnToStore" styleClass="abutton" text="Fortsätt handla" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
-            <Label layoutX="556.0" layoutY="121.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Bekräfta din varukorg" />
-            <Button fx:id="confirmation" layoutX="58.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="266.0" stylesheets="@../CSS/PayStyle.css" text="   Bekräfta varukorgen" AnchorPane.topAnchor="0.0">
-               <graphic>
-                  <ImageView fx:id="tabNumberOne" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../resources/images/paymentImages/1blue.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <styleClass>
-                  <String fx:value="buttonWizard" />
-                  <String fx:value="activeTab" />
-               </styleClass>
-            </Button>
-            <Button fx:id="delivery" layoutX="345.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="275.0" styleClass="buttonWizard" stylesheets="@../CSS/PayStyle.css" text="   Leveransinformation" AnchorPane.topAnchor="0.0">
-               <graphic>
-                  <ImageView fx:id="tabNumberTwo" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../resources/images/paymentImages/2%20grey.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="pay" layoutX="638.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="211.0" styleClass="buttonWizard" stylesheets="@../CSS/PayStyle.css" text="   Betalning" AnchorPane.topAnchor="0.0">
-               <graphic>
-                  <ImageView fx:id="tabNumberThree" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../resources/images/paymentImages/3%20grey.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="recipt" layoutX="840.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="214.0" styleClass="buttonWizard" stylesheets="@../CSS/PayStyle.css" text="   Kvitto" AnchorPane.topAnchor="0.0">
-               <graphic>
-                  <ImageView fx:id="tabNumberFour" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../resources/images/paymentImages/4%20grey.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Separator layoutX="334.0" layoutY="167.0" orientation="VERTICAL" prefHeight="30.0" />
-            <Separator layoutX="1033.0" layoutY="167.0" orientation="VERTICAL" prefHeight="30.0" />
-            <Separator layoutX="1033.0" layoutY="627.0" orientation="VERTICAL" prefHeight="40.0" />
-            <Separator layoutX="335.0" layoutY="167.0" prefHeight="0.0" prefWidth="700.0" />
-            <Separator layoutX="335.0" layoutY="666.0" prefWidth="700.0" />
-            <ImageView fx:id="iMat" fitHeight="150.0" fitWidth="200.0" layoutX="1101.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../resources/images/iMat.png" />
-               </image>
-            </ImageView>
-         </children></AnchorPane>
       <AnchorPane fx:id="defaultPayAtDoor" prefHeight="200.0" prefWidth="200.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
          <children>
             <Label layoutX="416.0" layoutY="166.0" text="Du har valt att betala vid dörren, klicka på vidare för att få kvitto" />
@@ -318,17 +231,16 @@
                   <AnchorPane layoutX="175.0" layoutY="212.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="460.0">
                      <children>
                         <Separator layoutX="567.0" layoutY="-86.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        <Label layoutX="467.0" layoutY="1.0" styleClass="label-header" text="Summa:" />
-                        <Label alignment="CENTER" layoutX="575.0" layoutY="1.0" prefHeight="36.0" prefWidth="117.0" styleClass="label-header" text="Pris" />
+                        <Label layoutX="466.0" layoutY="4.0" styleClass="label-header" text="Summa:" />
+                        <Label fx:id="endPrice" alignment="CENTER" layoutX="575.0" layoutY="1.0" prefHeight="36.0" prefWidth="117.0" styleClass="label-header" text="Pris" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="250.0" layoutY="150.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
                      <children>
                         <ScrollPane layoutX="298.0" layoutY="77.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-                          </content>
-                        </ScrollPane>
+                           <content>
+                              <ListView fx:id="listViewEnd" prefHeight="428.0" prefWidth="698.0" />
+                           </content></ScrollPane>
                      </children>
                   </AnchorPane>
                </children>
@@ -339,7 +251,107 @@
             <Separator layoutX="1029.0" layoutY="75.0" orientation="VERTICAL" prefHeight="30.0" />
             <Separator layoutX="330.0" layoutY="75.0" orientation="VERTICAL" prefHeight="30.0" />
             <Separator layoutX="331.0" layoutY="575.0" prefWidth="700.0" />
+            <Button layoutX="595.0" layoutY="585.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="176.0" styleClass="abutton" stylesheets="@../CSS/PayStyle.css" text="   Skriv ut">
+               <graphic>
+                  <ImageView fx:id="print" fitHeight="46.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/images/paymentImages/printer.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="backgroundView" prefHeight="200.0" prefWidth="200.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane layoutX="335.0" layoutY="167.0" prefHeight="500.0" prefWidth="700.0" styleClass="background5" stylesheets="@../CSS/PayStyle.css" AnchorPane.leftAnchor="335.0" AnchorPane.rightAnchor="331.0">
+               <children>
+                  <Pane layoutX="-1.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="470.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label layoutX="8.0" text="Antal" />
+                        <Label layoutX="132.0" text="Vara" />
+                        <Label layoutX="516.0" text="Pris" />
+                        <Label layoutX="631.0" text="Ta bort" />
+                        <Separator layoutX="121.0" orientation="VERTICAL" prefHeight="30.0" />
+                        <Separator layoutX="505.0" orientation="VERTICAL" prefHeight="30.0" />
+                        <Separator layoutX="620.0" orientation="VERTICAL" prefHeight="30.0" />
+                     </children>
+                  </Pane>
+                  <AnchorPane layoutX="215.0" layoutY="285.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="460.0">
+                     <children>
+                        <Separator layoutX="505.0" layoutY="1.0" orientation="VERTICAL" prefHeight="38.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Label layoutX="404.0" layoutY="2.0" styleClass="label-header" text="Summa:" />
+                        <Label fx:id="totalAmount" alignment="CENTER" layoutX="513.0" layoutY="1.0" prefHeight="36.0" prefWidth="182.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Totalt pris" />
+                        <Separator layoutX="-1.0" orientation="VERTICAL" prefHeight="40.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="222.0" layoutY="101.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                     <children>
+                        <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="428.0" prefWidth="698.0">
+                                 <children>
+                                    <ListView fx:id="listView" prefHeight="428.0" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children></AnchorPane>
+                          </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <Button mnemonicParsing="false" onAction="#setDeliveryView" styleClass="prominentButton" text="Vidare" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
+            <Button layoutX="50.0" layoutY="691.0" mnemonicParsing="false" onAction="#returnToStore" styleClass="abutton" text="Fortsätt handla" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
+            <Label layoutX="556.0" layoutY="121.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Bekräfta din varukorg" />
+            <Button fx:id="confirmation" layoutX="58.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="266.0" stylesheets="@../CSS/PayStyle.css" text="   Bekräfta varukorgen" AnchorPane.topAnchor="0.0">
+               <graphic>
+                  <ImageView fx:id="tabNumberOne" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/images/paymentImages/1blue.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="buttonWizard" />
+                  <String fx:value="activeTab" />
+               </styleClass>
+            </Button>
+            <Button fx:id="delivery" layoutX="345.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="275.0" styleClass="buttonWizard" stylesheets="@../CSS/PayStyle.css" text="   Leveransinformation" AnchorPane.topAnchor="0.0">
+               <graphic>
+                  <ImageView fx:id="tabNumberTwo" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/images/paymentImages/2%20grey.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="pay" layoutX="638.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="211.0" styleClass="buttonWizard" stylesheets="@../CSS/PayStyle.css" text="   Betalning" AnchorPane.topAnchor="0.0">
+               <graphic>
+                  <ImageView fx:id="tabNumberThree" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/images/paymentImages/3%20grey.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="recipt" layoutX="840.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="214.0" styleClass="buttonWizard" stylesheets="@../CSS/PayStyle.css" text="   Kvitto" AnchorPane.topAnchor="0.0">
+               <graphic>
+                  <ImageView fx:id="tabNumberFour" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/images/paymentImages/4%20grey.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator layoutX="334.0" layoutY="167.0" orientation="VERTICAL" prefHeight="30.0" />
+            <Separator layoutX="1033.0" layoutY="167.0" orientation="VERTICAL" prefHeight="30.0" />
+            <Separator layoutX="1033.0" layoutY="627.0" orientation="VERTICAL" prefHeight="40.0" />
+            <Separator layoutX="335.0" layoutY="167.0" prefHeight="0.0" prefWidth="700.0" />
+            <Separator layoutX="335.0" layoutY="666.0" prefWidth="700.0" />
+            <ImageView fx:id="iMat" fitHeight="150.0" fitWidth="200.0" layoutX="1101.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/images/iMat.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
    </children>
 </AnchorPane>

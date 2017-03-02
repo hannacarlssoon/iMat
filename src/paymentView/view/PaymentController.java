@@ -18,12 +18,15 @@ import main.Main;
 import se.chalmers.ait.dat215.project.CreditCard;
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
+import shoppingView.basket.model.Basket;
+import shoppingView.basket.model.BasketItem;
 
 public class PaymentController implements Initializable {
 
     IMatDataHandler instance = IMatDataHandler.getInstance();
     CreditCard cardInfo = instance.getCreditCard();
     Customer customer = instance.getCustomer();
+    Basket basket = Basket.getInstance();
 
     //The different views
     @FXML private AnchorPane deliveryView;
@@ -58,6 +61,10 @@ public class PaymentController implements Initializable {
     @FXML private Button deliveryButton;
     @FXML private Button payButton;
     @FXML private CheckBox saveDelivery;
+    @FXML private ListView listView;
+    @FXML private ListView listViewEnd;
+    @FXML private Label endPrice;
+    @FXML private Label totalAmount;
 
     //The different text fields
     @FXML private TextField firstName;
@@ -76,6 +83,7 @@ public class PaymentController implements Initializable {
     @FXML private ImageView emtt;
     @FXML private ImageView emailtt;
     @FXML private ImageView phonett;
+    @FXML private ImageView print;
 
     //The different images for the pay options
     @FXML private ImageView door;
@@ -108,6 +116,7 @@ public class PaymentController implements Initializable {
     private Image ccBlue = new Image("file:resources/images/paymentImages/cc blue.png");
     private Image info = new Image("file:resources/images/paymentImages/information.png");
     private Image logga = new Image("file:resources/images/iMat.png");
+    private Image printer = new Image("file:resources/images/paymentImages/printer.png");
 
     private Tooltip tip = new Tooltip("Du måste fylla i all information innan du kan gå vidare");
     private Tooltip tip2 = new Tooltip("Du måste fylla i alla rader innan du kan betala och gå vidare");
@@ -120,10 +129,14 @@ public class PaymentController implements Initializable {
     ObservableList<Integer> year = FXCollections.observableArrayList(17, 18, 19, 20, 21, 22, 23);
     ObservableList<Integer> month = FXCollections.observableArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
     ObservableList<String> type = FXCollections.observableArrayList("Visa", "Mastercard");
+    ObservableList<BasketItem> hej = FXCollections.observableArrayList(basket.getItems());
 
     //A method to do something
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        listView.setCellFactory(hej -> new ShoppingCartItemsController());
+        listViewEnd.setCellFactory(hej -> new ShoppingCartItemReciptController());
 
         //Makes sure you can only select one radiobutton at a time
         ToggleGroup group = new ToggleGroup();
@@ -143,9 +156,11 @@ public class PaymentController implements Initializable {
         emailtt.setImage(info);
         phonett.setImage(info);
         iMat.setImage(logga);
+        print.setImage(printer);
         tip.getStyleClass().add("tooltip");
         tip2.getStyleClass().add("tooltip");
         tip3.getStyleClass().add("tooltip");
+
 
         //Sets the saved information
         firstName.setText(customer.getFirstName());
@@ -170,6 +185,7 @@ public class PaymentController implements Initializable {
         }
         CCFirstName.setText(fn);
 
+        updatePrice();
     }
 
     //Closes the application
@@ -317,6 +333,8 @@ public class PaymentController implements Initializable {
     //Sets the recipt view
     @FXML
     protected void setReciptView(ActionEvent event) throws IOException {
+        price();
+        listViewEnd.setItems(basket.getItems());
         reciptView.toFront();
         isOne = false;
         isTwo = false;
@@ -581,5 +599,13 @@ public class PaymentController implements Initializable {
     @FXML
     protected void returnToStore(){
         main.switchScene();
+    }
+
+    protected void updatePrice() {
+        totalAmount.setText(basket.getTotalSumAsString());
+    }
+
+    protected void price() {
+        endPrice.setText(basket.getTotalSumAsString());
     }
 }
