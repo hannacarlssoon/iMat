@@ -48,7 +48,7 @@ public class Main extends Application {
         mainBasketFxmlLoader.setLocation(MainApp.class.getResource("basket/view/BasketView.fxml"));
         setBasketHolderContent(mainBasketFxmlLoader.load());
         BasketViewController basketViewController = mainBasketFxmlLoader.getController();
-        //basketViewController.setMain(this);
+        basketViewController.setMain(this);
 
         FXMLLoader mainPaymentSceneFxmlLoader = new FXMLLoader();
         mainPaymentSceneFxmlLoader.setLocation(paymentView.MainApp.class.getResource("view/Wizard.fxml"));

@@ -6,16 +6,16 @@
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="286.0" layoutY="21.0" styleClass="label-header" stylesheets="@../../paymentView/CSS/PayStyle.css" text="Köphistorik" />
+      <Label layoutX="297.0" layoutY="25.0" styleClass="label-header" stylesheets="@../../paymentView/CSS/PayStyle.css" text="Köphistorik" />
       <ScrollPane layoutX="378.0" layoutY="194.0" prefHeight="420.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="419.0" prefWidth="682.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="419.0" prefWidth="701.0">
                <children>
-                  <Accordion prefHeight="419.0" prefWidth="687.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Accordion prefHeight="419.0" prefWidth="687.0" stylesheets="@../../paymentView/CSS/PayStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <panes>
-                      <TitledPane animated="false" text="Datum">
+                      <TitledPane animated="false" stylesheets="@../../paymentView/CSS/PayStyle.css" text="Datum">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                         </content>

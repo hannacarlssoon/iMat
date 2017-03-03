@@ -1,5 +1,7 @@
 package shoppingView.basket.view;
 
+import javafx.event.ActionEvent;
+import main.Main;
 import se.chalmers.ait.dat215.project.Product;
 import shoppingView.MainApp;
 import shoppingView.basket.model.Basket;
@@ -33,6 +35,7 @@ public class BasketViewController {
     private Label totalPrice;
 
     private MainApp mainApp;
+    private Main main;
 
 
     @FXML
@@ -81,4 +84,14 @@ public class BasketViewController {
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
     }
+
+    @FXML
+    private void toCheckout(ActionEvent e){
+       main.switchScene();
+    }
+
+    public void setMain(Main main) {
+        this.main = main;
+    }
+
 }

@@ -311,3 +311,11 @@
 .tab-selected {
     -fx-background-color: #F5F5F5;
 }
+
+.titled-pane {
+    -fx-background-color: #444444;
+}
+
+.accordion {
+    -fx-background-color: #FFFFFF;
+}
