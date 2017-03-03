@@ -72,6 +72,11 @@ public class ProductView extends AnchorPane {
         setIcons();
 
         price.textProperty().setValue(PriceUtil.toPriceFormat(product.getPrice()));
+
+        //Shows addedPane from the beginning when browsing (if product in basket):
+        if (Basket.getInstance().contains(product)) {
+            showAddedPane();
+        }
     }
 
     private void setIcons() {

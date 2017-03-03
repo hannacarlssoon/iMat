@@ -12,10 +12,12 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="28.0" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="minusButton" onAction="#delete" layoutX="4.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-padding: 0 0 0 0;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Button mnemonicParsing="false" onAction="#delete" prefHeight="26.0" prefWidth="26.0" style="-fx-padding: 0 0 0 0;" styleClass="delete-button" stylesheets="@../../../paymentView/CSS/PayStyle.css" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
          <graphic>
-            <ImageView fx:id="minusIcon" fitHeight="25.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-
+            <ImageView fx:id="trashIcon" fitHeight="30.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../resources/images/paymentImages/trashcan.png" />
+               </image>
             </ImageView>
          </graphic>
       </Button>

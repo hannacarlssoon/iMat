@@ -1,5 +1,7 @@
 package shoppingView.listview.view;
 
+import main.ProductsModel;
+import se.chalmers.ait.dat215.project.Product;
 import shoppingView.MainApp;
 import shoppingView.listview.productsquare.view.ProductView;
 import javafx.fxml.FXML;
@@ -9,8 +11,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
-public class ListViewController {
+public class ListViewController implements Observer {
 
     private MainApp mainApp;
 
@@ -23,6 +27,7 @@ public class ListViewController {
     private void initialize() {
         productGrid = new GridPane();
         gridPaneContainer.getChildren().add(productGrid);
+        ProductsModel.getInstance().addObserver(this);
     }
 
 
@@ -45,14 +50,14 @@ public class ListViewController {
     }
 
     @FXML
-    public void showResults(List<Integer> productIDs) {
+    public void showResults(List<Product> productIDs) {
         productGrid.getChildren().clear();
 
         int columns = 4;
         int counter = 0;
 
-        for (Integer ID : productIDs) {
-            productGrid.add(new ProductView(ID, mainApp), counter % columns, counter / columns);
+        for (Product ID : productIDs) {
+            productGrid.add(new ProductView(ID.getProductId(), mainApp), counter % columns, counter / columns);
             counter++;
         }
         productGrid.setHgap(20);
@@ -66,4 +71,8 @@ public class ListViewController {
     }
 
 
+    @Override
+    public void update(Observable o, Object arg) {
+        showResults(((ProductsModel) o).getProducts());
+    }
 }

@@ -75,8 +75,12 @@ public class AmountSetter extends AnchorPane {
     }
 
     private void setIcons() {
-        plusIcon.setImage(new Image("file:resources/images/paymentImages/plus.png"));
-        minusIcon.setImage(new Image("file:resources/images/paymentImages/minus.png"));
+        plusIcon.setImage(new Image("file:resources/images/paymentImages/add grey.png"));
+        plusIcon.setFitHeight(10);
+        plusIcon.setFitWidth(10);
+        minusIcon.setImage(new Image("file:resources/images/paymentImages/remove grey.png"));
+        minusIcon.setFitHeight(10);
+        minusIcon.setFitWidth(10);
     }
 
     private void setUpAmounts() {
