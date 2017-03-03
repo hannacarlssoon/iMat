@@ -51,7 +51,11 @@ public class BasketViewController {
 
         //Init columns
         productNameColumn.setCellValueFactory(cellData -> cellData.getValue().getName());
+        productNameColumn.setPrefWidth(135);
+
         priceColumn.setCellValueFactory(cellData -> cellData.getValue().getPriceAsString());
+        priceColumn.setPrefWidth(80);
+
         amountColumn.setCellValueFactory(cellData -> cellData.getValue().getComboBox());
         deleteColumn.setCellValueFactory(cellData -> cellData.getValue().getDeleteButton());
 

@@ -20,6 +20,8 @@ import java.util.List;
 
 public class DeleteButton extends AnchorPane {
 
+    @FXML
+    private ImageView trashIcon;
     private BasketItem item;
 
     // Reference to the main application.
@@ -39,6 +41,7 @@ public class DeleteButton extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
+        trashIcon.setImage(new Image("file:resources/images/trash.png"));
     }
 
     @FXML
