@@ -5,8 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import paymentView.view.PaymentController;
+
 //Testkommentar
 public class MainApp extends Application {
+
+    private FXMLLoader fxmlLoader;
+    private Parent root;
+    private PaymentController paymentController;
 
     public static void main(String[] args) {
         launch(args);
@@ -14,14 +20,17 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("view/Wizard.fxml"));
-        //FXMLLoader fxmlLoader = FXMLLoader.load(getClass().getResource("Wizard.fxml"));
-        //fxmlLoader.setController(this);
-        //Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root, 1366, 768);
+        fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("view/Wizard.fxml"));
+        root = fxmlLoader.load();
+        paymentController = fxmlLoader.getController();
+    }
 
-        stage.setTitle("iMat");
-        stage.setScene(scene);
-        stage.show();
+    public Parent getRoot(){
+        return root;
+    }
+
+    public PaymentController getController(){
+        return paymentController;
     }
 }

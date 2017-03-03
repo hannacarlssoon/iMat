@@ -1,11 +1,12 @@
 package shoppingView;
 
+import javafx.scene.Parent;
+import shoppingView.basket.view.BasketViewController;
 import shoppingView.listview.productsquare.moreInfoPanel.MoreInfoPanelController;
 import shoppingView.listview.view.ListViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
@@ -17,7 +18,10 @@ import java.io.IOException;
 public class MainApp extends Application {
 
     private Stage primaryStage;
-    private HBox rootLayout;
+    private HBox root;
+    private FXMLLoader fxmlLoader;
+    private BasketViewController basketViewController;
+    private ListViewController listViewController;
 
     public MainApp() {
 
@@ -25,66 +29,24 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Exempel på produktvy och varukorg");
-        this.primaryStage.setResizable(false);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(MainApp.class.getResource("combinedview/CombinedView.fxml"));
+        root = loader.load();
 
-        //Sets the window icon:
-        this.primaryStage.getIcons().add(new Image("file:resources/images/iMat_square.png"));
+        FXMLLoader basketLoader = new FXMLLoader();
+        basketLoader.setLocation(MainApp.class.getResource("basket/view/BasketView.fxml"));
+        AnchorPane basketView = basketLoader.load();
+        basketViewController = basketLoader.getController();
 
-        initRootLayout();
-        showListViewAndBasket();
-    }
+        FXMLLoader listLoader = new FXMLLoader();
+        listLoader.setLocation(MainApp.class.getResource("listview/view/ListView.fxml"));
+        AnchorPane listView = listLoader.load();
+        listViewController = listLoader.getController();
+        listViewController.setMainApp(this);
+        listViewController.testSearch();
 
-    private void showListViewAndBasket() {
-        try {
-            FXMLLoader basketLoader = new FXMLLoader();
-            basketLoader.setLocation(MainApp.class.getResource("basket/view/BasketView.fxml"));
-            AnchorPane basketView = (AnchorPane) basketLoader.load();
-
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("listview/view/ListView.fxml"));
-            AnchorPane listView = (AnchorPane) loader.load();
-            ((ListViewController) loader.getController()).setMainApp(this);
-            ((ListViewController) loader.getController()).testSearch();
-
-            rootLayout.getChildren().add(listView);
-            rootLayout.getChildren().add(basketView);
-
-
-//            FXMLLoader productLoader = new FXMLLoader();
-//            productLoader.setLocation(MainApp.class.getResource("listview/productsquare/view/ProductView.fxml"));
-//            AnchorPane productView = (AnchorPane) productLoader.load();
-//            ProductView productView = new ProductView();
-//            productView.setLayoutX(100);
-//            productView.setLayoutY(100);
-
-//            listView.getChildren().add(productView);
-            // Give the controller access to the main app.
-//            WorkingAreaController controller = loader.getController();
-//            controller.setMainApp(this);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void initRootLayout() {
-        try {
-            // Load root layout from fxml file.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class
-                    .getResource("combinedview/CombinedView.fxml"));
-            rootLayout = (HBox) loader.load();
-
-            // Show the scene containing the root layout.
-            Scene scene = new Scene(rootLayout);
-            primaryStage.setScene(scene);
-
-            primaryStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        root.getChildren().add(listView);
+        root.getChildren().add(basketView);
     }
 
     public void showMoreInfoPanel(Product product) {
@@ -118,5 +80,17 @@ public class MainApp extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public Parent getRoot(){
+        return root;
+    }
+
+    public BasketViewController getBasketViewController() {
+        return basketViewController;
+    }
+
+    public ListViewController getListViewController() {
+        return listViewController;
     }
 }

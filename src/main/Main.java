@@ -40,22 +40,16 @@ public class Main extends Application {
         menu.start(primaryStage);
         setMenuHolderContent(menu.getRoot());
 
-        FXMLLoader mainListFxmlLoader = new FXMLLoader();
-        mainListFxmlLoader.setLocation(MainApp.class.getResource("listview/view/ListView.fxml"));
-        setListHolderContent(mainListFxmlLoader.load());
+        MainApp mainShop = new MainApp();
+        mainShop.start(primaryStage);
+        setShopHolderContent(mainShop.getRoot());
+        mainShop.getBasketViewController().setMain(this);
 
-        FXMLLoader mainBasketFxmlLoader = new FXMLLoader();
-        mainBasketFxmlLoader.setLocation(MainApp.class.getResource("basket/view/BasketView.fxml"));
-        setBasketHolderContent(mainBasketFxmlLoader.load());
-        BasketViewController basketViewController = mainBasketFxmlLoader.getController();
-        basketViewController.setMain(this);
-
-        FXMLLoader mainPaymentSceneFxmlLoader = new FXMLLoader();
-        mainPaymentSceneFxmlLoader.setLocation(paymentView.MainApp.class.getResource("view/Wizard.fxml"));
-        Parent scene2 = mainPaymentSceneFxmlLoader.load();
+        paymentView.MainApp mainPayment = new paymentView.MainApp();
+        mainPayment.start(primaryStage);
+        mainPayment.getController().setMain(this);
+        Parent scene2 = mainPayment.getRoot();
         paymentScene = new Scene(scene2, 1366, 768);
-        PaymentController paymentController = mainPaymentSceneFxmlLoader.getController();
-        paymentController.setMain(this);
     }
 
 
@@ -64,14 +58,9 @@ public class Main extends Application {
         controller.menuHolder.getChildren().add(e);
     }
 
-    public void setListHolderContent(Node e){
-        controller.listHolder.getChildren().removeAll();
-        controller.listHolder.getChildren().add(e);
-    }
-
-    public void setBasketHolderContent(Node e){
-        controller.basketHolder.getChildren().removeAll();
-        controller.basketHolder.getChildren().add(e);
+    public void setShopHolderContent(Node e){
+        controller.shopHolder.getChildren().removeAll();
+        controller.shopHolder.getChildren().add(e);
     }
 
     public void switchScene(){

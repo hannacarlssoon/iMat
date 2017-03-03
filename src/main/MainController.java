@@ -14,9 +14,7 @@ public class MainController implements Initializable{
     @FXML
     AnchorPane menuHolder;
     @FXML
-    AnchorPane listHolder;
-    @FXML
-    AnchorPane basketHolder;
+    AnchorPane shopHolder;
 
 
     @Override
