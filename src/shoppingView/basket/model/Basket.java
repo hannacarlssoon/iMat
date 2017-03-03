@@ -1,5 +1,6 @@
 package shoppingView.basket.model;
 
+import paymentView.view.PaymentController;
 import shoppingView.basket.view.BasketViewController;
 import shoppingView.listview.productsquare.view.ProductView;
 import shoppingView.util.PriceUtil;
@@ -9,9 +10,11 @@ import se.chalmers.ait.dat215.project.Product;
 
 public final class Basket {
 
-    private static Basket basket;
+    private static Basket basket = new Basket();
     private ObservableList<BasketItem> items;
     private static BasketViewController basketViewController;
+
+    private PaymentController paymentController;
 
     public static void setBasketViewController(BasketViewController basketViewController) {
         Basket.basketViewController = basketViewController;
@@ -22,16 +25,12 @@ public final class Basket {
     }
 
     public static Basket getInstance() {
-        if (basket == null) {
-            return new Basket();
-        } else {
-            return basket;
-        }
+        return basket;
     }
 
     private Basket() {
         items = FXCollections.observableArrayList();;
-        basket = this;
+        //basket = this;
     }
 
     public Basket(ObservableList<BasketItem> items) {
@@ -85,5 +84,13 @@ public final class Basket {
         return PriceUtil.toPriceFormat(getTotalSum());
     }
 
+
+    public void setPaymentController(PaymentController p) {
+        paymentController = p;
+    }
+
+    public void notifyController() {
+        paymentController.updateBasket();
+    }
 
 }

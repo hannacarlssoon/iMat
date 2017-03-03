@@ -1,5 +1,7 @@
 package shoppingView.basket.view;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import main.Main;
 import se.chalmers.ait.dat215.project.Product;

@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import menu.*;
 import paymentView.view.PaymentController;
 import shoppingView.MainApp;
+import shoppingView.basket.model.Basket;
 import shoppingView.basket.view.BasketViewController;
 
 public class Main extends Application {
@@ -20,6 +21,7 @@ public class Main extends Application {
     private Scene paymentScene;
 
     private ProductsModel productsModel;
+    private Basket basket = Basket.getInstance();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -67,6 +69,7 @@ public class Main extends Application {
         if (primaryStage.getScene().equals(shoppingScene)){
             primaryStage.setScene(paymentScene);
             primaryStage.show();
+            basket.notifyController();
         }
         else if (primaryStage.getScene().equals(paymentScene)){
             primaryStage.setScene(shoppingScene);

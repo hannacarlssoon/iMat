@@ -1,8 +1,11 @@
 package paymentView.view;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -28,6 +31,15 @@ public class PaymentController implements Initializable {
     CreditCard cardInfo = instance.getCreditCard();
     Customer customer = instance.getCustomer();
     Basket basket = Basket.getInstance();
+
+    private ChangeListener<String> x = new ChangeListener<String>() {
+        @Override
+        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+            if (isCardNumberDone() && isCVCDone() && isCCLastNameDone() && isCCFistNameDone() /*&& yearChoiceBox.getValue() != null && monthChoiceBox.getValue() != null && cardType.getValue() != null*/) {
+                System.out.println("Yayyyyy");
+            }
+        }
+    };
 
     //The different views
     @FXML private AnchorPane deliveryView;
@@ -62,8 +74,8 @@ public class PaymentController implements Initializable {
     @FXML private Button deliveryButton;
     @FXML private Button payButton;
     @FXML private CheckBox saveDelivery;
-    @FXML private ListView listView;
-    @FXML private ListView listViewEnd;
+    @FXML private ListView<BasketItem> listView;
+    @FXML private ListView<BasketItem> listViewEnd;
     @FXML private Label endPrice;
     @FXML private Label totalAmount;
 
@@ -130,14 +142,15 @@ public class PaymentController implements Initializable {
     ObservableList<Integer> year = FXCollections.observableArrayList(17, 18, 19, 20, 21, 22, 23);
     ObservableList<Integer> month = FXCollections.observableArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
     ObservableList<String> type = FXCollections.observableArrayList("Visa", "Mastercard");
-    ObservableList<BasketItem> hej = FXCollections.observableArrayList(basket.getItems());
+    ObservableList<BasketItem> basketList;
 
-    //A method to do something
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        listView.setCellFactory(hej -> new ShoppingCartItemsController());
-        listViewEnd.setCellFactory(hej -> new ShoppingCartItemReciptController());
+        basket.setPaymentController(this);
+
+
+
 
         //Makes sure you can only select one radiobutton at a time
         ToggleGroup group = new ToggleGroup();
@@ -185,8 +198,21 @@ public class PaymentController implements Initializable {
             en = en + cardInfo.getHoldersName().charAt(i);
         }
         CCFirstName.setText(fn);
+        CCLastName.setText(en);
 
         updatePrice();
+        changed();
+    }
+
+    public void updateBasket(){
+        basketList = FXCollections.observableArrayList(basket.getItems());
+
+        listView.setItems(basketList);
+        listViewEnd.setItems(basketList);
+
+        listView.setCellFactory(b -> new ShoppingCartItemsController());
+        listViewEnd.setCellFactory(b -> new ShoppingCartItemReciptController());
+
     }
 
     //Closes the application
@@ -343,6 +369,35 @@ public class PaymentController implements Initializable {
         isFour = true;
         changeTabSelected();
     }
+
+
+
+
+
+
+    protected void changed() {
+        CCFirstName.textProperty().addListener(x);
+        CCLastName.textProperty().addListener(x);
+        cvc.textProperty().addListener(x);
+        cardNumber.textProperty().addListener(x);
+        /*cardType.converterProperty().addListener(x);
+        monthChoiceBox.converterProperty().addListener(x);
+        yearChoiceBox.converterProperty().addListener(x); */
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
 
     @FXML
     protected void setEmailButton(ActionEvent event) {
@@ -567,13 +622,16 @@ public class PaymentController implements Initializable {
 
     protected boolean isCCFistNameDone() {
         if (CCFirstName.getText() != null && !CCFirstName.getText().isEmpty() && CCFirstName.getText().matches("[A-Öa-ö]") && CCFirstName.getText().length() > 1) {
+            System.out.print("fn");
             return true;
         }
         return false;
     }
 
     protected boolean isCCLastNameDone() {
-        if (CCLastName.getText() != null && !CCLastName.getText().isEmpty() && CCLastName.getText().matches("[A-Öa-ö]") && CCLastName.getText().length() > 1) {
+        System.out.print("1");
+        if (CCLastName.getText() != null && !CCLastName.getText().isEmpty() && CCLastName.getText().length() > 1) {
+            System.out.print("en");
             return true;
         }
         return false;
@@ -581,13 +639,16 @@ public class PaymentController implements Initializable {
 
     protected boolean isCardNumberDone() {
         if (cardNumber.getText() != null && !cardNumber.getText().isEmpty() && cardNumber.getText().matches("[0-9]*") && cardNumber.getText().length() == 16) {
+            System.out.print("cardnumber");
             return true;
+
         }
         return false;
     }
 
     protected boolean isCVCDone() {
         if (cvc.getText() != null && !cvc.getText().isEmpty() && cvc.getText().matches("[0-9]*") && cvc.getText().length() == 3) {
+            System.out.print("cvc");
             return true;
         }
         return false;
