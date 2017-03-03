@@ -27,7 +27,7 @@
             <TableColumn fx:id="deleteColumn" prefWidth="50.0" />
         </columns>
       </TableView>
-      <Button layoutX="83.0" layoutY="547.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="159.0" styleClass="prominentButton" stylesheets="@../../CSS/Hanna.css" text="Till kassan" AnchorPane.bottomAnchor="14.0" />
+      <Button layoutX="83.0" layoutY="547.0" mnemonicParsing="false" onAction="#toCheckout" prefHeight="50.0" prefWidth="159.0" styleClass="prominentButton" stylesheets="@../../CSS/Hanna.css" text="Till kassan" AnchorPane.bottomAnchor="14.0" />
       <Label fx:id="totalPrice" layoutX="182.0" layoutY="505.0" prefHeight="32.0" prefWidth="171.0" styleClass="label-price" text="200 kr" AnchorPane.bottomAnchor="74.0" />
       <Separator layoutX="15.0" layoutY="505.0" prefHeight="3.0" prefWidth="295.0" AnchorPane.bottomAnchor="103.0" />
       <Separator layoutX="10.0" layoutY="537.0" prefHeight="3.0" prefWidth="295.0" AnchorPane.bottomAnchor="103.0" />
