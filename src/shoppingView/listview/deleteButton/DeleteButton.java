@@ -1,22 +1,15 @@
 package shoppingView.listview.deleteButton;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import se.chalmers.ait.dat215.project.IMatDataHandler;
-import se.chalmers.ait.dat215.project.Product;
 import shoppingView.MainApp;
 import shoppingView.basket.model.Basket;
 import shoppingView.basket.model.BasketItem;
 
 import java.io.IOException;
-import java.util.List;
 
 public class DeleteButton extends AnchorPane {
 
@@ -50,6 +43,7 @@ public class DeleteButton extends AnchorPane {
         Basket.getInstance().getItems().remove(
                 Basket.getInstance().getItems().indexOf(item)
         );
+        Basket.getInstance().removeItem(item.getProduct());
     }
 
     public void setMainApp(MainApp mainApp) {

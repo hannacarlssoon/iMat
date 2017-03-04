@@ -2,7 +2,9 @@ package shoppingView.listview.productsquare.view;
 
 import javafx.animation.*;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.util.Duration;
+import main.ProductsModel;
 import se.chalmers.ait.dat215.project.ShoppingCart;
 import shoppingView.MainApp;
 import shoppingView.basket.model.Basket;
@@ -25,6 +27,7 @@ import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.List;
 
 public class ProductView extends AnchorPane {
@@ -43,6 +46,12 @@ public class ProductView extends AnchorPane {
     private ImageView minusIcon;
     @FXML
     private AnchorPane addedPane;
+    @FXML
+    private ImageView basketIcon;
+    @FXML
+    private ImageView infoLogo;
+    @FXML
+    private Tooltip productTip;
 
     private Product product;
 
@@ -63,8 +72,8 @@ public class ProductView extends AnchorPane {
         }
 
 
-        List<Product> products = IMatDataHandler.getInstance().getProducts();
-        product = products.get(productID);
+        //List<Product> products = IMatDataHandler.getInstance().getProducts();
+        product = ProductsModel.getInstance().getAllProducts().get(productID);
 
         setImage();
         setProductName();
@@ -77,11 +86,51 @@ public class ProductView extends AnchorPane {
         if (Basket.getInstance().contains(product)) {
             showAddedPane();
         }
+
+        hackTooltipStartTiming(productTip);
+    }
+
+    public ProductView(Product newProduct, MainApp mainApp) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ProductView.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+
+        this.mainApp = mainApp;
+
+        try {
+            fxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+
+
+        //List<Product> products = IMatDataHandler.getInstance().getProducts();
+        product = newProduct;
+
+        setImage();
+        setProductName();
+        setUpAmounts();
+        setIcons();
+
+        price.textProperty().setValue(PriceUtil.toPriceFormat(product.getPrice()));
+
+        //Shows addedPane from the beginning when browsing (if product in basket):
+        if (Basket.getInstance().contains(product)) {
+            showAddedPane();
+        }
+
+        hackTooltipStartTiming(productTip);
     }
 
     private void setIcons() {
         plusIcon.setImage(new Image("file:resources/images/paymentImages/add grey.png"));
         minusIcon.setImage(new Image("file:resources/images/paymentImages/remove grey.png"));
+        infoLogo.setImage(new Image("file:resources/images/paymentImages/information.png"));
+        basketIcon.setImage(new Image("file:resources/images/basket.png"));
+        basketIcon.setFitHeight(25);
+        basketIcon.setFitWidth(25);
+        basketIcon.setLayoutX(92);
+        basketIcon.setLayoutY(2);
     }
 
     private void setProductName() {
@@ -187,5 +236,25 @@ public class ProductView extends AnchorPane {
     @FXML
     public void showMoreInfoPanel() {
         mainApp.showMoreInfoPanel(product);
+    }
+
+
+
+    //For making the tooltip appear quicker:
+    public static void hackTooltipStartTiming(Tooltip tooltip) {
+        try {
+            Field fieldBehavior = tooltip.getClass().getDeclaredField("BEHAVIOR");
+            fieldBehavior.setAccessible(true);
+            Object objBehavior = fieldBehavior.get(tooltip);
+
+            Field fieldTimer = objBehavior.getClass().getDeclaredField("activationTimer");
+            fieldTimer.setAccessible(true);
+            Timeline objTimer = (Timeline) fieldTimer.get(objBehavior);
+
+            objTimer.getKeyFrames().clear();
+            objTimer.getKeyFrames().add(new KeyFrame(new Duration(250)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

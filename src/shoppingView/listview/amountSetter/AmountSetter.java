@@ -5,6 +5,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -12,7 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.*;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 import shoppingView.MainApp;
@@ -32,6 +33,8 @@ public class AmountSetter extends AnchorPane {
     private ImageView plusIcon;
     @FXML
     private ImageView minusIcon;
+    @FXML
+    private Button plusButton;
 
     private Product product;
 
@@ -81,6 +84,12 @@ public class AmountSetter extends AnchorPane {
         minusIcon.setImage(new Image("file:resources/images/paymentImages/remove grey.png"));
         minusIcon.setFitHeight(10);
         minusIcon.setFitWidth(10);
+
+
+//        BackgroundImage backgroundImage = new BackgroundImage( new Image("file:resources/images/paymentImages/add grey.png"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+//        Background background = new Background(backgroundImage);
+//
+//        plusButton.setBackground(background);
     }
 
     private void setUpAmounts() {

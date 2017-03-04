@@ -48,6 +48,8 @@ public class ProductsModel extends Observable{
             ProductCategory category = ProductCategory.valueOf(s);
             products.addAll(handler.getProducts(category));
         }
+
+        setChanged();
         notifyObservers();
     }
 
@@ -164,4 +166,7 @@ public class ProductsModel extends Observable{
     }
 
 
+    public List<Product> getAllProducts() {
+        return allProducts;
+    }
 }

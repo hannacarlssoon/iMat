@@ -9,6 +9,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import shoppingView.listview.productsquare.view.ProductViewFactory;
 
 import java.util.List;
 import java.util.Observable;
@@ -57,7 +58,7 @@ public class ListViewController implements Observer {
         int counter = 0;
 
         for (Product ID : productIDs) {
-            productGrid.add(new ProductView(ID.getProductId(), mainApp), counter % columns, counter / columns);
+            productGrid.add(ProductViewFactory.createProductView(ID, mainApp), counter % columns, counter / columns);
             counter++;
         }
         productGrid.setHgap(20);
