@@ -40,9 +40,9 @@ public class DeleteButton extends AnchorPane {
     @FXML
     private void delete() {
         item.hideAddedPane();
-        Basket.getInstance().getItems().remove(
-                Basket.getInstance().getItems().indexOf(item)
-        );
+//        Basket.getInstance().getItems().remove(
+//                Basket.getInstance().getItems().indexOf(item)
+//        );
         Basket.getInstance().removeItem(item.getProduct());
     }
 

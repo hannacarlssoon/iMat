@@ -148,7 +148,7 @@ public class ProductView extends AnchorPane {
     }
 
     @FXML
-    private void showAddedPane() {
+    public void showAddedPane() {
 //        FadeTransition ft = new FadeTransition(Duration.millis(1000), addedPane);
 //        ft.setFromValue(0.0);
 //        ft.setToValue(1.0);

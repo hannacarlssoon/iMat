@@ -13,6 +13,7 @@ public final class Basket {
     private static Basket basket = new Basket();
     private ObservableList<BasketItem> items;
     private static BasketViewController basketViewController;
+    private RemovedItemsHolder removedItemsHolder = new RemovedItemsHolder();
 
     private PaymentController paymentController;
 
@@ -60,11 +61,17 @@ public final class Basket {
     public BasketItem removeItem(Product productToRemove) {
         for (BasketItem item : items) {
             if (item.getProduct().equals(productToRemove)) {
+                int index = items.indexOf(item);
+
                 items.remove(item);
+                removedItemsHolder.addItemToRemoved(item, index);
+                System.out.println("Removed");
+
+                basketViewController.showPutBack();
+
                 return item;
             }
         }
-
         return null;
     }
 
@@ -93,4 +100,26 @@ public final class Basket {
         paymentController.updateBasket();
     }
 
+    public void putBackLastRemoved() {
+        IndexedBasketItem itemToPutBack = removedItemsHolder.getLastRemovedItem();
+        if (itemToPutBack != null) {
+            for (BasketItem item : items) {
+                if (item.getProduct().equals(itemToPutBack.getBasketItem().getProduct())) {
+                    item.addAmount(itemToPutBack.getBasketItem().getAmount());
+                    return;
+                }
+            }
+
+            if (items.size() > itemToPutBack.getIndex()) {
+                items.add(itemToPutBack.getIndex(), itemToPutBack.getBasketItem());
+            } else {
+                items.add(itemToPutBack.getBasketItem());
+            }
+            itemToPutBack.getBasketItem().showAddedPane();
+
+            if (removedItemsHolder.isEmpty()) {
+                basketViewController.hidePutBack();
+            }
+        }
+    }
 }

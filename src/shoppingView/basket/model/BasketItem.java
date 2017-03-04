@@ -93,4 +93,7 @@ public class BasketItem {
     public void hideAddedPane() {
         productView.hideAddedPane();
     }
+    public void showAddedPane() {
+        productView.showAddedPane();
+    }
 }

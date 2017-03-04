@@ -32,5 +32,10 @@
       <Separator layoutX="15.0" layoutY="505.0" prefHeight="3.0" prefWidth="295.0" AnchorPane.bottomAnchor="103.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="10.0" />
       <Separator layoutX="10.0" layoutY="537.0" prefHeight="3.0" prefWidth="295.0" AnchorPane.bottomAnchor="103.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="10.0" />
       <Label layoutX="63.0" layoutY="505.0" prefHeight="32.0" prefWidth="136.0" styleClass="label-price" text="Summa:" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="63.0" />
+      <AnchorPane fx:id="putBack" layoutX="5.0" layoutY="438.0" opacity="0.0" prefHeight="66.0" prefWidth="385.0">
+         <children>
+            <Button layoutX="54.0" layoutY="12.0" mnemonicParsing="false" onAction="#putBackClicked" prefHeight="42.0" prefWidth="277.0" styleClass="abutton" stylesheets="@../../CSS/Hanna.css" text="Ångra borttagning av vara" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

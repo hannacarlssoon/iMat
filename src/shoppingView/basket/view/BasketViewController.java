@@ -1,8 +1,14 @@
 package shoppingView.basket.view;
 
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 import main.Main;
 import se.chalmers.ait.dat215.project.Product;
 import shoppingView.MainApp;
@@ -32,6 +38,8 @@ public class BasketViewController {
     private TableColumn<BasketItem, String> priceColumn;
     @FXML
     private TableColumn<BasketItem, DeleteButton> deleteColumn;
+    @FXML
+    private AnchorPane putBack;
 
     @FXML
     private Label totalPrice;
@@ -105,4 +113,30 @@ public class BasketViewController {
         this.main = main;
     }
 
+
+    public void showPutBack() {
+        KeyValue keyValueFade  = new KeyValue(putBack.opacityProperty(), 1.0, Interpolator.EASE_OUT);
+
+        KeyFrame keyFrameFade  = new KeyFrame(Duration.millis(550), keyValueFade);
+
+        Timeline timeline  = new Timeline();
+        timeline.getKeyFrames().addAll(keyFrameFade);
+        timeline.play();
+    }
+
+    public void hidePutBack() {
+        KeyValue keyValueFade  = new KeyValue(putBack.opacityProperty(), 0.0, Interpolator.EASE_OUT);
+
+        KeyFrame keyFrameFade  = new KeyFrame(Duration.millis(550), keyValueFade);
+
+        Timeline timeline  = new Timeline();
+        timeline.getKeyFrames().addAll(keyFrameFade);
+        timeline.play();
+
+    }
+
+    @FXML
+    private void putBackClicked() {
+        Basket.getInstance().putBackLastRemoved();
+    }
 }
