@@ -78,6 +78,11 @@ public class BasketViewController {
 
     //???
     private void updateSumLabel() {
+        //Added:
+
+        System.out.println(priceColumn.getCellObservableValue(0));
+
+
         double sum = 0;
         System.out.println("Updating!");
         for (BasketItem item : Basket.getInstance().getItems()) {

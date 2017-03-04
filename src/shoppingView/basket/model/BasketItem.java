@@ -25,7 +25,7 @@ public class BasketItem {
     private int amount;
     private ComboBox<String> box;
     private AmountSetter amountSetter;
-    private SimpleStringProperty price;
+    private SimpleStringProperty price = new SimpleStringProperty("");
     private ProductView productView;
 
     public BasketItem(Product product, int amount) {
@@ -48,7 +48,8 @@ public class BasketItem {
         //price = new SimpleStringProperty(priceString);
 
         String priceString = PriceUtil.toPriceFormat(product.getPrice());
-        price = new SimpleStringProperty(amount + " x " + priceString);
+        //price = new SimpleStringProperty(amount + " x " + priceString);
+        price.setValue(amount + " x " + priceString);
         return price;
     }
 
@@ -78,6 +79,7 @@ public class BasketItem {
         amount += amountToAdd;
         amountSetter.updateAmount();
         Basket.updateBasket();
+        getPriceAsString();
     }
 
     public ObservableValue<DeleteButton> getDeleteButton() {

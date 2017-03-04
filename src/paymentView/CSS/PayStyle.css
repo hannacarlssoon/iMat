@@ -156,6 +156,11 @@
     -fx-border-width: 0;
 }
 
+.information-button:hover {
+    -fx-background-color: #FFFFFF;
+    -fx-border-width: 0;
+}
+
 .noEmailPhone-button {
     -fx-border-radius: 10 10 10 10;
     -fx-background-color: #FFFFFF;
