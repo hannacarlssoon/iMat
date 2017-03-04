@@ -70,6 +70,7 @@ public class Main extends Application {
             primaryStage.setScene(paymentScene);
             primaryStage.show();
             basket.notifyController();
+
         }
         else if (primaryStage.getScene().equals(paymentScene)){
             primaryStage.setScene(shoppingScene);

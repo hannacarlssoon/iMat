@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
@@ -26,7 +21,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@../CSS/PayStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paymentView.view.PaymentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@../CSS/PayStyle.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paymentView.view.PaymentController">
    <children>
       <AnchorPane fx:id="invoiceView" prefHeight="200.0" prefWidth="200.0" styleClass="background" stylesheets="@../CSS/PayStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0">
          <children>
@@ -85,152 +80,64 @@
             </GridPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="backgroundView" prefHeight="200.0" prefWidth="200.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="creditCardView" prefHeight="200.0" prefWidth="200.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0">
          <children>
-            <AnchorPane layoutX="335.0" layoutY="167.0" prefHeight="500.0" prefWidth="700.0" styleClass="background5" stylesheets="@../CSS/PayStyle.css" AnchorPane.leftAnchor="335.0" AnchorPane.rightAnchor="331.0">
+            <CheckBox fx:id="saveCreditCard" layoutX="502.0" layoutY="380.0" mnemonicParsing="false" onAction="#saveCreditCard" styleClass="label" stylesheets="@../CSS/PayStyle.css" text="Spara mina kortuppgifter tills nästa gång">
+               <font>
+                  <Font name="Segoe UI Light" size="13.0" />
+               </font>
+            </CheckBox>
+            <Label layoutX="496.0" layoutY="12.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Vänligen fyll i dina kortuppgifter" />
+            <Button mnemonicParsing="false" onAction="#setDeliveryView" styleClass="abutton" stylesheets="@../CSS/PayStyle.css" text="Tillbaka" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
+            <GridPane layoutX="431.0" layoutY="58.0" prefHeight="93.0" prefWidth="414.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
                <children>
-                  <Pane layoutX="-1.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="470.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <Label layoutX="8.0" text="Antal" />
-                        <Label layoutX="132.0" text="Vara" />
-                        <Label layoutX="516.0" text="Pris" />
-                        <Label layoutX="631.0" text="Ta bort" />
-                        <Separator layoutX="121.0" orientation="VERTICAL" prefHeight="30.0" />
-                        <Separator layoutX="505.0" orientation="VERTICAL" prefHeight="30.0" />
-                        <Separator layoutX="620.0" orientation="VERTICAL" prefHeight="30.0" />
-                     </children>
-                  </Pane>
-                  <AnchorPane layoutX="215.0" layoutY="285.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="460.0">
-                     <children>
-                        <Separator layoutX="505.0" layoutY="1.0" orientation="VERTICAL" prefHeight="38.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        <Label layoutX="404.0" layoutY="2.0" styleClass="label-header" text="Summa:" />
-                        <Label fx:id="totalAmount" alignment="CENTER" layoutX="513.0" layoutY="1.0" prefHeight="36.0" prefWidth="182.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Totalt pris" />
-                        <Separator layoutX="-1.0" orientation="VERTICAL" prefHeight="40.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="222.0" layoutY="101.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
-                     <children>
-                        <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="428.0" prefWidth="698.0">
-                                 <children>
-                                    <ListView fx:id="listView" prefHeight="428.0" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                 </children></AnchorPane>
-                          </content>
-                        </ScrollPane>
-                     </children>
-                  </AnchorPane>
+                  <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="186.0" text="Förnamn:" />
+                  <TextField fx:id="CCFirstName" styleClass="text-field" GridPane.columnIndex="1" />
+                  <TextField fx:id="CCLastName" prefHeight="17.0" prefWidth="176.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="186.0" text="Efternamn:" GridPane.rowIndex="1" />
                </children>
-            </AnchorPane>
-            <Button mnemonicParsing="false" onAction="#setDeliveryView" styleClass="prominentButton" text="Vidare" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
-            <Button layoutX="50.0" layoutY="691.0" mnemonicParsing="false" onAction="#returnToStore" styleClass="abutton" text="Fortsätt handla" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
-            <Label layoutX="556.0" layoutY="121.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Bekräfta din varukorg" />
-            <Button fx:id="confirmation" layoutX="41.0" layoutY="6.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="266.0" stylesheets="@../CSS/PayStyle.css" text="   Bekräfta varukorgen" AnchorPane.topAnchor="0.0">
-               <graphic>
-                  <ImageView fx:id="tabNumberOne" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../resources/images/paymentImages/1blue.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <styleClass>
-                  <String fx:value="buttonWizard" />
-                  <String fx:value="activeTab" />
-               </styleClass>
-            </Button>
-            <Button fx:id="delivery" layoutX="328.0" layoutY="6.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="275.0" styleClass="buttonWizard" stylesheets="@../CSS/PayStyle.css" text="   Leveransinformation" AnchorPane.topAnchor="0.0">
-               <graphic>
-                  <ImageView fx:id="tabNumberTwo" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../resources/images/paymentImages/2%20grey.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="pay" layoutX="621.0" layoutY="6.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="211.0" styleClass="buttonWizard" stylesheets="@../CSS/PayStyle.css" text="   Betalning" AnchorPane.topAnchor="0.0">
-               <graphic>
-                  <ImageView fx:id="tabNumberThree" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../resources/images/paymentImages/3%20grey.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="recipt" layoutX="823.0" layoutY="6.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="214.0" styleClass="buttonWizard" stylesheets="@../CSS/PayStyle.css" text="   Kvitto" AnchorPane.topAnchor="0.0">
-               <graphic>
-                  <ImageView fx:id="tabNumberFour" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../resources/images/paymentImages/4%20grey.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Separator layoutX="334.0" layoutY="167.0" orientation="VERTICAL" prefHeight="30.0" />
-            <Separator layoutX="1033.0" layoutY="167.0" orientation="VERTICAL" prefHeight="30.0" />
-            <Separator layoutX="1033.0" layoutY="627.0" orientation="VERTICAL" prefHeight="40.0" />
-            <Separator layoutX="335.0" layoutY="167.0" prefHeight="0.0" prefWidth="700.0" />
-            <Separator layoutX="335.0" layoutY="666.0" prefWidth="700.0" />
-            <ImageView fx:id="iMat" fitHeight="69.0" fitWidth="320.0" layoutX="1101.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="15.0">
-               <image>
-                  <Image url="@../../menu/logotype.png" />
-               </image>
-            </ImageView>
-         </children></AnchorPane>
-      <AnchorPane fx:id="reciptView" prefHeight="200.0" prefWidth="200.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
-         <children>
-            <Label layoutX="585.0" layoutY="531.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Välkommen åter!" />
-            <Button layoutX="1042.0" layoutY="569.0" mnemonicParsing="false" onAction="#closeAboutActionPerformed" styleClass="prominentButton" stylesheets="@../CSS/PayStyle.css" text="Stäng ner programmet" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
-            <Button layoutX="87.0" layoutY="574.0" mnemonicParsing="false" onAction="#returnToStore" styleClass="abutton" stylesheets="@../CSS/PayStyle.css" text="Tillbaka till affären" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
-            <Label layoutX="288.0" layoutY="21.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Tack för att du handlar hos oss på shoppingView. Här är ditt kvitto:" />
-            <AnchorPane layoutX="331.0" layoutY="75.0" prefHeight="500.0" prefWidth="700.0" styleClass="background5">
+            </GridPane>
+            <GridPane layoutX="452.0" layoutY="162.0" prefHeight="190.0" prefWidth="162.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
                <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="470.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <Label layoutX="10.0" text="Antal" />
-                        <Label layoutX="106.0" text="Vara" />
-                        <Label layoutX="577.0" text="Pris" />
-                        <Separator layoutX="92.0" orientation="VERTICAL" prefHeight="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        <Separator layoutX="567.0" orientation="VERTICAL" prefHeight="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="175.0" layoutY="212.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="460.0">
-                     <children>
-                        <Separator layoutX="567.0" layoutY="-86.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        <Label layoutX="466.0" layoutY="4.0" styleClass="label-header" text="Summa:" />
-                        <Label fx:id="endPrice" alignment="CENTER" layoutX="575.0" layoutY="1.0" prefHeight="36.0" prefWidth="117.0" styleClass="label-header" text="Pris" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="250.0" layoutY="150.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
-                     <children>
-                        <ScrollPane layoutX="298.0" layoutY="77.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <content>
-                              <ListView fx:id="listViewEnd" prefHeight="428.0" prefWidth="698.0" />
-                           </content></ScrollPane>
-                     </children>
-                  </AnchorPane>
+                  <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="235.0" text="År/Månad:" GridPane.rowIndex="2" />
+                  <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="449.0" text="CVC:" GridPane.rowIndex="3" />
+                  <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="238.0" text="Kortnummer:" GridPane.rowIndex="1" />
+                  <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="179.0" text="Korttyp:" />
                </children>
-            </AnchorPane>
-            <Separator layoutX="331.0" layoutY="74.0" prefWidth="700.0" />
-            <Separator layoutX="330.0" layoutY="535.0" orientation="VERTICAL" prefHeight="40.0" />
-            <Separator layoutX="1029.0" layoutY="535.0" orientation="VERTICAL" prefHeight="40.0" />
-            <Separator layoutX="1029.0" layoutY="75.0" orientation="VERTICAL" prefHeight="30.0" />
-            <Separator layoutX="330.0" layoutY="75.0" orientation="VERTICAL" prefHeight="30.0" />
-            <Separator layoutX="331.0" layoutY="575.0" prefWidth="700.0" />
-            <Button layoutX="595.0" layoutY="585.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="176.0" styleClass="abutton" stylesheets="@../CSS/PayStyle.css" text="   Skriv ut">
-               <graphic>
-                  <ImageView fx:id="print" fitHeight="46.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../resources/images/paymentImages/printer.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
+            </GridPane>
+            <TextField fx:id="cardNumber" layoutX="637.0" layoutY="215.0" />
+            <ChoiceBox fx:id="yearChoiceBox" layoutX="637.0" layoutY="261.0" prefHeight="44.0" prefWidth="62.0" styleClass="cb" />
+            <ChoiceBox fx:id="monthChoiceBox" layoutX="721.0" layoutY="262.0" prefHeight="44.0" prefWidth="62.0" />
+            <TextField fx:id="cvc" layoutX="637.0" layoutY="311.0" prefHeight="37.0" prefWidth="53.0" />
+            <Label layoutX="704.0" layoutY="258.0" prefHeight="35.0" prefWidth="11.0" styleClass="label-dash" stylesheets="@../CSS/PayStyle.css" text="/" />
+            <ChoiceBox fx:id="cardType" layoutX="638.0" layoutY="165.0" prefWidth="150.0" />
+            <Button fx:id="invisiblePayButton" layoutX="1093.0" layoutY="470.0" mnemonicParsing="false" opacity="0.0" prefHeight="44.0" prefWidth="220.0">
+               <tooltip>
+                  <Tooltip text="Du måste fylla i alla rader innan du kan betala och gå vidare" />
+               </tooltip></Button>
+            <Button fx:id="payButton" mnemonicParsing="false" onAction="#setReciptView" styleClass="prominentButton" stylesheets="@../CSS/PayStyle.css" text="Betala och slutför köp" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="deliveryView" prefHeight="200.0" prefWidth="200.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
          <children>
             <Label layoutX="465.0" layoutY="14.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Vänligen fyll i din leveransinformation" AnchorPane.leftAnchor="465.0" AnchorPane.rightAnchor="459.0" />
-            <Button fx:id="deliveryButton" mnemonicParsing="false" onAction="#setPayAtDoor" styleClass="prominentButton" stylesheets="@../CSS/PayStyle.css" text="Vidare" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
             <Button mnemonicParsing="false" onAction="#setStartPage" styleClass="abutton" text="Tillbaka" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
             <CheckBox fx:id="saveDelivery" layoutX="579.0" layoutY="318.0" mnemonicParsing="false" onAction="#saveDeliveryInfo" styleClass="label" stylesheets="@../CSS/PayStyle.css" text="Spara uppgifterna" />
             <Label layoutX="455.0" layoutY="397.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Vänligen fyll i när du vill ha dina matvaror" />
@@ -305,57 +212,153 @@
                   <Tooltip text="Varorna levereras på eftermiddagen mellan 15 - 18" />
                </tooltip>
             </Button>
+            <Button fx:id="invisibleDeliveryButton" layoutX="1220.0" layoutY="593.0" mnemonicParsing="false" opacity="0.0" prefHeight="42.0" prefWidth="95.0">
+               <tooltip>
+                  <Tooltip text="Du måste fylla i all information innan du kan gå vidare" />
+               </tooltip></Button>
+            <Button fx:id="deliveryButton" mnemonicParsing="false" onAction="#setPayAtDoor" styleClass="prominentButton" stylesheets="@../CSS/PayStyle.css" text="Vidare" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="creditCardView" prefHeight="200.0" prefWidth="200.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0">
+      <AnchorPane fx:id="backgroundView" prefHeight="200.0" prefWidth="200.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <CheckBox fx:id="saveCreditCard" layoutX="502.0" layoutY="380.0" mnemonicParsing="false" onAction="#saveCreditCard" styleClass="label" stylesheets="@../CSS/PayStyle.css" text="Spara mina kortuppgifter tills nästa gång">
-               <font>
-                  <Font name="Segoe UI Light" size="13.0" />
-               </font>
-            </CheckBox>
-            <Label layoutX="496.0" layoutY="12.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Vänligen fyll i dina kortuppgifter" />
-            <Button fx:id="payButton" mnemonicParsing="false" onAction="#setReciptView" styleClass="prominentButton" stylesheets="@../CSS/PayStyle.css" text="Betala och slutför köp" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
-            <Button mnemonicParsing="false" onAction="#setDeliveryView" styleClass="abutton" stylesheets="@../CSS/PayStyle.css" text="Tillbaka" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
-            <GridPane layoutX="431.0" layoutY="58.0" prefHeight="93.0" prefWidth="414.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
+            <AnchorPane layoutX="335.0" layoutY="167.0" prefHeight="500.0" prefWidth="720.0" styleClass="background5" stylesheets="@../CSS/PayStyle.css" AnchorPane.leftAnchor="335.0" AnchorPane.rightAnchor="311.0">
                <children>
-                  <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="186.0" text="Efternamn:" />
-                  <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="186.0" text="Förnamn:" GridPane.rowIndex="1" />
-                  <TextField fx:id="CCFirstName" styleClass="text-field" GridPane.columnIndex="1" />
-                  <TextField fx:id="CCLastName" prefHeight="17.0" prefWidth="176.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Pane layoutX="-1.0" prefHeight="500.0" prefWidth="720.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label layoutX="8.0" text="Antal" />
+                        <Label layoutX="142.0" text="Vara" />
+                        <Label layoutX="527.0" text="Pris" />
+                        <Label layoutX="644.0" text="Ta bort" />
+                        <Separator layoutX="131.0" orientation="VERTICAL" prefHeight="30.0" />
+                        <Separator layoutX="515.0" orientation="VERTICAL" prefHeight="30.0" />
+                        <Separator layoutX="630.0" orientation="VERTICAL" prefHeight="30.0" />
+                     </children>
+                  </Pane>
+                  <AnchorPane layoutX="215.0" layoutY="285.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="460.0">
+                     <children>
+                        <Separator layoutX="505.0" layoutY="1.0" orientation="VERTICAL" prefHeight="38.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Label layoutX="404.0" layoutY="2.0" styleClass="label-header" text="Summa:" />
+                        <Label fx:id="totalAmount" alignment="CENTER" layoutX="513.0" layoutY="1.0" prefHeight="36.0" prefWidth="182.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Totalt pris" />
+                        <Separator layoutX="-1.0" orientation="VERTICAL" prefHeight="40.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="222.0" layoutY="101.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                     <children>
+                        <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="428.0" prefWidth="718.0">
+                                 <children>
+                                    <ListView fx:id="listView" prefHeight="428.0" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children></AnchorPane>
+                          </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
                </children>
-            </GridPane>
-            <GridPane layoutX="452.0" layoutY="162.0" prefHeight="190.0" prefWidth="162.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
+            </AnchorPane>
+            <Button mnemonicParsing="false" onAction="#setDeliveryView" styleClass="prominentButton" text="Vidare" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
+            <Button layoutX="50.0" layoutY="691.0" mnemonicParsing="false" onAction="#returnToStore" styleClass="abutton" text="Fortsätt handla" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
+            <Label layoutX="558.0" layoutY="121.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Bekräfta din varukorg" />
+            <Button fx:id="confirmation" layoutX="41.0" layoutY="6.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="266.0" stylesheets="@../CSS/PayStyle.css" text="   Bekräfta varukorgen" AnchorPane.topAnchor="0.0">
+               <graphic>
+                  <ImageView fx:id="tabNumberOne" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/images/paymentImages/1blue.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="buttonWizard" />
+                  <String fx:value="activeTab" />
+               </styleClass>
+            </Button>
+            <Button fx:id="delivery" layoutX="328.0" layoutY="6.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="275.0" styleClass="buttonWizard" stylesheets="@../CSS/PayStyle.css" text="   Leveransinformation" AnchorPane.topAnchor="0.0">
+               <graphic>
+                  <ImageView fx:id="tabNumberTwo" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/images/paymentImages/2%20grey.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="pay" layoutX="621.0" layoutY="6.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="211.0" styleClass="buttonWizard" stylesheets="@../CSS/PayStyle.css" text="   Betalning" AnchorPane.topAnchor="0.0">
+               <graphic>
+                  <ImageView fx:id="tabNumberThree" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/images/paymentImages/3%20grey.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="recipt" layoutX="823.0" layoutY="6.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="214.0" styleClass="buttonWizard" stylesheets="@../CSS/PayStyle.css" text="   Kvitto" AnchorPane.topAnchor="0.0">
+               <graphic>
+                  <ImageView fx:id="tabNumberFour" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/images/paymentImages/4%20grey.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator layoutX="334.0" layoutY="167.0" orientation="VERTICAL" prefHeight="30.0" />
+            <Separator layoutX="1053.0" layoutY="167.0" orientation="VERTICAL" prefHeight="30.0" />
+            <Separator layoutX="1053.0" layoutY="627.0" orientation="VERTICAL" prefHeight="40.0" />
+            <Separator layoutX="335.0" layoutY="167.0" prefHeight="0.0" prefWidth="720.0" />
+            <Separator layoutX="335.0" layoutY="666.0" prefWidth="720.0" />
+            <ImageView fx:id="iMat" fitHeight="69.0" fitWidth="320.0" layoutX="1101.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="15.0">
+               <image>
+                  <Image url="@../../menu/logotype.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+      <AnchorPane fx:id="reciptView" prefHeight="200.0" prefWidth="200.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+         <children>
+            <Label layoutX="585.0" layoutY="531.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Välkommen åter!" />
+            <Button layoutX="1042.0" layoutY="569.0" mnemonicParsing="false" onAction="#closeAboutActionPerformed" styleClass="prominentButton" stylesheets="@../CSS/PayStyle.css" text="Stäng ner programmet" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" />
+            <Button layoutX="87.0" layoutY="574.0" mnemonicParsing="false" onAction="#returnToStore" styleClass="abutton" stylesheets="@../CSS/PayStyle.css" text="Tillbaka till affären" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
+            <Label layoutX="288.0" layoutY="21.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Tack för att du handlar hos oss på shoppingView. Här är ditt kvitto:" />
+            <AnchorPane layoutX="331.0" layoutY="75.0" prefHeight="500.0" prefWidth="720.0" styleClass="background5">
                <children>
-                  <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="235.0" text="År/Månad:" GridPane.rowIndex="2" />
-                  <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="449.0" text="CVC:" GridPane.rowIndex="3" />
-                  <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="238.0" text="Kortnummer:" GridPane.rowIndex="1" />
-                  <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="179.0" text="Korttyp:" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="470.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label layoutX="10.0" text="Antal" />
+                        <Label layoutX="116.0" text="Vara" />
+                        <Label layoutX="589.0" text="Pris" />
+                        <Separator layoutX="102.0" orientation="VERTICAL" prefHeight="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Separator layoutX="577.0" orientation="VERTICAL" prefHeight="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="175.0" layoutY="212.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="460.0">
+                     <children>
+                        <Separator layoutX="567.0" layoutY="-86.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Label layoutX="466.0" layoutY="4.0" styleClass="label-header" text="Summa:" />
+                        <Label fx:id="endPrice" alignment="CENTER" layoutX="575.0" layoutY="1.0" prefHeight="36.0" prefWidth="117.0" styleClass="label-header" text="Pris" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="250.0" layoutY="150.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                     <children>
+                        <ScrollPane layoutX="298.0" layoutY="77.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <content>
+                              <ListView fx:id="listViewEnd" prefHeight="428.0" prefWidth="717.0" />
+                           </content></ScrollPane>
+                     </children>
+                  </AnchorPane>
                </children>
-            </GridPane>
-            <TextField fx:id="cardNumber" layoutX="637.0" layoutY="215.0" />
-            <ChoiceBox fx:id="yearChoiceBox" layoutX="637.0" layoutY="261.0" onMousePressed="#initializeYear" prefHeight="44.0" prefWidth="62.0" styleClass="cb" />
-            <ChoiceBox fx:id="monthChoiceBox" layoutX="721.0" layoutY="262.0" onMousePressed="#initializeMonth" prefHeight="44.0" prefWidth="62.0" />
-            <TextField fx:id="cvc" layoutX="637.0" layoutY="311.0" prefHeight="37.0" prefWidth="53.0" />
-            <Label layoutX="704.0" layoutY="258.0" prefHeight="35.0" prefWidth="11.0" styleClass="label-dash" stylesheets="@../CSS/PayStyle.css" text="/" />
-            <ChoiceBox fx:id="cardType" layoutX="638.0" layoutY="165.0" prefWidth="150.0" />
+            </AnchorPane>
+            <Separator layoutX="331.0" layoutY="74.0" prefWidth="720.0" />
+            <Separator layoutX="330.0" layoutY="535.0" orientation="VERTICAL" prefHeight="40.0" />
+            <Separator layoutX="1049.0" layoutY="535.0" orientation="VERTICAL" prefHeight="40.0" />
+            <Separator layoutX="1049.0" layoutY="75.0" orientation="VERTICAL" prefHeight="30.0" />
+            <Separator layoutX="330.0" layoutY="75.0" orientation="VERTICAL" prefHeight="30.0" />
+            <Separator layoutX="331.0" layoutY="575.0" prefWidth="720.0" />
+            <Button layoutX="595.0" layoutY="585.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="176.0" styleClass="abutton" stylesheets="@../CSS/PayStyle.css" text="   Skriv ut">
+               <graphic>
+                  <ImageView fx:id="print" fitHeight="46.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/images/paymentImages/printer.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
    </children>

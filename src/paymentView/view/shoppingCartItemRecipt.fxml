@@ -5,13 +5,13 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="mainAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="698.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="24.0" layoutY="25.0" text="Antal" />
+      <Label fx:id="number" alignment="CENTER" layoutX="4.0" layoutY="25.0" prefHeight="30.0" prefWidth="81.0" stylesheets="@../CSS/PayStyle.css" text="Antal" />
       <Separator layoutX="92.0" layoutY="-60.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <ImageView fitHeight="66.0" fitWidth="68.0" layoutX="102.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="189.0" layoutY="25.0" prefHeight="30.0" prefWidth="366.0" text="Namn på varan" />
-      <Label layoutX="620.0" layoutY="25.0" text="Pris" />
+      <ImageView fx:id="image" fitHeight="66.0" fitWidth="68.0" layoutX="102.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="title" layoutX="189.0" layoutY="25.0" prefHeight="30.0" prefWidth="366.0" stylesheets="@../CSS/PayStyle.css" text="Namn på varan" />
+      <Label fx:id="price" alignment="CENTER" layoutX="575.0" layoutY="25.0" prefHeight="30.0" prefWidth="118.0" stylesheets="@../CSS/PayStyle.css" text="Pris" />
       <Separator layoutX="567.0" layoutY="-60.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>
