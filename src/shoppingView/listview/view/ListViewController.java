@@ -1,5 +1,9 @@
 package shoppingView.listview.view;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.SingleSelectionModel;
 import main.ProductsModel;
 import se.chalmers.ait.dat215.project.Product;
 import shoppingView.MainApp;
@@ -23,12 +27,44 @@ public class ListViewController implements Observer {
 
     @FXML
     private VBox gridPaneContainer;
+    @FXML
+    private ComboBox<String> sortBox;
 
     @FXML
     private void initialize() {
         productGrid = new GridPane();
         gridPaneContainer.getChildren().add(productGrid);
         ProductsModel.getInstance().addObserver(this);
+
+        sortBox.getItems().clear();
+        sortBox.getItems().add("Typ");
+        sortBox.getItems().add("Pris");
+        sortBox.getItems().add("Initial");
+        sortBox.getSelectionModel().select(0);
+
+        sortBox.valueProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                String sortBy = "";
+                switch (sortBox.getValue()) {
+                    case "Typ":
+                        sortBy = "init";
+                        break;
+                    case "Pris":
+                        sortBy = "price";
+                        break;
+                    case "Initial":
+                        sortBy = "letter";
+                        break;
+                    default:
+                        System.out.println("Fel i sorteringsboxen!");
+                }
+
+                System.out.println("SortBox");
+                ProductsModel.getInstance().sortProducts(sortBy);
+
+            }
+        });
     }
 
 
@@ -69,6 +105,9 @@ public class ListViewController implements Observer {
 
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
+
+        //Sets up all product views:
+        ProductViewFactory.setUpAllProductViews(mainApp);
     }
 
 

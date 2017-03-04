@@ -1,6 +1,7 @@
 package shoppingView.listview.productsquare.view;
 
 
+import main.ProductsModel;
 import se.chalmers.ait.dat215.project.Product;
 import shoppingView.MainApp;
 
@@ -21,6 +22,19 @@ public class ProductViewFactory {
             productViewMap.put(product.getProductId(), newProductView);
             return newProductView;
         }
+    }
+
+    public static void setUpAllProductViews(MainApp mainApp) {
+        Thread setUpThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (Product product : ProductsModel.getInstance().getAllProducts()) {
+                    createProductView(product, mainApp);
+                }
+            }
+        });
+
+        setUpThread.start();
     }
 
 }

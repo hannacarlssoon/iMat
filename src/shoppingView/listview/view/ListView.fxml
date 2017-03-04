@@ -12,14 +12,16 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="966.0" styleClass="listviewbackground" stylesheets="@../../CSS/RaspberryCut.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shoppingView.listview.view.ListViewController">
    <children>
-      <ScrollPane hbarPolicy="NEVER" layoutX="185.0" layoutY="125.0" prefHeight="610.0" prefWidth="980.0" stylesheets="@../../CSS/ScrollBar.css" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ScrollPane hbarPolicy="NEVER" layoutX="185.0" layoutY="125.0" prefHeight="610.0" prefWidth="980.0" style="-fx-border-style: none; -fx-border-color: transparent; -fx-box-border: transparent;" stylesheets="@../../CSS/ScrollBar.css" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
          <content>
-            <VBox fx:id="gridPaneContainer" prefHeight="638.0" prefWidth="960.0" styleClass="listviewbackground" />
+            <VBox fx:id="gridPaneContainer" prefHeight="638.0" prefWidth="960.0" style="-fx-border-style: none; -fx-border-color: transparent; -fx-box-border: transparent;" styleClass="listviewbackground" />
          </content>
          <styleClass>
             <String fx:value="listviewbackground" />
             <String fx:value="mylistview" />
          </styleClass>
       </ScrollPane>
+      <ComboBox fx:id="sortBox" layoutX="758.0" layoutY="10.0" prefHeight="30.0" prefWidth="100.0" promptText="Innehåll" styleClass="combo-box-amount-basket" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="5.0" />
+      <Label layoutX="657.0" layoutY="15.0" style="-fx-text-fill: black;" text="Sortera efter:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="10.0" />
    </children>
 </AnchorPane>
