@@ -321,6 +321,9 @@ public class PaymentController implements Initializable {
         payAtDoorButton.getStyleClass().removeAll("activePayAtDoor-button");
         creditCardButton.getStyleClass().add("activeCreditCard-button");
         invoiceButton.getStyleClass().removeAll("activeInvoice-button");
+        if (CCFirstName.getText() == "") {
+            payButton.setDisable(true);
+        }
     }
 
     //Initialize the card type choicebox
@@ -519,8 +522,8 @@ public class PaymentController implements Initializable {
     //Sets the delivery adress view
     @FXML
     protected void setDeliveryView(ActionEvent event) throws IOException {
-        if (firstName != null) {
-            deliveryButton.setDisable(false);
+        if (firstName.getText() == "") {
+            deliveryButton.setDisable(true);
         }
         deliveryView.toFront();
         isOne = false;
