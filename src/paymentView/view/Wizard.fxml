@@ -82,7 +82,7 @@
       </AnchorPane>
       <AnchorPane fx:id="creditCardView" prefHeight="200.0" prefWidth="200.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0">
          <children>
-            <CheckBox fx:id="saveCreditCard" layoutX="502.0" layoutY="380.0" mnemonicParsing="false" onAction="#saveCreditCard" styleClass="label" stylesheets="@../CSS/PayStyle.css" text="Spara mina kortuppgifter tills nästa gång">
+            <CheckBox fx:id="saveCreditCard" layoutX="502.0" layoutY="380.0" mnemonicParsing="false" styleClass="label" stylesheets="@../CSS/PayStyle.css" text="Spara mina kortuppgifter tills nästa gång">
                <font>
                   <Font name="Segoe UI Light" size="13.0" />
                </font>
@@ -139,7 +139,7 @@
          <children>
             <Label layoutX="465.0" layoutY="14.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Vänligen fyll i din leveransinformation" AnchorPane.leftAnchor="465.0" AnchorPane.rightAnchor="459.0" />
             <Button mnemonicParsing="false" onAction="#setStartPage" styleClass="abutton" text="Tillbaka" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
-            <CheckBox fx:id="saveDelivery" layoutX="579.0" layoutY="318.0" mnemonicParsing="false" onAction="#saveDeliveryInfo" styleClass="label" stylesheets="@../CSS/PayStyle.css" text="Spara uppgifterna" />
+            <CheckBox fx:id="saveDelivery" layoutX="579.0" layoutY="318.0" mnemonicParsing="false" styleClass="label" stylesheets="@../CSS/PayStyle.css" text="Spara uppgifterna" />
             <Label layoutX="455.0" layoutY="397.0" styleClass="label-header" stylesheets="@../CSS/PayStyle.css" text="Vänligen fyll i när du vill ha dina matvaror" />
             <RadioButton fx:id="fm" layoutX="366.0" layoutY="464.0" mnemonicParsing="false" styleClass="label" stylesheets="@../CSS/PayStyle.css" text="Förmiddag" />
             <RadioButton fx:id="em" layoutX="582.0" layoutY="464.0" mnemonicParsing="false" styleClass="label" stylesheets="@../CSS/PayStyle.css" text="Eftermiddag" />
@@ -248,7 +248,7 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="428.0" prefWidth="718.0">
                                  <children>
-                                    <ListView fx:id="listView" prefHeight="428.0" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <ListView fx:id="listView" fixedCellSize="80.0" prefHeight="428.0" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children></AnchorPane>
                           </content>
                         </ScrollPane>
@@ -338,7 +338,7 @@
                      <children>
                         <ScrollPane layoutX="298.0" layoutY="77.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <content>
-                              <ListView fx:id="listViewEnd" prefHeight="428.0" prefWidth="717.0" />
+                              <ListView fx:id="listViewEnd" fixedCellSize="80.0" prefHeight="428.0" prefWidth="717.0" />
                            </content></ScrollPane>
                      </children>
                   </AnchorPane>

@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import menu.*;
 import paymentView.view.PaymentController;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
 import shoppingView.MainApp;
 import shoppingView.basket.model.Basket;
 import shoppingView.basket.view.BasketViewController;
@@ -52,6 +53,13 @@ public class Main extends Application {
         mainPayment.getController().setMain(this);
         Parent scene2 = mainPayment.getRoot();
         paymentScene = new Scene(scene2, 1366, 768);
+
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            @Override
+            public void run() {
+                IMatDataHandler.getInstance().shutDown();
+            }
+        }));
     }
 
 

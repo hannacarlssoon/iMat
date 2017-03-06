@@ -31,7 +31,6 @@ public final class Basket {
 
     private Basket() {
         items = FXCollections.observableArrayList();;
-        //basket = this;
     }
 
     public Basket(ObservableList<BasketItem> items) {

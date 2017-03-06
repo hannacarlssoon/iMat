@@ -2,6 +2,7 @@ package paymentView.view;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -40,11 +41,15 @@ public class ShoppingCartItemsController extends ListCell <BasketItem> {
 
     private BasketItem basketItem;
     private FXMLLoader fxmlLoader;
+    private ObservableList<BasketItem> basketItemObservableList;
+    Basket basket = Basket.getInstance();
 
     @Override
     protected void updateItem(BasketItem basketItem, boolean empty) {
+        setGraphic(null);
         this.basketItem = basketItem;
         super.updateItem(basketItem, empty);
+        if (basketItem == null) return;
 
         if (fxmlLoader == null) {
             fxmlLoader = new FXMLLoader(getClass().getResource("shoppingCartItems.fxml"));
@@ -59,38 +64,43 @@ public class ShoppingCartItemsController extends ListCell <BasketItem> {
         }
 
         setGraphic(mainAnchorPane);
-        if (basketItem != null) {
+            /*minus.setImage(new Image("files:resources/images/paymentImages/remove grey.png"));
+            plus.setImage(new Image("files:resources/images/paymentImages/add grey.png"));
+            trashcan.setImage(new Image("files:resources/images/paymentImages/trashcan.png"));*/
             String name = basketItem.getProduct().getImageName();
             image.setImage(new Image("file:resources/images/products/" + name));
             price.setText(basketItem.getPriceAsString().getValue());
             title.setText(basketItem.getName().getValue());
             textField.setText(basketItem.getAmount()+"");
-            /*minus.setImage(new Image("files:resources/images/paymentImages/remove grey.png"));
-            plus.setImage(new Image("files:resources/images/paymentImages/add grey.png"));
-            trashcan.setImage(new Image("files:resources/images/paymentImages/trashcan.png"));*/
-        }
     }
 
     @FXML
     protected void removeItem(ActionEvent event) {
-        System.out.println("Ta bort alla");
-        Basket.getInstance().getItems().remove(Basket.getInstance().getItems().indexOf(basketItem));
+        System.out.println(basketItemObservableList.size());
+        if (basketItemObservableList.size() > 0) {;
+            basketItemObservableList.remove(basketItemObservableList.indexOf(basketItem));
+            basket.removeItem(basketItem.getProduct());
+            //Hur funkar de??^^
+        }
     }
 
     @FXML
     protected void addOne(ActionEvent event) {
-        System.out.println("+1");
         basketItem.addAmount(1);
-
+        textField.setText(basketItem.getAmount()+"");
+        price.setText((basketItem.getPriceAsString().getValue()));
     }
 
     @FXML
     protected void removeOneItem(ActionEvent event) {
-        System.out.println("-1");
-        basketItem.addAmount(-1);
+        if (basketItem.getAmount() > 1) {
+            basketItem.addAmount(-1);
+            textField.setText(basketItem.getAmount() + "");
+            price.setText(basketItem.getPriceAsString().getValue());
+        }
     }
 
-    public ShoppingCartItemsController() {
-
+    public ShoppingCartItemsController(PaymentController paymentController) {
+        basketItemObservableList = paymentController.getBasketList();
     }
 }

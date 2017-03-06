@@ -34,11 +34,10 @@ public class PaymentController implements Initializable {
     private ChangeListener<String> creditCardStatus = new ChangeListener<String>() {
         @Override
         public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-            if (isCardNumberDone() && isCVCDone() && isCCLastNameDone() && isCCFistNameDone()) {
+            if (isCardNumberDone() && isCCLastNameDone() && isCCFistNameDone() && isCVCDone()) {
                 payButton.toFront();
                 payButton.setDisable(false);
                 saveCreditCard.setDisable(false);
-                isCreditCardSaved = true;
             }
             else {
                 invisiblePayButton.toFront();
@@ -54,7 +53,6 @@ public class PaymentController implements Initializable {
                 deliveryButton.toFront();
                 deliveryButton.setDisable(false);
                 saveDelivery.setDisable(false);
-                isDeliveryInfoSaved = true;
 
             }
             else {
@@ -137,8 +135,6 @@ public class PaymentController implements Initializable {
     private boolean isInvoice;
     private boolean isPayAtDoor;
     private boolean isCreditCard;
-    private boolean isCreditCardSaved;
-    private boolean isDeliveryInfoSaved;
 
     //The images used in the delivery view
     private Image oneBlue = new Image("file:resources/images/paymentImages/1blue.png");
@@ -199,7 +195,7 @@ public class PaymentController implements Initializable {
         print.setImage(printer);
 
         //Sets the basketlist to the list cells
-        listView.setCellFactory(basketList -> new ShoppingCartItemsController());
+        listView.setCellFactory(basketList -> new ShoppingCartItemsController(this));
         listViewEnd.setCellFactory(basketList -> new ShoppingCartItemReciptController());
 
         //Sets the saved information
@@ -209,22 +205,42 @@ public class PaymentController implements Initializable {
         cityCode.setText(customer.getPostCode());
         city.setText(customer.getPostAddress());
         emailTextField.setText(customer.getEmail());
+        if (emailTextField.getText().equals("")) {
+            emailTextField.disableProperty().setValue(true);
+            emailTextField.getStyleClass().add("text-field-disabled");
+            emailButton.setText("Har email");
+            emailButton.getStyleClass().add("noEmailPhone-selected");
+        }
         phoneTextField.setText(customer.getPhoneNumber());
+        if (phoneTextField.getText().equals("")) {
+            phoneTextField.disableProperty().setValue(true);
+            phoneTextField.getStyleClass().add("text-field-disabled");
+            phoneButton.setText("Har telefonnummer");
+            phoneButton.getStyleClass().add("noEmailPhone-selected");
+        }
         cardNumber.setText(cardInfo.getCardNumber());
-        cvc.setText(cardInfo.getVerificationCode()+"");
+        yearChoiceBox.setValue(cardInfo.getValidYear());
+        monthChoiceBox.setValue(cardInfo.getValidMonth());
+        cardType.setValue(cardInfo.getCardType());
         String fn = "";
         String en = "";
+        boolean keepTrack = true;
         for (int i = 0; i < cardInfo.getHoldersName().length(); i++) {
             if (cardInfo.getHoldersName().length() < 3) {
                 break;
             }
-            while (cardInfo.getHoldersName().charAt(i) != ' ') {
+            if (cardInfo.getHoldersName().charAt(i) != ' ' && keepTrack) {
                 fn = fn + cardInfo.getHoldersName().charAt(i);
             }
-            en = en + cardInfo.getHoldersName().charAt(i);
+            else {
+                en = en + cardInfo.getHoldersName().charAt(i);
+                keepTrack = false;
+            }
         }
         CCFirstName.setText(fn);
         CCLastName.setText(en);
+
+
 
         //Calls the method which adds a listner to the text fields so it will notify the view when they are changed
         addsCreditCardListners();
@@ -458,31 +474,34 @@ public class PaymentController implements Initializable {
     }
 
     //Saves the creditcard information
-    @FXML
     protected void saveCreditCard() {
-        if (isCCFistNameDone() && isCCLastNameDone() && isCardNumberDone() && isCVCDone() && saveCreditCard.isSelected()) {
-            saveCreditCard.setTooltip(null);
-            saveCreditCard.setDisable(false);
+        if (isCCFistNameDone() && isCCLastNameDone() && isCardNumberDone()) {
             cardInfo.setCardNumber(cardNumber.getText());
-            //cardInfo.setCardType(cardType.getTypeSelector());
+            cardInfo.setCardType(cardType.getValue().toString());
             cardInfo.setHoldersName(CCFirstName.getText() + " " + CCLastName.getText());
-            //cardInfo.setValidMonth((int) monthChoiceBox.getValue());
-            //cardInfo.setValidYear((int) yearChoiceBox.getValue());
-            Integer x = Integer.valueOf(cvc.getText());
-            int i = x;
-            cardInfo.setVerificationCode(i);
+            cardInfo.setValidMonth((int) monthChoiceBox.getValue());
+            cardInfo.setValidYear((int) yearChoiceBox.getValue());
         }
-        else {
-            saveCreditCard.setSelected(false);
+    }
+
+    //Saves the delivery information
+    protected void saveDeliveryInfo() {
+        if (isEmailDone() && isLastNameDone() && isCityDone() && isPhoneDone() && isCityCodeDone() && isAddressDone() && isFirstNameDone()) {
+            customer.setAddress(address.getText());
+            customer.setEmail(emailTextField.getText());
+            customer.setPhoneNumber(phoneTextField.getText());
+            customer.setFirstName(firstName.getText());
+            customer.setLastName(lastName.getText());
+            customer.setPostCode(cityCode.getText());
+            customer.setPostAddress(city.getText());
         }
+
     }
 
     //Sets the pay view to credit card
     @FXML
     protected void setCreditCardView(ActionEvent event) throws IOException {
-        if (!isCreditCardSaved) {
-            payButton.setDisable(true);
-        }
+        payButton.setDisable(true);
         creditCardView.toFront();
         isOne = false;
         isTwo = false;
@@ -497,28 +516,11 @@ public class PaymentController implements Initializable {
         invoiceButton.getStyleClass().removeAll("tab-selected");
     }
 
-    //Saves the delivery information
-    @FXML
-    protected void saveDeliveryInfo() {
-        if (isEmailDone() && isLastNameDone() && isCityDone() && isPhoneDone() && isCityCodeDone() && isAddressDone() && isFirstNameDone() && saveDelivery.isSelected()) {
-            customer.setAddress(address.getText());
-            customer.setEmail(emailTextField.getText());
-            customer.setPhoneNumber(phoneTextField.getText());
-            customer.setFirstName(firstName.getText());
-            customer.setLastName(lastName.getText());
-            customer.setPostCode(cityCode.getText());
-            customer.setPostAddress(city.getText());
-        }
-        else {
-            saveDelivery.setSelected(false);
-        }
-    }
-
     //Sets the delivery adress view
     @FXML
     protected void setDeliveryView(ActionEvent event) throws IOException {
-        if (!isDeliveryInfoSaved) {
-            deliveryButton.setDisable(true);
+        if (firstName != null) {
+            deliveryButton.setDisable(false);
         }
         deliveryView.toFront();
         isOne = false;
@@ -585,6 +587,9 @@ public class PaymentController implements Initializable {
         payAtDoorButton.getStyleClass().add("tab-selected");
         creditCardButton.getStyleClass().removeAll("tab-selected");
         invoiceButton.getStyleClass().removeAll("tab-selected");
+        if (saveDelivery.isSelected()) {
+            saveDeliveryInfo();
+        }
     }
 
     //Sets the phone text field to disabled/not disabled when clicked
@@ -617,6 +622,9 @@ public class PaymentController implements Initializable {
         isThree = false;
         isFour = true;
         changeTabSelected();
+        if (saveCreditCard.isSelected()) {
+            saveCreditCard();
+        }
     }
 
     //Sets the start page for the paymentView wizard
@@ -678,6 +686,11 @@ public class PaymentController implements Initializable {
         listView.setItems(basketList);
         listViewEnd.setItems(basketList);
 
+    }
+
+    //Returns the basket list
+    public ObservableList<BasketItem> getBasketList() {
+        return basketList;
     }
 
 }
