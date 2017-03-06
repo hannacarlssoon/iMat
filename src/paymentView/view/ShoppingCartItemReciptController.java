@@ -29,7 +29,9 @@ public class ShoppingCartItemReciptController extends ListCell<BasketItem> {
 
     @Override
     protected void updateItem(BasketItem basketItem, boolean empty) {
+        setGraphic(null);
         super.updateItem(basketItem, empty);
+        if (basketItem == null) return;
 
 
         if (fxmlLoader == null) {
