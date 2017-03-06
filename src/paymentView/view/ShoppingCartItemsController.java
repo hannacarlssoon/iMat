@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import se.chalmers.ait.dat215.project.Product;
 import shoppingView.basket.model.Basket;
 import shoppingView.basket.model.BasketItem;
 
@@ -46,9 +47,10 @@ public class ShoppingCartItemsController extends ListCell <BasketItem> {
 
     @Override
     protected void updateItem(BasketItem basketItem, boolean empty) {
-        setGraphic(null);
-        this.basketItem = basketItem;
         super.updateItem(basketItem, empty);
+        this.basketItem = basketItem;
+        setGraphic(null);
+
         if (basketItem == null) return;
 
         if (fxmlLoader == null) {
@@ -76,11 +78,11 @@ public class ShoppingCartItemsController extends ListCell <BasketItem> {
 
     @FXML
     protected void removeItem(ActionEvent event) {
-        System.out.println(basketItemObservableList.size());
-        if (basketItemObservableList.size() > 0) {;
-            basketItemObservableList.remove(basketItemObservableList.indexOf(basketItem));
-            basket.removeItem(basketItem.getProduct());
-            //Hur funkar de??^^
+        if (basketItem != null) {;
+            Product temp = basketItem.getProduct();
+            basket.removeItem(temp);
+            basketItemObservableList.remove(temp);
+            setBasketItemObservableList();
         }
     }
 
@@ -102,5 +104,9 @@ public class ShoppingCartItemsController extends ListCell <BasketItem> {
 
     public ShoppingCartItemsController(PaymentController paymentController) {
         basketItemObservableList = paymentController.getBasketList();
+    }
+
+    private void setBasketItemObservableList() {
+        basketItemObservableList = basket.getItems();
     }
 }

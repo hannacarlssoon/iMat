@@ -682,7 +682,7 @@ public class PaymentController implements Initializable {
 
     //Sets the basket list so you know which products have been added to the cart
     public void updateBasket(){
-        basketList = FXCollections.observableArrayList(basket.getItems());
+        basketList = basket.getItems();   //FXCollections.observableArrayList(basket.getItems());
         listView.setItems(basketList);
         listViewEnd.setItems(basketList);
 
