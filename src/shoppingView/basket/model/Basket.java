@@ -2,6 +2,8 @@ package shoppingView.basket.model;
 
 import paymentView.view.PaymentController;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.ShoppingCart;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 import shoppingView.basket.view.BasketViewController;
 import shoppingView.listview.productsquare.view.ProductView;
 import shoppingView.util.PriceUtil;
@@ -95,6 +97,15 @@ public final class Basket {
     public void clearBasket() {
         while (items.size() > 0) {
             removeItem(items.get(0).getProduct());
+        }
+    }
+
+    public void putBasketItemsInShoppingCart() {
+        ShoppingCart shoppingCart = IMatDataHandler.getInstance().getShoppingCart();
+        shoppingCart.clear();
+        for (BasketItem item : items) {
+            ShoppingItem correspondingItem = new ShoppingItem(item.getProduct(), item.getAmount());
+            shoppingCart.addItem(correspondingItem);
         }
     }
 

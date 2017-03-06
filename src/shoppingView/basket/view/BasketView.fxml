@@ -10,7 +10,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="611.0" prefWidth="400.0" styleClass="basket-background" stylesheets="@../../CSS/RaspberryCut.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shoppingView.basket.view.BasketViewController">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="611.0" prefWidth="400.0" styleClass="basket-background" stylesheets="@../../CSS/RaspberryCut.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shoppingView.basket.view.BasketViewController">
    <children>
       <Label layoutX="127.0" layoutY="14.0" styleClass="id-header-blue" text="Varukorg" AnchorPane.leftAnchor="127.0" AnchorPane.rightAnchor="80.0" />
       <ImageView fx:id="basketImage" fitHeight="50.0" fitWidth="40.0" layoutX="43.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="237.0">

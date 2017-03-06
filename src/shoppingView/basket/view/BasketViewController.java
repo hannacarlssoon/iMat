@@ -16,6 +16,7 @@ import shoppingView.basket.model.Basket;
 import shoppingView.basket.model.BasketItem;
 import shoppingView.listview.amountSetter.AmountSetter;
 import shoppingView.listview.deleteButton.DeleteButton;
+import shoppingView.listview.putBackButton.PutBackButton;
 import shoppingView.util.PriceUtil;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
@@ -40,6 +41,8 @@ public class BasketViewController {
     private TableColumn<BasketItem, DeleteButton> deleteColumn;
     @FXML
     private AnchorPane putBack;
+    @FXML
+    private AnchorPane mainPane;
 
     @FXML
     private Label totalPrice;
@@ -122,6 +125,10 @@ public class BasketViewController {
         Timeline timeline  = new Timeline();
         timeline.getKeyFrames().addAll(keyFrameFade);
         timeline.play();
+
+        PutBackButton putBackButton = new PutBackButton(currentItems.getItems().get(0));
+        putBackButton.setLayoutY(100);
+        mainPane.getChildren().add(putBackButton);
     }
 
     public void hidePutBack() {
