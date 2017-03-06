@@ -630,8 +630,8 @@ public class PaymentController implements Initializable {
         }
 
         basket.addBasketToFavorites();
+        basket.putBasketItemsInShoppingCart();
 
-        //TODO: add method that uppdates shoppingcart in backend
         instance.placeOrder();
     }
 
