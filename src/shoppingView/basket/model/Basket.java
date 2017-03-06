@@ -1,6 +1,7 @@
 package shoppingView.basket.model;
 
 import paymentView.view.PaymentController;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
 import shoppingView.basket.view.BasketViewController;
 import shoppingView.listview.productsquare.view.ProductView;
 import shoppingView.util.PriceUtil;
@@ -10,10 +11,11 @@ import se.chalmers.ait.dat215.project.Product;
 
 public final class Basket {
 
-    private static Basket basket = new Basket();
+    private static final Basket basket = new Basket();
     private ObservableList<BasketItem> items;
     private static BasketViewController basketViewController;
     private RemovedItemsHolder removedItemsHolder = new RemovedItemsHolder();
+    private static final IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
 
     private PaymentController paymentController;
 
@@ -97,6 +99,12 @@ public final class Basket {
 
     public void notifyController() {
         paymentController.updateBasket();
+    }
+
+    public void addBasketToFavorites(){
+        for(BasketItem item:items){
+            iMatDataHandler.addFavorite(item.getProduct());
+        }
     }
 
     public void putBackLastRemoved() {
