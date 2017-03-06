@@ -36,12 +36,16 @@ public class Main extends Application {
         controller = mainShoppingSceneFxmlLoader.getController();
         controller.setMain(this);
 
+        FXMLLoader mainStartSceneFxmlLoader = new FXMLLoader();
+        mainStartSceneFxmlLoader.setLocation(getClass().getResource("main.fxml"));
+
         primaryStage.setTitle("iMat");
         primaryStage.setScene(shoppingScene);
         primaryStage.getIcons().add(new Image("file:resources/images/iMat_square.png"));
         primaryStage.show();
 
         Menu menu = new Menu();
+        menu.setMain(this);
         menu.start(primaryStage);
         setMenuHolderContent(menu.getRoot());
 
@@ -90,6 +94,10 @@ public class Main extends Application {
         }
     }
 
+    public void setHomeDisabled(Boolean visibility){
+        controller.home.setDisable(visibility);
+        controller.home.setVisible(!visibility);
+    }
 
     public static void main(String[] args) {
         launch(args);

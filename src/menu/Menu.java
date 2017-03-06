@@ -9,8 +9,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
-import java.util.*;
+import main.Main;
+import shoppingView.MainApp;
 
 public class Menu extends Application {
     private MenuController controller;
@@ -18,6 +18,7 @@ public class Menu extends Application {
     private FXMLLoader fxmlLoader;
     private Parent root;
     private Stage primaryStage;
+    private Main main;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -96,6 +97,14 @@ public class Menu extends Application {
         } catch (Exception e){
 
         }
+    }
+
+    public void setHomeDisabled(Boolean visibility){
+        main.setHomeDisabled(visibility);
+    }
+
+    public void setMain(Main main){
+        this.main = main;
     }
 
     public static void main(String[] args) {

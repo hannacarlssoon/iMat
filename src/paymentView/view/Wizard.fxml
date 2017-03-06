@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
@@ -21,7 +26,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@../CSS/PayStyle.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paymentView.view.PaymentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@../CSS/PayStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paymentView.view.PaymentController">
    <children>
       <AnchorPane fx:id="invoiceView" prefHeight="200.0" prefWidth="200.0" styleClass="background" stylesheets="@../CSS/PayStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0">
          <children>
@@ -304,7 +309,7 @@
             <Separator layoutX="1053.0" layoutY="627.0" orientation="VERTICAL" prefHeight="40.0" />
             <Separator layoutX="335.0" layoutY="167.0" prefHeight="0.0" prefWidth="720.0" />
             <Separator layoutX="335.0" layoutY="666.0" prefWidth="720.0" />
-            <ImageView fx:id="iMat" fitHeight="69.0" fitWidth="320.0" layoutX="1101.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="15.0">
+            <ImageView fx:id="iMat" fitHeight="69.0" fitWidth="320.0" layoutX="1101.0" layoutY="24.0" onMouseClicked="#returnToStoreHome" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="15.0">
                <image>
                   <Image url="@../../menu/logotype.png" />
                </image>

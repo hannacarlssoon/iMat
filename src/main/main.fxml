@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
@@ -7,5 +11,19 @@
    <children>
       <AnchorPane fx:id="menuHolder" layoutX="14.0" prefHeight="153.0" prefWidth="1366.0" AnchorPane.bottomAnchor="615.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane fx:id="shopHolder" layoutY="153.0" prefHeight="615.0" prefWidth="1366.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="153.0" />
+      <AnchorPane id="home" fx:id="home" prefHeight="615.0" prefWidth="966.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="153.0">
+         <children>
+            <ImageView fitHeight="124.0" fitWidth="400.0" layoutX="283.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="268.33333587646484" AnchorPane.leftAnchor="283.0" AnchorPane.rightAnchor="283.0" AnchorPane.topAnchor="268.0">
+               <image>
+                  <Image url="@../menu/logotype.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="353.0" layoutY="192.0" text="Välkommen till" textFill="#404040">
+               <font>
+                  <Font name="Segoe UI Light" size="42.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

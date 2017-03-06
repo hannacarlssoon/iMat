@@ -110,7 +110,7 @@ public class BasketViewController {
 
     @FXML
     private void toCheckout(ActionEvent e){
-       main.switchScene();
+        main.switchScene();
     }
 
     public void setMain(Main main) {

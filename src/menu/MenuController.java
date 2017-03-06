@@ -1,9 +1,7 @@
 package menu;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.AnchorPane;
@@ -11,14 +9,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import shoppingView.historik.*;
-
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import main.*;
 
 import main.ProductsModel;
-import shoppingView.MainApp;
 
 public class MenuController implements Initializable{
     //fx variables
@@ -140,16 +132,20 @@ public class MenuController implements Initializable{
     }
 
     @FXML public void logoActionPerformed(ActionEvent event){
-        //TODO: add action
+        structureMenuItems(-1);
+        emptySubmenu();
+        menu.setHomeDisabled(false);
     }
 
     @FXML public void searchFieldActionPerformed(ActionEvent event){
+        menu.setHomeDisabled(true);
         productsModel.searchProducts(searchField.getText());
         emptySubmenu();
         structureMenuItems(-1);
     }
 
     @FXML public void searchButtonActionPerformed(ActionEvent event){
+        menu.setHomeDisabled(true);
         productsModel.searchProducts(searchField.getText());
         emptySubmenu();
         structureMenuItems(-1);
@@ -173,6 +169,8 @@ public class MenuController implements Initializable{
     }
 
     private void menuItemAction(int i){
+
+        menu.setHomeDisabled(true);
 
         productsModel.setProducts(categories.get(i));
 

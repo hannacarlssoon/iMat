@@ -476,6 +476,12 @@ public class PaymentController implements Initializable {
         main.switchScene();
     }
 
+    @FXML
+    protected void returnToStoreHome(){
+        main.setHomeDisabled(false);
+        main.switchScene();
+    }
+
     //Saves the creditcard information
     protected void saveCreditCard() {
         if (isCCFistNameDone() && isCCLastNameDone() && isCardNumberDone()) {
