@@ -15,17 +15,22 @@ public class PutBackButton extends AnchorPane {
 
     @FXML
     private BasketItem item;
+    private int listIndex;
+    private boolean destroyed = false;
 
     // Reference to the main application.
     private MainApp mainApp;
 
-    public PutBackButton(BasketItem item) {
+    private Thread destroyerThread = new Thread();
+
+    public PutBackButton(BasketItem item, int listIndex) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PutBackButton.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
         //this.mainApp = mainApp;
         this.item = item;
+        this.listIndex = listIndex;
 
         try {
             fxmlLoader.load();
@@ -33,11 +38,36 @@ public class PutBackButton extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
+        destroyerThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                /*if (!destroyed) {
+                    Basket.getInstance().getItems().remove(listIndex);
+                    Basket.getInstance().removePutBackButton();
+                }*/
+                Basket.getInstance().removePutBackButton();
+                System.out.println("Removing----------");
+            }
+        });
+        //destroyerThread.start();
     }
 
     @FXML
     private void putBackClicked() {
-        System.out.println("--putBackClicked()");
+        destroyed = true;
+        Basket.getInstance().getItems().remove(listIndex);
+        Basket.getInstance().getItems().add(listIndex, item);
+        Basket.getInstance().removePutBackButton();
+    }
+
+    private void destroySelf() {
+        Basket.getInstance().getItems().remove(listIndex);
+        Basket.getInstance().removePutBackButton();
     }
 
     @FXML

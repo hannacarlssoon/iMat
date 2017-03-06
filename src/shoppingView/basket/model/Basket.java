@@ -6,6 +6,7 @@ import se.chalmers.ait.dat215.project.ShoppingCart;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 import shoppingView.basket.view.BasketViewController;
 import shoppingView.listview.productsquare.view.ProductView;
+import shoppingView.listview.putBackButton.PutBackButton;
 import shoppingView.util.PriceUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,6 +14,7 @@ import se.chalmers.ait.dat215.project.Product;
 
 public final class Basket {
 
+    private static boolean inCheckOut = false;
     private static final Basket basket = new Basket();
     private ObservableList<BasketItem> items;
     private static BasketViewController basketViewController;
@@ -64,6 +66,9 @@ public final class Basket {
     public BasketItem removeItem(Product productToRemove) {
         for (BasketItem item : items) {
             if (item.getProduct().equals(productToRemove)) {
+                if (!isInCheckOut()) {
+                    item.getPutBackButton();
+                }
                 int index = items.indexOf(item);
 
                 items.remove(item);
@@ -98,6 +103,13 @@ public final class Basket {
         while (items.size() > 0) {
             removeItem(items.get(0).getProduct());
         }
+    }
+
+    public void addPutBackButton(PutBackButton putBackButton) {
+        basketViewController.addPutBackButton(putBackButton);
+    }
+    public void removePutBackButton() {
+        basketViewController.removePutBackButton();
     }
 
     public void putBasketItemsInShoppingCart() {
@@ -146,5 +158,13 @@ public final class Basket {
         } else {
             basketViewController.hidePutBack();
         }
+    }
+
+    public static void setInCheckOut(boolean inCheckOut) {
+        Basket.inCheckOut = inCheckOut;
+    }
+
+    public static boolean isInCheckOut() {
+        return inCheckOut;
     }
 }

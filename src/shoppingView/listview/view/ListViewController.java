@@ -39,7 +39,7 @@ public class ListViewController implements Observer {
         sortBox.getItems().clear();
         sortBox.getItems().add("Typ");
         sortBox.getItems().add("Pris");
-        sortBox.getItems().add("Initial");
+        sortBox.getItems().add("A-Ö");
         sortBox.getSelectionModel().select(0);
 
         sortBox.valueProperty().addListener(new ChangeListener<String>() {
@@ -53,7 +53,7 @@ public class ListViewController implements Observer {
                     case "Pris":
                         sortBy = "price";
                         break;
-                    case "Initial":
+                    case "A-Ö":
                         sortBy = "letter";
                         break;
                     default:

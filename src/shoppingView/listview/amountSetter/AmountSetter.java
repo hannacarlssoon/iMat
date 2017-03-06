@@ -77,6 +77,7 @@ public class AmountSetter extends AnchorPane {
         item.setAmountSetter(this);
     }
 
+
     private void setIcons() {
         plusIcon.setImage(new Image("file:resources/images/paymentImages/add grey.png"));
         plusIcon.setFitHeight(10);

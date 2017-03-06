@@ -4,6 +4,7 @@ import shoppingView.basket.view.BasketViewController;
 import shoppingView.listview.amountSetter.AmountSetter;
 import shoppingView.listview.deleteButton.DeleteButton;
 import shoppingView.listview.productsquare.view.ProductView;
+import shoppingView.listview.putBackButton.PutBackButton;
 import shoppingView.util.AmountUtil;
 import shoppingView.util.PriceUtil;
 import javafx.beans.property.ObjectProperty;
@@ -95,5 +96,17 @@ public class BasketItem {
     }
     public void showAddedPane() {
         productView.showAddedPane();
+    }
+
+    public PutBackButton getPutBackButton() {
+        int listIndex = Basket.getInstance().getItems().indexOf(this);
+        PutBackButton putBackButton = new PutBackButton(this, listIndex);
+        putBackButton.setLayoutY((84+32) + 44 * listIndex);
+
+        Basket.getInstance().addPutBackButton(putBackButton);
+
+        Basket.getInstance().getItems().add(listIndex, new InvisibleBasketItem(product, 1));
+
+        return putBackButton;
     }
 }

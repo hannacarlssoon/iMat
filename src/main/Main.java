@@ -78,15 +78,18 @@ public class Main extends Application {
     public void switchScene(){
         if (primaryStage.getScene().equals(shoppingScene)){
             primaryStage.setScene(paymentScene);
+            basket.setInCheckOut(true);
             primaryStage.show();
             basket.notifyController();
 
         }
         else if (primaryStage.getScene().equals(paymentScene)){
             primaryStage.setScene(shoppingScene);
+            basket.setInCheckOut(false);
             primaryStage.show();
         }
     }
+
 
     public static void main(String[] args) {
         launch(args);

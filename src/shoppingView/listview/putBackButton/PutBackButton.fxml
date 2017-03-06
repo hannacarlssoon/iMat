@@ -10,8 +10,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<fx:root fx:id="putBackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="97.0" prefWidth="376.0" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="putBackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="376.0" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="50.0" layoutY="28.0" mnemonicParsing="false" onAction="#putBackClicked" prefHeight="42.0" prefWidth="277.0" styleClass="abutton" stylesheets="@../../CSS/Hanna.css" text="Ångra borttagning av vara" />
+      <Button layoutX="50.0" layoutY="32.0" mnemonicParsing="false" onAction="#putBackClicked" prefHeight="34.0" prefWidth="277.0" style="-fx-padding: 0 0 0 0;" styleClass="abutton" stylesheets="@../../CSS/Hanna.css" text="Ångra borttagning av vara" AnchorPane.topAnchor="0.0" />
    </children>
 </fx:root>

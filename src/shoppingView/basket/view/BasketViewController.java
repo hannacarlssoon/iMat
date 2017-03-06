@@ -7,6 +7,7 @@ import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import main.Main;
@@ -118,27 +119,43 @@ public class BasketViewController {
 
 
     public void showPutBack() {
-        KeyValue keyValueFade  = new KeyValue(putBack.opacityProperty(), 1.0, Interpolator.EASE_OUT);
+//        KeyValue keyValueFade  = new KeyValue(putBack.opacityProperty(), 1.0, Interpolator.EASE_OUT);
+//
+//        KeyFrame keyFrameFade  = new KeyFrame(Duration.millis(550), keyValueFade);
+//
+//        Timeline timeline  = new Timeline();
+//        timeline.getKeyFrames().addAll(keyFrameFade);
+//        timeline.play();
 
-        KeyFrame keyFrameFade  = new KeyFrame(Duration.millis(550), keyValueFade);
+//        for (int i = 0; i < 5; i++) {
+//            PutBackButton putBackButton = new PutBackButton(currentItems.getItems().get(0));
+//            putBackButton.setLayoutY(84 + 44 * i);
+//            mainPane.getChildren().add(putBackButton);
+//        }
 
-        Timeline timeline  = new Timeline();
-        timeline.getKeyFrames().addAll(keyFrameFade);
-        timeline.play();
+    }
 
-        PutBackButton putBackButton = new PutBackButton(currentItems.getItems().get(0));
-        putBackButton.setLayoutY(100);
+    public void addPutBackButton(PutBackButton putBackButton) {
         mainPane.getChildren().add(putBackButton);
+    }
+    public void removePutBackButton() {
+        //mainPane.getChildren().remove(putBackButton);
+
+        for (Node node : mainPane.getChildren()) {
+            if (node.getClass() == PutBackButton.class) {
+                mainPane.getChildren().remove(mainPane.getChildren().indexOf(node));
+            }
+        }
     }
 
     public void hidePutBack() {
-        KeyValue keyValueFade  = new KeyValue(putBack.opacityProperty(), 0.0, Interpolator.EASE_OUT);
-
-        KeyFrame keyFrameFade  = new KeyFrame(Duration.millis(550), keyValueFade);
-
-        Timeline timeline  = new Timeline();
-        timeline.getKeyFrames().addAll(keyFrameFade);
-        timeline.play();
+//        KeyValue keyValueFade  = new KeyValue(putBack.opacityProperty(), 0.0, Interpolator.EASE_OUT);
+//
+//        KeyFrame keyFrameFade  = new KeyFrame(Duration.millis(550), keyValueFade);
+//
+//        Timeline timeline  = new Timeline();
+//        timeline.getKeyFrames().addAll(keyFrameFade);
+//        timeline.play();
 
     }
 
