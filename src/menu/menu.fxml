@@ -72,6 +72,11 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Label fx:id="history" layoutX="37.0" layoutY="13.0" onMouseClicked="#historyLabelActionPerformed" text="Visa tidigare kvitton" textFill="#295cc9" underline="true">
+               <font>
+                  <Font name="Segoe UI Light" size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="1000.0" layoutY="105.0" prefHeight="37.0" prefWidth="355.0">
