@@ -1,28 +1,29 @@
 package menu;
 
 import javafx.application.Application;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+import javafx.fxml.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import shoppingView.MainApp;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Menu extends Application {
     private MenuController controller;
     private AnchorPane submenuPane;
     private FXMLLoader fxmlLoader;
     private Parent root;
+    private Stage primaryStage;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        this.primaryStage = primaryStage;
+
         fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("menu.fxml"));
         root = fxmlLoader.load();
@@ -31,10 +32,6 @@ public class Menu extends Application {
         controller.setMenu(this);
 
         submenuPane = controller.getSubmenuPane();
-
-        //primaryStage.setTitle("menu");
-        //primaryStage.setScene(new Scene(root, 1366, 153));
-        //primaryStage.show();
     }
 
     public Parent getRoot(){
@@ -82,6 +79,24 @@ public class Menu extends Application {
 
     public void translateMenuItem(Button item,int translate){
         item.setTranslateX(translate);
+    }
+
+    public void showHistory(){
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("historik/historik.fxml"));
+            AnchorPane page = (AnchorPane)loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+        } catch (Exception e){
+
+        }
     }
 
     public static void main(String[] args) {
