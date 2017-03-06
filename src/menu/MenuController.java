@@ -128,6 +128,8 @@ public class MenuController implements Initializable{
 
     @FXML public void favoriteItemActionPerformed(ActionEvent event){
         structureMenuItems(7);
+        emptySubmenu();
+        productsModel.setFavoritesAsProducts();
     }
 
     @FXML public void logoActionPerformed(ActionEvent event){

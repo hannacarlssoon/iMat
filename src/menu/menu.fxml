@@ -56,6 +56,9 @@
                <font>
                   <Font name="Segoe UI Light" size="27.0" />
                </font>
+               <tooltip>
+                  <Tooltip text="Dina vanligaste varor" />
+               </tooltip>
             </Button>
             <Button fx:id="logo" layoutX="1030.0" layoutY="15.0" mnemonicParsing="false" onAction="#logoActionPerformed" styleClass="logoButton">
                <tooltip>

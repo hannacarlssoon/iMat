@@ -628,6 +628,11 @@ public class PaymentController implements Initializable {
         if (saveCreditCard.isSelected()) {
             saveCreditCard();
         }
+
+        basket.addBasketToFavorites();
+
+        //TODO: add method that uppdates shoppingcart in backend
+        instance.placeOrder();
     }
 
     //Sets the start page for the paymentView wizard
