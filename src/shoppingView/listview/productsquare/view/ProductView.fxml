@@ -14,9 +14,9 @@
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="328.0" prefWidth="208.0" style="-fx-background-color: white;" styleClass="product-pane" stylesheets="@../../../CSS/RaspberryCut.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="image" fitHeight="135.0" fitWidth="180.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
-      <Label fx:id="productName" alignment="CENTER" layoutX="14.0" layoutY="149.0" prefHeight="32.0" prefWidth="180.0" styleClass="id-header-blue" text="Potatis" textAlignment="CENTER" />
+      <Label fx:id="productName" alignment="CENTER" layoutX="14.0" layoutY="149.0" prefHeight="32.0" prefWidth="180.0" styleClass="id-header-blue" text="Potatis" textAlignment="CENTER" AnchorPane.bottomAnchor="140.0" />
       <Button fx:id="addButton" layoutX="17.0" layoutY="287.0" mnemonicParsing="false" onAction="#addProductToBasket" prefHeight="35.0" prefWidth="180.0" styleClass="abutton-add" stylesheets="@../../../CSS/Hanna.css" text="Lägg till" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" />
-      <Label fx:id="price" layoutX="16.0" layoutY="186.0" prefHeight="47.0" prefWidth="73.0" styleClass="label-price" text="50 kr" />
+      <Label fx:id="price" layoutX="16.0" layoutY="186.0" prefHeight="47.0" prefWidth="133.0" styleClass="label-price" text="50 kr" />
       <TextField fx:id="amountField" alignment="CENTER" layoutX="57.0" layoutY="233.0" prefHeight="45.0" prefWidth="98.0" AnchorPane.rightAnchor="53.0" AnchorPane.topAnchor="233.0" />
       <Button fx:id="plusButton" layoutX="149.0" layoutY="233.0" mnemonicParsing="false" onAction="#incAmount" prefHeight="45.0" prefWidth="46.0" style="-fx-padding: 0 0 0 0;" styleClass="plus-button" stylesheets="@../../../../paymentView/CSS/PayStyle.css" AnchorPane.leftAnchor="149.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="233.0">
          <graphic>

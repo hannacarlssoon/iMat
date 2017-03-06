@@ -92,6 +92,11 @@ public final class Basket {
         return PriceUtil.toPriceFormat(getTotalSum());
     }
 
+    public void clearBasket() {
+        while (items.size() > 0) {
+            removeItem(items.get(0).getProduct());
+        }
+    }
 
     public void setPaymentController(PaymentController p) {
         paymentController = p;
@@ -127,6 +132,8 @@ public final class Basket {
             if (removedItemsHolder.isEmpty()) {
                 basketViewController.hidePutBack();
             }
+        } else {
+            basketViewController.hidePutBack();
         }
     }
 }

@@ -28,6 +28,11 @@ public class ProductViewFactory {
         Thread setUpThread = new Thread(new Runnable() {
             @Override
             public void run() {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 for (Product product : ProductsModel.getInstance().getAllProducts()) {
                     createProductView(product, mainApp);
                 }

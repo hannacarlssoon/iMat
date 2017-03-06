@@ -5,6 +5,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.util.Duration;
 import main.ProductsModel;
+import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.ShoppingCart;
 import shoppingView.MainApp;
 import shoppingView.basket.model.Basket;
@@ -131,10 +132,28 @@ public class ProductView extends AnchorPane {
         basketIcon.setFitWidth(25);
         basketIcon.setLayoutX(92);
         basketIcon.setLayoutY(2);
+
+
     }
 
     private void setProductName() {
-        productName.textProperty().setValue(product.getName());
+
+        productName.textProperty().setValue(product.getName()); //Standard: 20pt
+
+        if (product.getName().length() >= 12) {
+            System.out.println(product.getName());
+            productName.setStyle("-fx-font-size: 18pt");
+        }
+        if (product.getName().length() >= 14) {
+            System.out.println(product.getName());
+            productName.setStyle("-fx-font-size: 16pt");
+        }
+        if (product.getName().length() >= 16) {
+            System.out.println(product.getName());
+            productName.setStyle("-fx-font-size: 14pt");
+        }
+
+
     }
 
     private void setImage() {
