@@ -161,7 +161,7 @@ public class ProductsModel extends Observable{
             else if(price1.compareTo(price2)==0)
                 return 0;
             else
-                return -1;
+                return 1;
         }
     }
 

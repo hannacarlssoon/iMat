@@ -37,7 +37,7 @@ public class MenuController implements Initializable{
     //content for the submenumodel
     private SubmenuModel submenuModel;
 
-    private Button selectedMainMenuItem;
+    private int selectedMainMenuIndex;
 
     private Button selectedSubmenuItem;
 
@@ -150,20 +150,24 @@ public class MenuController implements Initializable{
         if(selectedSubmenuItem!=null)
             selectedSubmenuItem.getStyleClass().remove("selectedSubmenuItem");
 
-        if(((Button)event.getSource()).getText().equals("Alla"))
-            menuItemAction(menuItems.indexOf(selectedMainMenuItem));
 
         Button submenuItem = (Button)event.getSource();
         submenuItem.getStyleClass().add("selectedSubmenuItem");
         selectedSubmenuItem = submenuItem;
 
         String itemText = submenuItem.getText().substring(2).toLowerCase();
-        System.out.println(itemText);
+
+        if(itemText.equals("alla"))
+            menuItemAction(selectedMainMenuIndex);
+        else
+            productsModel.searchProducts(itemText);
     }
 
     private void menuItemAction(int i){
 
         productsModel.setProducts(categories.get(i));
+
+        selectedMainMenuIndex = i;
 
         selectedSubmenuItem = menuItems.get(i);
 
