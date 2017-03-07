@@ -85,7 +85,7 @@ public class Menu extends Application {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("historik/historik.fxml"));
+            loader.setLocation(Menu.class.getResource("historik/historik.fxml"));
             AnchorPane page = (AnchorPane)loader.load();
 
             // Create the dialog Stage.

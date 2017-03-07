@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import main.Main;
+import paymentView.view.PaymentController;
 import se.chalmers.ait.dat215.project.Product;
 import shoppingView.MainApp;
 import shoppingView.basket.model.Basket;
@@ -163,4 +164,7 @@ public class BasketViewController {
     private void putBackClicked() {
         Basket.getInstance().putBackLastRemoved();
     }
+
+
+
 }

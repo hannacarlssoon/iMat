@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -14,18 +13,12 @@
       <TextField fx:id="textField" alignment="CENTER" layoutX="39.0" layoutY="6.0" prefHeight="66.0" prefWidth="44.0" />
       <Button fx:id="addOne" layoutX="79.0" layoutY="6.0" mnemonicParsing="false" onAction="#addOne" prefHeight="66.0" prefWidth="35.0" styleClass="plus-button" stylesheets="@../CSS/PayStyle.css">
          <graphic>
-            <ImageView fx:id="plus" fitHeight="32.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" styleClass="imageViewPlus">
-               <image>
-                  <Image url="@../../../resources/images/paymentImages/add%20grey.png" />
-               </image></ImageView>
+            <ImageView fx:id="plus" fitHeight="32.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" styleClass="imageViewPlus" />
          </graphic>
       </Button>
       <Button fx:id="removeOne" layoutX="7.0" layoutY="6.0" mnemonicParsing="false" onAction="#removeOneItem" prefHeight="66.0" prefWidth="22.0" styleClass="minus-button" stylesheets="@../CSS/PayStyle.css">
          <graphic>
-            <ImageView fx:id="minus" fitHeight="25.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../resources/images/paymentImages/remove%20grey.png" />
-               </image></ImageView>
+            <ImageView fx:id="minus" fitHeight="25.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" />
          </graphic>
       </Button>
       <Separator layoutX="121.0" orientation="VERTICAL" prefHeight="125.0" prefWidth="6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
@@ -42,11 +35,7 @@
          </font></Label>
       <Button fx:id="removeItem" layoutX="631.0" layoutY="10.0" mnemonicParsing="false" onAction="#removeItem" prefHeight="60.0" prefWidth="60.0" styleClass="delete-button" stylesheets="@../CSS/PayStyle.css">
          <graphic>
-            <ImageView fx:id="trashcan" fitHeight="41.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../resources/images/paymentImages/trashcan.png" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="trashcan" fitHeight="41.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
          </graphic>
       </Button>
    </children>

@@ -20,6 +20,7 @@ import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import shoppingView.basket.model.Basket;
 import shoppingView.basket.model.BasketItem;
+import shoppingView.basket.view.BasketViewController;
 
 public class PaymentController implements Initializable {
 
@@ -29,6 +30,7 @@ public class PaymentController implements Initializable {
     private Customer customer = instance.getCustomer();
     private Basket basket = Basket.getInstance();
     private Main main;
+    private BasketViewController basketViewController;
 
     //Checks if the text fields are properly filled out
     private ChangeListener<String> creditCardStatus = new ChangeListener<String>() {
@@ -193,6 +195,7 @@ public class PaymentController implements Initializable {
         phonett.setImage(info);
         iMat.setImage(logga);
         print.setImage(printer);
+        totalAmount.setText(basket.getTotalSumAsString());
 
         //Sets the basketlist to the list cells
         listView.setCellFactory(basketList -> new ShoppingCartItemsController(this));
@@ -473,6 +476,7 @@ public class PaymentController implements Initializable {
     //Sets the shopping view scene
     @FXML
     protected void returnToStore(){
+        basket.clearBasket();
         main.switchScene();
     }
 
@@ -643,7 +647,7 @@ public class PaymentController implements Initializable {
 
     //Sets the start page for the paymentView wizard
     @FXML
-    protected void setStartPage(ActionEvent event) throws IOException {
+    public void setStartPage(ActionEvent event) throws IOException {
         backgroundView.toFront();
         isOne = true;
         isTwo = false;
@@ -706,5 +710,12 @@ public class PaymentController implements Initializable {
     public ObservableList<BasketItem> getBasketList() {
         return basketList;
     }
+
+    public void setPriceId() {
+        totalAmount.setText(basket.getTotalSumAsString());
+    }
+
+
+
 
 }

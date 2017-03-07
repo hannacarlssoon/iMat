@@ -324,3 +324,7 @@
 .accordion {
     -fx-background-color: #FFFFFF;
 }
+
+.titled-pane {
+    -fx-text-fill: #FFFFFF
+}

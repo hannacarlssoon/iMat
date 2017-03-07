@@ -66,9 +66,9 @@ public class ShoppingCartItemsController extends ListCell <BasketItem> {
         }
 
         setGraphic(mainAnchorPane);
-            /*minus.setImage(new Image("files:resources/images/paymentImages/remove grey.png"));
-            plus.setImage(new Image("files:resources/images/paymentImages/add grey.png"));
-            trashcan.setImage(new Image("files:resources/images/paymentImages/trashcan.png"));*/
+            minus.setImage(new Image("file:resources/images/paymentImages/remove grey.png"));
+            plus.setImage(new Image("file:resources/images/paymentImages/add grey.png"));
+            trashcan.setImage(new Image("file:resources/images/paymentImages/trashcan.png"));
             String name = basketItem.getProduct().getImageName();
             image.setImage(new Image("file:resources/images/products/" + name));
             price.setText(basketItem.getPriceAsString().getValue());
@@ -78,6 +78,7 @@ public class ShoppingCartItemsController extends ListCell <BasketItem> {
 
     @FXML
     protected void removeItem(ActionEvent event) {
+
         if (basketItem != null) {;
             Product temp = basketItem.getProduct();
             basket.removeItem(temp);
