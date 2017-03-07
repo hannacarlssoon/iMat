@@ -1,9 +1,30 @@
 .titled-pane {
-    -fx-text-fill: #CCCCCC;
+    -fx-text-fill: #444444;
     -fx-font-family: "Segoe UI Light";
     -fx-font-size: 20;
+    -fx-border-width: 1;
+    -fx-border-color: #444444;
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-radius: 10 10 10 10;
 }
 
 .titled-pane > .title {
-    -fx-pref-height: 40;
+    -fx-pref-height: 38;
+    -fx-background-color: linear-gradient(#FFFFFF, #f2f2f2);;
+    -fx-background-radius: 10 10 10 10;
 }
+
+.titled-pane {
+
+}
+
+.titled-pane > .title:hover {
+    -fx-background-color: #F5F5F5;
+}
+
+.special-label {
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-size: 30;
+    -fx-fill-text: #444444;
+}
+

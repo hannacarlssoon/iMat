@@ -24,16 +24,24 @@ public class HistorikViewController implements Initializable {
     @FXML private Label total;
     @FXML private ListView listView;
     @FXML private AnchorPane mainAnchorPane;
+    @FXML private Label summa;
     private IMatDataHandler instance = IMatDataHandler.getInstance();
     private ObservableList<ShoppingItem> orderList;
     private Order order;
     private FXMLLoader fxmlLoader;
     private HistorikController controller;
+    private double amount = 0;
+
 
 
     public HistorikViewController(HistorikController controller, Order order) {
         this.order = order;
         this.controller = controller;
+
+        for (int i = 0; i < order.getItems().size(); i++) {
+            amount = amount + order.getItems().get(i).getTotal();
+        }
+
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HistorikView.fxml"));
         fxmlLoader.setController(this);
@@ -51,7 +59,9 @@ public class HistorikViewController implements Initializable {
         listView.setCellFactory(orderList -> new Receipt());
         listView.setItems(orderList);
         listView.setFixedCellSize(80);
-        total.setText("hej");
+        total.setText(amount + "0 kr");
+        total.getStyleClass().add("label-historik-summa");
+        summa.getStyleClass().add("label-historik-summa");
     }
 
 
@@ -59,5 +69,7 @@ public class HistorikViewController implements Initializable {
     public AnchorPane getMainAnchorPane() {
         return mainAnchorPane;
     }
+
+
 
 }

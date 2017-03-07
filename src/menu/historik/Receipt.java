@@ -23,7 +23,6 @@ import java.io.IOException;
         @FXML private Label price;
 
         private FXMLLoader fxmlLoader;
-        private int i = 0;
         private ShoppingItem shoppingItem;
 
         @Override
@@ -33,7 +32,6 @@ import java.io.IOException;
             setGraphic(null);
 
             if (shoppingItem == null) return;
-
 
             if (fxmlLoader == null) {
                 fxmlLoader = new FXMLLoader(getClass().getResource("Receipt.fxml"));
@@ -46,33 +44,16 @@ import java.io.IOException;
                     throw new RuntimeException(exception);
                 }
             }
-
-
-
                     title.setText(shoppingItem.getProduct().getName());
                     number.setText(shoppingItem.getAmount() + "");
                     price.setText(shoppingItem.getProduct().getPrice() + "0 kr");
                     String name = shoppingItem.getProduct().getImageName();
                     image.setImage(new Image("file:resources/images/products/" + name));
                     setGraphic(mainAnchorPane);
-
-
-
-                /*System.out.println(order.getItems().size());
-                for (int i = 0; i < order.getItems().size(); i++) {
-                    setGraphics(order.getItems().get(i));
-                }*/
-
-            updateI();
         }
 
         public Receipt() {
 
         }
-
-        protected void updateI() {
-            i = i+1;
-        }
-
     }
 

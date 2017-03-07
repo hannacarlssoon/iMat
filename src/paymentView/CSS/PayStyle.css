@@ -345,3 +345,8 @@
 .calender-button:hover {
     -fx-background-color: #DDDDDD;
 }
+
+.label-historik-summa {
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-size: 20;
+}

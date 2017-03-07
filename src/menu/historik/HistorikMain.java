@@ -16,7 +16,7 @@ public class HistorikMain extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("historik.fxml"));
 
-        Scene scene = new Scene(root, 720, 700);
+        Scene scene = new Scene(root, 800, 700);
         stage.setScene(scene);
         stage.show();
     }
