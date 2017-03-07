@@ -703,6 +703,7 @@ public class PaymentController implements Initializable {
         basketList = basket.getItems();   //FXCollections.observableArrayList(basket.getItems());
         listView.setItems(basketList);
         listViewEnd.setItems(basketList);
+        totalAmount.setText(basket.getTotalSumAsString());
 
     }
 

@@ -84,6 +84,7 @@ public class ShoppingCartItemsController extends ListCell <BasketItem> {
             basket.removeItem(temp);
             basketItemObservableList.remove(temp);
             setBasketItemObservableList();
+            basket.notifyController();
         }
     }
 
@@ -92,6 +93,7 @@ public class ShoppingCartItemsController extends ListCell <BasketItem> {
         basketItem.addAmount(1);
         textField.setText(basketItem.getAmount()+"");
         price.setText((basketItem.getPriceAsString().getValue()));
+        basket.notifyController();
     }
 
     @FXML
@@ -100,6 +102,7 @@ public class ShoppingCartItemsController extends ListCell <BasketItem> {
             basketItem.addAmount(-1);
             textField.setText(basketItem.getAmount() + "");
             price.setText(basketItem.getPriceAsString().getValue());
+            basket.notifyController();
         }
     }
 
