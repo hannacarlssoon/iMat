@@ -328,3 +328,20 @@
 .titled-pane {
     -fx-text-fill: #FFFFFF
 }
+
+.label-fix {
+    -fx-text-fill: #d62929;
+    -fx-font-size: 15;
+    -fx-font-family: "Segoe UI Light Semibold";
+}
+
+.calender-button {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #444444;
+    -fx-border-width: 1;
+    -fx-border-radius: 0 10 10 0;
+}
+
+.calender-button:hover {
+    -fx-background-color: #DDDDDD;
+}

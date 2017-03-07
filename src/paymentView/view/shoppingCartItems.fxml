@@ -28,8 +28,8 @@
             <Font name="Segoe UI Light" size="20.0" />
          </font></Label>
       <Separator layoutX="620.0" layoutY="-67.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Separator layoutX="505.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Label fx:id="price" layoutX="518.0" layoutY="25.0" prefHeight="17.0" prefWidth="92.0" text="2 x pris">
+      <Separator layoutX="482.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Label fx:id="price" layoutX="491.0" layoutY="25.0" prefHeight="30.0" prefWidth="123.0" text="2 x pris">
          <font>
             <Font name="Segoe UI Light" size="20.0" />
          </font></Label>

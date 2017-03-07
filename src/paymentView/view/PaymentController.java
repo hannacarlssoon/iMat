@@ -13,7 +13,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
+
+import javafx.scene.layout.Pane;
+import javafx.util.StringConverter;
 import main.Main;
 import se.chalmers.ait.dat215.project.CreditCard;
 import se.chalmers.ait.dat215.project.Customer;
@@ -48,14 +52,14 @@ public class PaymentController implements Initializable {
             }
         }
     };
+
     private ChangeListener<String> deliveryInfoStatus = new ChangeListener<String>() {
         @Override
         public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-            if (isFirstNameDone() && isLastNameDone() && isAddressDone() && isCityCodeDone() && isCityDone() && isEmailDone() && isPhoneDone()) {
+            if (isFirstNameDone() && isLastNameDone() && isAddressDone() && isCityCodeDone() && isCityDone() && isEmailDone() && isPhoneDone() && (em.isSelected() ||fm.isSelected()) && (datePicker.getValue() != null)) {
                 deliveryButton.toFront();
                 deliveryButton.setDisable(false);
                 saveDelivery.setDisable(false);
-
             }
             else {
                 invisibleDeliveryButton.toFront();
@@ -64,6 +68,161 @@ public class PaymentController implements Initializable {
             }
         }
     };
+
+    private ChangeListener<Boolean> deliveryFixFirstName = new ChangeListener<Boolean>() {
+        @Override
+        public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+            if (!newValue && !isFirstNameDone()) {
+                labelFirstName.setText("* Inkorret namn");
+            }
+        }
+    };
+
+    private ChangeListener<Boolean> deliveryFixLastName = new ChangeListener<Boolean>() {
+        @Override
+        public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+            if (!newValue && !isLastNameDone()) {
+                labelLastName.setText("* Inkorret namn");
+            }
+        }
+    };
+
+    private ChangeListener<Boolean> deliveryFixAddress = new ChangeListener<Boolean>() {
+        @Override
+        public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+            if (!newValue && !isAddressDone()) {
+                labelAddress.setText("* Inkorret Adress");
+            }
+        }
+    };
+
+    private ChangeListener<Boolean> deliveryFixCity = new ChangeListener<Boolean>() {
+        @Override
+        public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+            if (!newValue && !isCityDone()) {
+                labelCity.setText("* Inkorret stad");
+            }
+        }
+    };
+
+    private ChangeListener<Boolean> deliveryFixCityCode = new ChangeListener<Boolean>() {
+        @Override
+        public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+            if (!newValue && !isCityCodeDone()) {
+                labelCityCode.setText("* Inkorret postnummer");
+            }
+        }
+    };
+
+    private ChangeListener<Boolean> deliveryFixPhone = new ChangeListener<Boolean>() {
+        @Override
+        public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+            if (!newValue && !isPhoneDone()) {
+                labelPhone.setText("* Inkorret telefonnummer");
+            }
+        }
+    };
+
+    private ChangeListener<Boolean> deliveryFixEmail = new ChangeListener<Boolean>() {
+        @Override
+        public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+            if (!newValue && !isEmailDone()) {
+                labelEmail.setText("* Inkorret email");
+            }
+        }
+    };
+
+    private ChangeListener<String> deliveryFixed = new ChangeListener<String>() {
+        @Override
+        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+            if (isFirstNameDone()) {
+                labelFirstName.setText("");
+            }
+            if (isLastNameDone()) {
+                labelLastName.setText("");
+            }
+            if (isAddressDone()) {
+                labelAddress.setText("");
+            }
+            if (isCityCodeDone()) {
+                labelCityCode.setText("");
+            }
+            if (isCityDone()) {
+                labelCity.setText("");
+            }
+            if (isPhoneDone()) {
+                labelPhone.setText("");
+            }
+            if (isEmailDone()) {
+                labelEmail.setText("");
+            }
+        }
+    };
+
+    private ChangeListener<String> creditCardFixed = new ChangeListener<String>() {
+        @Override
+        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+            if (isCCFistNameDone()) {
+                labelCCFirstName.setText("");
+            }
+            if (isCCLastNameDone()) {
+                labelCCLastName.setText("");
+            }
+            if (isCardNumberDone()) {
+                labelCardNumber.setText("");
+            }
+            if (isCVCDone()) {
+                labelCVC.setText("");
+            }
+        }
+    };
+
+    private ChangeListener<Boolean> creditCardFixFirstName = new ChangeListener<Boolean>() {
+        @Override
+        public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+            if (!newValue && !isCCFistNameDone()) {
+                labelCCFirstName.setText("* Inkorrekt namn");
+            }
+        }
+    };
+
+    private ChangeListener<Boolean> creditCardFixLastName = new ChangeListener<Boolean>() {
+        @Override
+        public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+            if (!newValue && !isCCLastNameDone()) {
+                labelCCLastName.setText("* Inkorrekt namn");
+            }
+        }
+    };
+
+    private ChangeListener<Boolean> creditCardFixCardNumber = new ChangeListener<Boolean>() {
+        @Override
+        public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+            if (!newValue && !isCardNumberDone()) {
+                labelCardNumber.setText("* Inkorrekt kortnummer");
+            }
+        }
+    };
+
+    private ChangeListener<Boolean> creditCardFixCVC = new ChangeListener<Boolean>() {
+        @Override
+        public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+            if (!newValue && !isCVCDone()) {
+                labelCVC.setText("* Inkorrekt CVC");
+            }
+        }
+    };
+
+    private ChangeListener<LocalDate> x = new ChangeListener<LocalDate>() {
+        @Override
+        public void changed(ObservableValue<? extends LocalDate> observable, LocalDate oldValue, LocalDate newValue) {
+            if (datePicker.getValue() != null && (em.isSelected() || fm.isSelected()) && isFirstNameDone() && isLastNameDone() && isAddressDone() && isCityCodeDone() && isCityDone() && isPhoneDone() && isEmailDone()) {
+                deliveryButton.setDisable(false);
+                deliveryButton.toFront();
+            }
+        }
+    };
+
 
     //The different views
     @FXML private AnchorPane deliveryView;
@@ -96,6 +255,19 @@ public class PaymentController implements Initializable {
     @FXML private Label totalAmount;
     @FXML private Button invisiblePayButton;
     @FXML private Button invisibleDeliveryButton;
+    @FXML private Label labelFirstName;
+    @FXML private Label labelLastName;
+    @FXML private Label labelCityCode;
+    @FXML private Label labelAddress;
+    @FXML private Label labelCity;
+    @FXML private Label labelEmail;
+    @FXML private Label labelPhone;
+    @FXML private Label labelCardNumber;
+    @FXML private Label labelCCFirstName;
+    @FXML private Label labelCCLastName;
+    @FXML private Label labelCVC;
+    @FXML private Label calenderText;
+    @FXML private Button confirmationButton;
 
     //The two different Listview to represent the confirmation basket and recipt
     @FXML private ListView<BasketItem> listView;
@@ -113,6 +285,7 @@ public class PaymentController implements Initializable {
     @FXML private TextField cardNumber;
     @FXML private TextField emailTextField;
     @FXML private TextField phoneTextField;
+    @FXML private Pane pane;
 
     //The different images views
     @FXML private ImageView tabNumberOne;
@@ -128,6 +301,8 @@ public class PaymentController implements Initializable {
     @FXML private ImageView door;
     @FXML private ImageView invoice;
     @FXML private ImageView creditCard;
+    @FXML private DatePicker datePicker;
+    @FXML private ImageView calender;
 
     //Boolean variables to keep track of which view is showing
     private boolean isOne;
@@ -137,6 +312,9 @@ public class PaymentController implements Initializable {
     private boolean isInvoice;
     private boolean isPayAtDoor;
     private boolean isCreditCard;
+    private boolean isDatePicker = true;
+    private String email = "";
+    private String phone = "";
 
     //The images used in the delivery view
     private Image oneBlue = new Image("file:resources/images/paymentImages/1blue.png");
@@ -156,7 +334,7 @@ public class PaymentController implements Initializable {
     private Image info = new Image("file:resources/images/paymentImages/information.png");
     private Image logga = new Image("file:resources/images/iMat.png");
     private Image printer = new Image("file:resources/images/paymentImages/printer.png");
-
+    private Image cal = new Image("file:resources/images/paymentImages/calendar.png");
 
     //Lists of the values you can choose from when choosing a year, a month and type of card for your credit card
     private ObservableList<Integer> year = FXCollections.observableArrayList(17, 18, 19, 20, 21, 22, 23);
@@ -165,7 +343,7 @@ public class PaymentController implements Initializable {
 
     //List of the products in the basket
     private ObservableList<BasketItem> basketList;
-
+    private ToggleGroup group;
     //The method that runs when the program is started
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -179,7 +357,7 @@ public class PaymentController implements Initializable {
         initializeYear();
 
         //Makes sure you can only select one radiobutton at a time
-        ToggleGroup group = new ToggleGroup();
+        group = new ToggleGroup();
         fm.setToggleGroup(group);
         em.setToggleGroup(group);
 
@@ -196,6 +374,7 @@ public class PaymentController implements Initializable {
         iMat.setImage(logga);
         print.setImage(printer);
         totalAmount.setText(basket.getTotalSumAsString());
+        calender.setImage(cal);
 
         //Sets the basketlist to the list cells
         listView.setCellFactory(basketList -> new ShoppingCartItemsController(this));
@@ -243,11 +422,40 @@ public class PaymentController implements Initializable {
         CCFirstName.setText(fn);
         CCLastName.setText(en);
 
-
-
         //Calls the method which adds a listner to the text fields so it will notify the view when they are changed
         addsCreditCardListners();
         addsDeliveryInfoListners();
+        addsDeliveryFixed();
+        addsCreditCardFixed();
+        firstName.focusedProperty().addListener(deliveryFixFirstName);
+        lastName.focusedProperty().addListener(deliveryFixLastName);
+        address.focusedProperty().addListener(deliveryFixAddress);
+        city.focusedProperty().addListener(deliveryFixCity);
+        cityCode.focusedProperty().addListener(deliveryFixCityCode);
+        emailTextField.focusedProperty().addListener(deliveryFixEmail);
+        phoneTextField.focusedProperty().addListener(deliveryFixPhone);
+        CCFirstName.focusedProperty().addListener(creditCardFixFirstName);
+        CCLastName.focusedProperty().addListener(creditCardFixLastName);
+        cardNumber.focusedProperty().addListener(creditCardFixCardNumber);
+        cvc.focusedProperty().addListener(creditCardFixCVC);
+        group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
+                if (group.getSelectedToggle() != null && isFirstNameDone() && isLastNameDone() && isAddressDone() && isCityCodeDone() && isCityDone() && (datePicker.getValue() != null)) {
+                    deliveryButton.setDisable(false);
+                    deliveryButton.toFront();
+                }
+            }
+        });
+        datePicker.valueProperty().addListener(x);
+    }
+
+    //Adds listners to the credit card fix labels
+    protected void addsCreditCardFixed() {
+        CCFirstName.textProperty().addListener(creditCardFixed);
+        CCLastName.textProperty().addListener(creditCardFixed);
+        cardNumber.textProperty().addListener(creditCardFixed);
+        cvc.textProperty().addListener(creditCardFixed);
     }
 
     //Adds listeners to the credit card text fields
@@ -260,6 +468,17 @@ public class PaymentController implements Initializable {
         monthChoiceBox.converterProperty().addListener(x);
         yearChoiceBox.converterProperty().addListener(x); */
 
+    }
+
+    //Adds listners to the delivery fix labels
+    protected void addsDeliveryFixed() {
+        firstName.textProperty().addListener(deliveryFixed);
+        lastName.textProperty().addListener(deliveryFixed);
+        address.textProperty().addListener(deliveryFixed);
+        city.textProperty().addListener(deliveryFixed);
+        cityCode.textProperty().addListener(deliveryFixed);
+        phoneTextField.textProperty().addListener(deliveryFixed);
+        emailTextField.textProperty().addListener(deliveryFixed);
     }
 
     //Adds listeners to the delivery info text fields
@@ -532,9 +751,7 @@ public class PaymentController implements Initializable {
     //Sets the delivery adress view
     @FXML
     protected void setDeliveryView(ActionEvent event) throws IOException {
-        if (firstName.getText() == "") {
-            deliveryButton.setDisable(true);
-        }
+        deliveryButton.setDisable(true);
         deliveryView.toFront();
         isOne = false;
         isTwo = true;
@@ -546,9 +763,12 @@ public class PaymentController implements Initializable {
     //Sets the email text field to disabled/not disabled when clicked
     @FXML
     protected void setEmailButton(ActionEvent event) {
+
         if (emailTextField.disableProperty().get() == false) {
             emailTextField.disableProperty().setValue(true);
             emailTextField.getStyleClass().add("text-field-disabled");
+            email = emailTextField.getText();
+            emailTextField.clear();
             emailButton.setText("Har email");
             emailButton.getStyleClass().add("noEmailPhone-selected");
             addsDeliveryInfoListners();
@@ -557,6 +777,7 @@ public class PaymentController implements Initializable {
             emailTextField.disableProperty().setValue(false);
             emailTextField.getStyleClass().removeAll("text-field-disabled");
             emailButton.setText("Ingen email");
+            emailTextField.setText(email);
             emailButton.getStyleClass().removeAll("noEmailPhone-selected");
             addsDeliveryInfoListners();
         }
@@ -611,6 +832,8 @@ public class PaymentController implements Initializable {
         if (phoneTextField.disableProperty().get() == false) {
             phoneTextField.disableProperty().setValue(true);
             phoneTextField.getStyleClass().add("text-field-disabled");
+            phone = phoneTextField.getText();
+            phoneTextField.clear();
             phoneButton.setText("Har telefonnummer");
             phoneButton.getStyleClass().add("noEmailPhone-selected");
             addsDeliveryInfoListners();
@@ -619,6 +842,7 @@ public class PaymentController implements Initializable {
             phoneTextField.disableProperty().setValue(false);
             phoneTextField.getStyleClass().removeAll("text-field-disabled");
             phoneButton.setText("Inget telefonnummer");
+            phoneTextField.setText(phone);
             phoneButton.getStyleClass().removeAll("noEmailPhone-selected");
             addsDeliveryInfoListners();
         }
@@ -704,7 +928,12 @@ public class PaymentController implements Initializable {
         listView.setItems(basketList);
         listViewEnd.setItems(basketList);
         totalAmount.setText(basket.getTotalSumAsString());
-
+        if (getBasketList().size() < 1) {
+            confirmationButton.setDisable(true);
+        }
+        else {
+            confirmationButton.setDisable(false);
+        }
     }
 
     //Returns the basket list
@@ -712,11 +941,22 @@ public class PaymentController implements Initializable {
         return basketList;
     }
 
-    public void setPriceId() {
-        totalAmount.setText(basket.getTotalSumAsString());
+
+    @FXML
+    protected void setCalender(ActionEvent event) {
+        datePicker.requestFocus();
+        datePicker.show();
     }
 
+    @FXML
+    protected void calenderButtonClicked(ActionEvent event) {
+        setCalender(event);
+        setPane();
+    }
 
-
+    protected void setPane() {
+        pane.toBack();
+        calenderText.setText("");
+    }
 
 }
