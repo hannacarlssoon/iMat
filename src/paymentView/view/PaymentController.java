@@ -741,6 +741,7 @@ public class PaymentController implements Initializable {
     @FXML
     protected void returnToStoreAfterPurchase(){
         basket.clearBasket();
+        backgroundView.toFront();
         main.switchScene();
     }
 
