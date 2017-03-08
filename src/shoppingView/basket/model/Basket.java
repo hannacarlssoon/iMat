@@ -45,6 +45,11 @@ public final class Basket {
     public void addItem(BasketItem newItem) {
         for (BasketItem item : items) {
             if (item.getProduct().equals(newItem.getProduct())) {
+
+                if (item.getClass() == InvisibleBasketItem.class) {
+                    break;
+                }
+
                 item.addAmount(newItem.getAmount());
                 return;
             }
@@ -56,7 +61,7 @@ public final class Basket {
 
     public boolean contains(Product product) {
         for (BasketItem item : items) {
-            if (item.getProduct().equals(product)) {
+            if (item.getProduct().equals(product) && !(item.getClass() == InvisibleBasketItem.class)) {
                 return true;
             }
         }
