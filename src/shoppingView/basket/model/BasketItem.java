@@ -28,6 +28,7 @@ public class BasketItem {
     private AmountSetter amountSetter;
     private SimpleStringProperty price = new SimpleStringProperty("");
     private ProductView productView;
+    private PutBackButton putBackButton;
 
     public BasketItem(Product product, int amount) {
         this.product = product;
@@ -100,15 +101,22 @@ public class BasketItem {
         productView.showAddedPane();
     }
 
-    public PutBackButton getPutBackButton() {
+    public PutBackButton createPutBackButton() {
+        BasketItem invisible = new InvisibleBasketItem(product, 1);
+
         int listIndex = Basket.getInstance().getItems().indexOf(this);
-        PutBackButton putBackButton = new PutBackButton(this, listIndex);
+        PutBackButton putBackButton = new PutBackButton(this, listIndex, invisible);
         putBackButton.setLayoutY((84+20) + 44 * listIndex);
 
         Basket.getInstance().addPutBackButton(putBackButton);
 
-        Basket.getInstance().getItems().add(listIndex, new InvisibleBasketItem(product, 1));
+        Basket.getInstance().getItems().add(listIndex, invisible);
 
+        this.putBackButton = putBackButton;
+        return putBackButton;
+    }
+
+    public PutBackButton getPutBackButton() {
         return putBackButton;
     }
 }

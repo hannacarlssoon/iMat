@@ -5,7 +5,6 @@ import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.ShoppingCart;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 import shoppingView.basket.view.BasketViewController;
-import shoppingView.listview.productsquare.view.ProductView;
 import shoppingView.listview.putBackButton.PutBackButton;
 import shoppingView.util.PriceUtil;
 import javafx.collections.FXCollections;
@@ -51,7 +50,7 @@ public final class Basket {
             }
         }
 
-        removePutBackButton();
+        removePutBackButtons();
         items.add(0, newItem);
     }
 
@@ -68,7 +67,7 @@ public final class Basket {
         for (BasketItem item : items) {
             if (item.getProduct().equals(productToRemove)) {
                 if (!isInCheckOut()) {
-                    item.getPutBackButton();
+                    item.createPutBackButton();
                 }
                 int index = items.indexOf(item);
 
@@ -110,9 +109,14 @@ public final class Basket {
     public void addPutBackButton(PutBackButton putBackButton) {
         basketViewController.addPutBackButton(putBackButton);
     }
-    public void removePutBackButton() {
+    public void removePutBackButtons() {
         basketViewController.removePutBackButton();
     }
+    public void removePutBackButton(PutBackButton putBackButton) {
+        basketViewController.removePutBackButton(putBackButton);
+    }
+
+
 
     public void putBasketItemsInShoppingCart() {
         ShoppingCart shoppingCart = IMatDataHandler.getInstance().getShoppingCart();

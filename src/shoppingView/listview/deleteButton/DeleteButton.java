@@ -43,7 +43,7 @@ public class DeleteButton extends AnchorPane {
 //        Basket.getInstance().getItems().remove(
 //                Basket.getInstance().getItems().indexOf(item)
 //        );
-        Basket.getInstance().removePutBackButton();
+        Basket.getInstance().removePutBackButton(item.getPutBackButton());
         Basket.getInstance().removeItem(item.getProduct());
     }
 

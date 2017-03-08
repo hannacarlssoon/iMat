@@ -2,8 +2,7 @@ package shoppingView.listview.putBackButton;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import shoppingView.MainApp;
 import shoppingView.basket.model.Basket;
@@ -15,15 +14,20 @@ public class PutBackButton extends AnchorPane {
 
     @FXML
     private BasketItem item;
+
+    @FXML
+    private Label removedLabel;
+
     private int listIndex;
     private boolean destroyed = false;
+    private BasketItem invisible;
 
     // Reference to the main application.
     private MainApp mainApp;
 
     private Thread destroyerThread = new Thread();
 
-    public PutBackButton(BasketItem item, int listIndex) {
+    public PutBackButton(BasketItem item, int listIndex, BasketItem invisible) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PutBackButton.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -31,6 +35,7 @@ public class PutBackButton extends AnchorPane {
         //this.mainApp = mainApp;
         this.item = item;
         this.listIndex = listIndex;
+        this.invisible = invisible;
 
         try {
             fxmlLoader.load();
@@ -48,12 +53,14 @@ public class PutBackButton extends AnchorPane {
                 }
                 /*if (!destroyed) {
                     Basket.getInstance().getItems().remove(listIndex);
-                    Basket.getInstance().removePutBackButton();
+                    Basket.getInstance().removePutBackButtons();
                 }*/
-                Basket.getInstance().removePutBackButton();
-                System.out.println("Removing----------");
+                Basket.getInstance().removePutBackButtons();
+                //System.out.println("Removing----------");
             }
         });
+
+        removedLabel.textProperty().setValue(item.getName().get() + " togs bort");
         //destroyerThread.start();
     }
 
@@ -62,13 +69,13 @@ public class PutBackButton extends AnchorPane {
         destroyed = true;
         Basket.getInstance().getItems().remove(listIndex);
         Basket.getInstance().getItems().add(listIndex, item);
-        Basket.getInstance().removePutBackButton();
+        Basket.getInstance().removePutBackButton(this);
         item.showAddedPane();
     }
 
     private void destroySelf() {
         Basket.getInstance().getItems().remove(listIndex);
-        Basket.getInstance().removePutBackButton();
+        Basket.getInstance().removePutBackButtons();
     }
 
     @FXML

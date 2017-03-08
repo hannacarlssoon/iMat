@@ -32,6 +32,13 @@
    -fx-opacity: 0.9;
 }
 
+.label-removed {
+   -fx-text-fill: #444444;
+   -fx-font-size: 16;
+   -fx-font-family: "Segoe UI Semibold";
+   -fx-opacity: 0.9;
+}
+
 //Används för vanliga kanppar
 .abutton {
    -fx-padding: 5 22 5 22;

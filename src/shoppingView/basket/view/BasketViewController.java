@@ -117,6 +117,7 @@ public class BasketViewController {
 
     @FXML
     private void toCheckout(ActionEvent e){
+        Basket.getInstance().removePutBackButtons();
         main.switchScene();
     }
 
@@ -169,6 +170,10 @@ public class BasketViewController {
         for (BasketItem item : itemsToRemove) {
             Basket.getInstance().getItems().remove(item);
         }
+    }
+
+    public void removePutBackButton(PutBackButton putBackButton) {
+        mainPane.getChildren().remove(putBackButton);
     }
 
     public void hidePutBack() {

@@ -12,6 +12,7 @@
 
 <fx:root fx:id="putBackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="376.0" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="50.0" layoutY="32.0" mnemonicParsing="false" onAction="#putBackClicked" prefHeight="34.0" prefWidth="277.0" style="-fx-padding: 0 0 0 0;" styleClass="abutton" stylesheets="@../../CSS/Hanna.css" text="Ångra borttagning av vara" AnchorPane.topAnchor="0.0" />
+      <Button layoutX="284.0" layoutY="2.0" mnemonicParsing="false" onAction="#putBackClicked" prefHeight="34.0" prefWidth="88.0" style="-fx-padding: 0 0 0 0;" styleClass="abutton" stylesheets="@../../CSS/Hanna.css" text="Ångra" AnchorPane.topAnchor="2.0" />
+      <Label fx:id="removedLabel" layoutX="27.0" layoutY="6.0" prefHeight="27.0" prefWidth="243.0" styleClass="label-removed" stylesheets="@../../CSS/Hanna.css" text="Label" />
    </children>
 </fx:root>
