@@ -268,6 +268,7 @@ public class PaymentController implements Initializable {
     @FXML private Label labelCVC;
     @FXML private Label calenderText;
     @FXML private Button confirmationButton;
+    @FXML private Button toolTipButton;
 
     //The two different Listview to represent the confirmation basket and recipt
     @FXML private ListView<BasketItem> listView;
@@ -344,6 +345,7 @@ public class PaymentController implements Initializable {
     //List of the products in the basket
     private ObservableList<BasketItem> basketList;
     private ToggleGroup group;
+
     //The method that runs when the program is started
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -929,15 +931,17 @@ public class PaymentController implements Initializable {
 
     //Sets the basket list so you know which products have been added to the cart
     public void updateBasket(){
-        basketList = basket.getItems();   //FXCollections.observableArrayList(basket.getItems());
+        basketList = basket.getItems();
         listView.setItems(basketList);
         listViewEnd.setItems(basketList);
         totalAmount.setText(basket.getTotalSumAsString());
         if (getBasketList().size() < 1) {
             confirmationButton.setDisable(true);
+            toolTipButton.toFront();
         }
         else {
             confirmationButton.setDisable(false);
+            confirmationButton.toFront();
         }
     }
 
