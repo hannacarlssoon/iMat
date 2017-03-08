@@ -83,28 +83,7 @@ public class Menu extends Application {
     }
 
     public void showHistory(){
-        HistorikMain historikMain = new HistorikMain();
-        try{
-            historikMain.start(primaryStage);
-        } catch(Exception e){
-
-        }
-
-        /*try {
-            // Load the fxml file and create a new stage for the popup dialog.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Menu.class.getResource("historik/historik.fxml"));
-            AnchorPane page = (AnchorPane)loader.load();
-
-            // Create the dialog Stage.
-            Stage dialogStage = new Stage();
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(primaryStage);
-            Scene scene = new Scene(page);
-            dialogStage.setScene(scene);
-        } catch (Exception e){
-
-        }*/
+        main.openHistory();
     }
 
     public void setHomeDisabled(Boolean visibility){

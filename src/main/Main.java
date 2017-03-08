@@ -10,11 +10,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import menu.*;
+import menu.historik.HistorikMain;
 import paymentView.view.PaymentController;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import shoppingView.MainApp;
 import shoppingView.basket.model.Basket;
 import shoppingView.basket.view.BasketViewController;
+
+import java.io.IOException;
 
 public class Main extends Application {
 
@@ -22,6 +25,10 @@ public class Main extends Application {
     private Stage primaryStage;
     private Scene shoppingScene;
     private Scene paymentScene;
+    private Menu menu;
+    private MainApp mainShop;
+    private HistorikMain historikMain;
+    private paymentView.MainApp mainPayment;
 
     private ProductsModel productsModel;
     private Basket basket = Basket.getInstance();
@@ -44,17 +51,20 @@ public class Main extends Application {
         primaryStage.getIcons().add(new Image("file:resources/images/iMat_square.png"));
         primaryStage.show();
 
-        Menu menu = new Menu();
+        menu = new Menu();
         menu.setMain(this);
         menu.start(primaryStage);
         setMenuHolderContent(menu.getRoot());
 
-        MainApp mainShop = new MainApp();
+        mainShop = new MainApp();
         mainShop.start(primaryStage);
         setShopHolderContent(mainShop.getRoot());
         mainShop.getBasketViewController().setMain(this);
 
-        paymentView.MainApp mainPayment = new paymentView.MainApp();
+        historikMain = new HistorikMain();
+        historikMain.setMain(this);
+
+        mainPayment = new paymentView.MainApp();
         mainPayment.start(primaryStage);
         mainPayment.getController().setMain(this);
         Parent scene2 = mainPayment.getRoot();
@@ -97,6 +107,24 @@ public class Main extends Application {
     public void setHomeDisabled(Boolean visibility){
         controller.home.setDisable(visibility);
         controller.home.setVisible(!visibility);
+    }
+
+    public void openHistory(){
+        try {
+            Stage historyStage = new Stage();
+            historyStage.initModality(Modality.NONE);
+            historyStage.initOwner(primaryStage);
+            controller.historyBackBlocker.setVisible(true);
+            controller.historyBackBlocker.setDisable(false);
+            historikMain.start(historyStage);
+        } catch (Exception e){
+
+        }
+    }
+
+    public void historyClosed(){
+        controller.historyBackBlocker.setVisible(false);
+        controller.historyBackBlocker.setDisable(true);
     }
 
     public static void main(String[] args) {

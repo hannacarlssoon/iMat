@@ -29,6 +29,7 @@ public class HistorikController implements Initializable {
     List<Order> orderList = instance.getOrders();
     private String[] datesArray;
     private HistorikViewController historikViewController;
+    private HistorikMain historikMain;
 
 
     @Override
@@ -108,5 +109,14 @@ public class HistorikController implements Initializable {
             t.setText(newWord);
             accordion.getPanes().add(t);
         }
+    }
+
+    @FXML
+    private void returnButtonClicked() {
+        historikMain.closePanelStage();
+    }
+
+    public void setHistorikMain(HistorikMain historikMain){
+        this.historikMain = historikMain;
     }
 }

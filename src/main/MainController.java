@@ -17,6 +17,8 @@ public class MainController implements Initializable{
     AnchorPane shopHolder;
     @FXML
     AnchorPane home;
+    @FXML
+    AnchorPane historyBackBlocker;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
