@@ -535,7 +535,12 @@ public class PaymentController implements Initializable {
     //Closes the application
     @FXML
     protected void closeAboutActionPerformed(ActionEvent event) throws IOException {
-
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            @Override
+            public void run() {
+                instance.shutDown();
+            }
+        }));
     }
 
     //Sets credit card to selected
@@ -940,7 +945,6 @@ public class PaymentController implements Initializable {
     public ObservableList<BasketItem> getBasketList() {
         return basketList;
     }
-
 
     @FXML
     protected void setCalender(ActionEvent event) {

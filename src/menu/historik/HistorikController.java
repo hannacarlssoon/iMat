@@ -42,7 +42,6 @@ public class HistorikController implements Initializable {
             TitledPane t = new TitledPane();
             t.getStyleClass().add("titled-pane");
             t.setContent(historikViewController.getMainAnchorPane());
-            //char[] chars = datesArray[i].toCharArray();
             String newWord = "";
             String[] words = datesArray[i].split(" ");
 
@@ -105,11 +104,8 @@ public class HistorikController implements Initializable {
                     newWord = newWord + "December ";
                 }
             }
-
             newWord = newWord + words[2] + "   " + words[3] + " " + words[5];
-
             t.setText(newWord);
-
             accordion.getPanes().add(t);
         }
     }
