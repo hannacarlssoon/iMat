@@ -10,7 +10,7 @@
 
 <AnchorPane fx:id="mainAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="820.0" styleClass="background" stylesheets="@../../paymentView/CSS/PayStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="menu.historik.HistorikController">
    <children>
-      <Button mnemonicParsing="false" onAction="#returnButtonClicked" styleClass="abutton" text="Tillbaka till affären" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="30.0" />
+      <Button mnemonicParsing="false" onAction="#returnButtonClicked" styleClass="abutton" text="Fortsätt handla" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="30.0" />
       <Label alignment="CENTER" styleClass="special-label" stylesheets="@HistorikCSS.css" text="Köphistorik" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <Label alignment="TOP_CENTER" layoutY="45.0" prefHeight="620.0" prefWidth="740.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <graphic>
