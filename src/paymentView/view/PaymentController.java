@@ -73,7 +73,7 @@ public class PaymentController implements Initializable {
         @Override
         public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
             if (!newValue && !isFirstNameDone()) {
-                labelFirstName.setText("* Inkorret namn");
+                labelFirstName.setText("* Inkorrekt namn");
             }
         }
     };
@@ -82,7 +82,7 @@ public class PaymentController implements Initializable {
         @Override
         public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
             if (!newValue && !isLastNameDone()) {
-                labelLastName.setText("* Inkorret namn");
+                labelLastName.setText("* Inkorrekt namn");
             }
         }
     };
@@ -91,7 +91,7 @@ public class PaymentController implements Initializable {
         @Override
         public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
             if (!newValue && !isAddressDone()) {
-                labelAddress.setText("* Inkorret Adress");
+                labelAddress.setText("* Inkorrekt Adress");
             }
         }
     };
@@ -100,7 +100,7 @@ public class PaymentController implements Initializable {
         @Override
         public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
             if (!newValue && !isCityDone()) {
-                labelCity.setText("* Inkorret stad");
+                labelCity.setText("* Inkorrekt stad");
             }
         }
     };
@@ -109,7 +109,7 @@ public class PaymentController implements Initializable {
         @Override
         public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
             if (!newValue && !isCityCodeDone()) {
-                labelCityCode.setText("* Inkorret postnummer");
+                labelCityCode.setText("* Inkorrekt postnummer");
             }
         }
     };
@@ -118,7 +118,7 @@ public class PaymentController implements Initializable {
         @Override
         public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
             if (!newValue && !isPhoneDone()) {
-                labelPhone.setText("* Inkorret telefonnummer");
+                labelPhone.setText("* Inkorrekt telefonnummer");
             }
         }
     };
@@ -127,7 +127,7 @@ public class PaymentController implements Initializable {
         @Override
         public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
             if (!newValue && !isEmailDone()) {
-                labelEmail.setText("* Inkorret email");
+                labelEmail.setText("* Inkorrekt email");
             }
         }
     };
@@ -695,6 +695,11 @@ public class PaymentController implements Initializable {
     //Sets the shopping view scene
     @FXML
     protected void returnToStore(){
+        main.switchScene();
+    }
+
+    @FXML
+    protected void returnToStoreAfterPurchase(){
         basket.clearBasket();
         main.switchScene();
     }
