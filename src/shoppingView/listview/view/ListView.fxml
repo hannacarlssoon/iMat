@@ -23,5 +23,6 @@
       </ScrollPane>
       <ComboBox fx:id="sortBox" layoutX="758.0" layoutY="10.0" prefHeight="30.0" prefWidth="100.0" promptText="Innehåll" styleClass="combo-box-amount-basket" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="5.0" />
       <Label layoutX="657.0" layoutY="15.0" style="-fx-text-fill: black;" text="Sortera efter:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="10.0" />
+      <Label fx:id="noResults" alignment="CENTER" contentDisplay="CENTER" layoutX="117.0" layoutY="21.0" prefHeight="21.0" prefWidth="732.0" styleClass="id-header-blue" stylesheets="@../../CSS/RaspberryCut.css" text="Label" textAlignment="CENTER" AnchorPane.leftAnchor="117.0" AnchorPane.topAnchor="100.0" />
    </children>
 </AnchorPane>

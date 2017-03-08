@@ -3,6 +3,7 @@ package shoppingView.listview.view;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.SingleSelectionModel;
 import main.ProductsModel;
 import se.chalmers.ait.dat215.project.Product;
@@ -29,6 +30,8 @@ public class ListViewController implements Observer {
     private VBox gridPaneContainer;
     @FXML
     private ComboBox<String> sortBox;
+    @FXML
+    private Label noResults;
 
     @FXML
     private void initialize() {
@@ -65,6 +68,8 @@ public class ListViewController implements Observer {
 
             }
         });
+
+        noResults.textProperty().setValue("");
     }
 
 
@@ -88,6 +93,7 @@ public class ListViewController implements Observer {
 
     @FXML
     public void showResults(List<Product> productIDs) {
+        noResults.textProperty().setValue("");
         productGrid.getChildren().clear();
 
         int columns = 4;
@@ -101,6 +107,10 @@ public class ListViewController implements Observer {
         productGrid.setVgap(20);
         productGrid.setAlignment(Pos.CENTER);
         productGrid.setPadding(new Insets(20, 20, 40, 0));
+
+        if (productIDs.size() == 0) {
+            noResults.textProperty().setValue("Din sökning gav tyvärr inga träffar. Försök gärna igen!");
+        }
     }
 
     public void setMainApp(MainApp mainApp) {
