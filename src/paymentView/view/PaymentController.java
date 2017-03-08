@@ -742,6 +742,7 @@ public class PaymentController implements Initializable {
     protected void returnToStoreAfterPurchase(){
         basket.clearBasket();
         backgroundView.toFront();
+        tabOneSelected();
         main.switchScene();
     }
 
