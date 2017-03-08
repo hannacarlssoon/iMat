@@ -79,6 +79,8 @@ public class ShoppingCartItemsController extends ListCell <BasketItem> {
     @FXML
     protected void removeItem(ActionEvent event) {
 
+
+
         if (basketItem != null) {;
             Product temp = basketItem.getProduct();
             basket.removeItem(temp);

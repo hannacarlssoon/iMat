@@ -233,7 +233,8 @@ public class MenuController implements Initializable{
         }
     }
 
-    public void historyLabelActionPerformed(ActionEvent event){
+    public void historyLabelActionPerformed(){
+        System.out.println("mouse clicked");
         menu.showHistory();
     }
 

@@ -10,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import main.Main;
+import menu.historik.HistorikMain;
 import shoppingView.MainApp;
 
 public class Menu extends Application {
@@ -82,7 +83,14 @@ public class Menu extends Application {
     }
 
     public void showHistory(){
-        try {
+        HistorikMain historikMain = new HistorikMain();
+        try{
+            historikMain.start(primaryStage);
+        } catch(Exception e){
+
+        }
+
+        /*try {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Menu.class.getResource("historik/historik.fxml"));
@@ -96,7 +104,7 @@ public class Menu extends Application {
             dialogStage.setScene(scene);
         } catch (Exception e){
 
-        }
+        }*/
     }
 
     public void setHomeDisabled(Boolean visibility){
