@@ -10,6 +10,7 @@
 
 .titled-pane > .title {
     -fx-pref-height: 38;
+    -fx-pref-width: 730;
     -fx-background-color: linear-gradient(#FFFFFF, #f2f2f2);;
     -fx-background-radius: 10 10 10 10;
 }
