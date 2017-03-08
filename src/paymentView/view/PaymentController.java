@@ -5,6 +5,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -450,6 +451,38 @@ public class PaymentController implements Initializable {
             }
         });
         datePicker.valueProperty().addListener(x);
+        emailButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                setEmailButton(event);
+                if (isFirstNameDone() && isLastNameDone() && isAddressDone() && isCityCodeDone() && isCityDone() && isEmailDone() && isPhoneDone() && (em.isSelected() ||fm.isSelected()) && (datePicker.getValue() != null)) {
+                    deliveryButton.toFront();
+                    deliveryButton.setDisable(false);
+                    saveDelivery.setDisable(false);
+                }
+                else {
+                    invisibleDeliveryButton.toFront();
+                    deliveryButton.setDisable(true);
+                    saveDelivery.setDisable(true);
+                }
+            }
+        });
+        phoneButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                setPhoneButton(event);
+                if (isFirstNameDone() && isLastNameDone() && isAddressDone() && isCityCodeDone() && isCityDone() && isEmailDone() && isPhoneDone() && (em.isSelected() ||fm.isSelected()) && (datePicker.getValue() != null)) {
+                    deliveryButton.toFront();
+                    deliveryButton.setDisable(false);
+                    saveDelivery.setDisable(false);
+                }
+                else {
+                    invisibleDeliveryButton.toFront();
+                    deliveryButton.setDisable(true);
+                    saveDelivery.setDisable(true);
+                }
+            }
+        });
     }
 
     //Adds listners to the credit card fix labels
