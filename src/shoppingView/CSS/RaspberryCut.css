@@ -96,10 +96,14 @@
     -fx-padding: 5;
 
     //Removes row striping:
-    -fx-control-inner-background-alt: -fx-control-inner-background ;
+    //-fx-control-inner-background-alt: -fx-control-inner-background ;
 
     -fx-focus-color: none;
     -fx-box-border: transparent;
+}
+
+.table-row-cell {
+    -fx-cell-size: 44px;
 }
 
 .modalpanel {
