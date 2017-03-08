@@ -88,9 +88,14 @@
     -fx-background-radius: 10 10 10 10;
 }
 
+.amountField{
+    -fx-border-color: #777777;
+    -fx-border-width: 1 0 1 0;
+}
+
 .plus-button {
-    -fx-background-color: #FFFFFF;
-    -fx-border-color: #444444;
+    -fx-background-color: #fafafa;
+    -fx-border-color: #777777;
     -fx-border-width: 1;
     -fx-border-radius: 0 10 10 0;
     -fx-background-radius: 0 10 10 0;
@@ -105,8 +110,8 @@
 }
 
 .minus-button {
-    -fx-background-color: #FFFFFF;
-    -fx-border-color: #444444;
+    -fx-background-color: #fafafa;
+    -fx-border-color: #777777;
     -fx-border-width: 1;
     -fx-border-radius: 10 0 0 10;
     -fx-background-radius: 10 0 0 10;
@@ -114,6 +119,11 @@
 
 .minus-button:hover {
     -fx-background-color: #DDDDDD;
+}
+
+.minus-button:disabled {
+    -fx-border-color: #000000;
+    -fx-background-color: #d9d9d9;
 }
 
 .minus-button:pressed, .minus-button:default:hover:pressed {

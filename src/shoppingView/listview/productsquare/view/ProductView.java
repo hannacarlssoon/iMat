@@ -1,8 +1,7 @@
 package shoppingView.listview.productsquare.view;
 
 import javafx.animation.*;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.util.Duration;
 import main.ProductsModel;
 import se.chalmers.ait.dat215.project.Order;
@@ -17,8 +16,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -45,6 +42,8 @@ public class ProductView extends AnchorPane {
     private ImageView plusIcon;
     @FXML
     private ImageView minusIcon;
+    @FXML
+    private Button minusButton;
     @FXML
     private AnchorPane addedPane;
     @FXML
@@ -82,6 +81,8 @@ public class ProductView extends AnchorPane {
         setIcons();
 
         price.textProperty().setValue(PriceUtil.toPriceFormat(product.getPrice()));
+
+
 
         //Shows addedPane from the beginning when browsing (if product in basket):
         if (Basket.getInstance().contains(product)) {
@@ -164,6 +165,7 @@ public class ProductView extends AnchorPane {
     private void setUpAmounts() {
         //Real code:
         amountField.textProperty().setValue(AmountUtil.createAmountString(product, 1));
+        minusButton.setDisable(true);
     }
 
     @FXML
@@ -209,6 +211,9 @@ public class ProductView extends AnchorPane {
     private void incAmount() {
         int newAmount = AmountUtil.amountFromString(amountField.textProperty().get());
         amountField.textProperty().setValue(AmountUtil.createAmountString(product, newAmount + 1));
+        if(AmountUtil.amountFromString(amountField.textProperty().getValue())==2){
+            minusIcon.getParent().setDisable(false);
+        }
         //Remove:
     }
 
@@ -217,6 +222,9 @@ public class ProductView extends AnchorPane {
         int newAmount = AmountUtil.amountFromString(amountField.textProperty().get());
         if (newAmount > 1) {
             amountField.textProperty().setValue(AmountUtil.createAmountString(product, newAmount - 1));
+        }
+        if(AmountUtil.amountFromString(amountField.textProperty().getValue())==1){
+            minusIcon.getParent().setDisable(true);
         }
     }
 
