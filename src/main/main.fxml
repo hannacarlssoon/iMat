@@ -23,6 +23,11 @@
                   <Font name="Segoe UI Light" size="42.0" />
                </font>
             </Label>
+            <Label layoutX="33.0" layoutY="379.0" prefHeight="70.0" prefWidth="900.0" text="Välj vilka varor du vill handla genom att använda menyn för att komma till rätt avdelning. Eller så söker du direkt efter varan i sökfältet." textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Segoe UI Light" size="24.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
