@@ -304,3 +304,7 @@
         -fx-alignment: CENTER;
         -fx-content-display: LEFT;
 }
+
+.tabel-view {
+    -fx-text-fill: #444444;
+}
