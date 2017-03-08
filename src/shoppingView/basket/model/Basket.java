@@ -51,6 +51,7 @@ public final class Basket {
             }
         }
 
+        removePutBackButton();
         items.add(0, newItem);
     }
 
@@ -72,6 +73,7 @@ public final class Basket {
                 int index = items.indexOf(item);
 
                 items.remove(item);
+                item.hideAddedPane();
                 removedItemsHolder.addItemToRemoved(item, index);
                 System.out.println("Removed");
 

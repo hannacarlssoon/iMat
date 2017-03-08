@@ -58,11 +58,12 @@ public class PutBackButton extends AnchorPane {
     }
 
     @FXML
-    private void putBackClicked() {
+    public void putBackClicked() {
         destroyed = true;
         Basket.getInstance().getItems().remove(listIndex);
         Basket.getInstance().getItems().add(listIndex, item);
         Basket.getInstance().removePutBackButton();
+        item.showAddedPane();
     }
 
     private void destroySelf() {

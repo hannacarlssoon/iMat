@@ -16,6 +16,7 @@ import se.chalmers.ait.dat215.project.Product;
 import shoppingView.MainApp;
 import shoppingView.basket.model.Basket;
 import shoppingView.basket.model.BasketItem;
+import shoppingView.basket.model.InvisibleBasketItem;
 import shoppingView.listview.amountSetter.AmountSetter;
 import shoppingView.listview.deleteButton.DeleteButton;
 import shoppingView.listview.putBackButton.PutBackButton;
@@ -26,6 +27,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BasketViewController {
 
@@ -64,10 +68,12 @@ public class BasketViewController {
 
         //Init columns
         productNameColumn.setCellValueFactory(cellData -> cellData.getValue().getName());
-        productNameColumn.setPrefWidth(135);
+        productNameColumn.setPrefWidth(145);
+        productNameColumn.setMaxWidth(145);
+        productNameColumn.setMinWidth(145);
 
         priceColumn.setCellValueFactory(cellData -> cellData.getValue().getPriceAsString());
-        priceColumn.setPrefWidth(80);
+        priceColumn.setPrefWidth(90);
 
         amountColumn.setCellValueFactory(cellData -> cellData.getValue().getComboBox());
         deleteColumn.setCellValueFactory(cellData -> cellData.getValue().getDeleteButton());
@@ -142,10 +148,26 @@ public class BasketViewController {
     public void removePutBackButton() {
         //mainPane.getChildren().remove(putBackButton);
 
+        List<Node> nodesToRemove = new ArrayList<Node>();
         for (Node node : mainPane.getChildren()) {
             if (node.getClass() == PutBackButton.class) {
-                mainPane.getChildren().remove(mainPane.getChildren().indexOf(node));
+                nodesToRemove.add(node);
+                //mainPane.getChildren().remove(mainPane.getChildren().indexOf(node));
             }
+        }
+        for (Node node : nodesToRemove) {
+            mainPane.getChildren().remove(node);
+        }
+
+        //Removes all the placeholders from the Basket:
+        List<BasketItem> itemsToRemove = new ArrayList<BasketItem>();
+        for (BasketItem item : Basket.getInstance().getItems()) {
+            if (item.getClass() == InvisibleBasketItem.class) {
+                itemsToRemove.add(item);
+            }
+        }
+        for (BasketItem item : itemsToRemove) {
+            Basket.getInstance().getItems().remove(item);
         }
     }
 

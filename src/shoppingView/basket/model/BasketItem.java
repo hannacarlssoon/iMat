@@ -48,9 +48,11 @@ public class BasketItem {
         //String priceString = PriceUtil.toPriceFormat(getTotal());
         //price = new SimpleStringProperty(priceString);
 
-        String priceString = PriceUtil.toPriceFormat(product.getPrice());
+        String priceString = PriceUtil.toPriceFormat(product.getPrice() * amount);
         //price = new SimpleStringProperty(amount + " x " + priceString);
-        price.setValue(amount + " x " + priceString);
+
+        price.setValue(priceString);
+        //price.setValue(amount + " x " + priceString);
         return price;
     }
 
@@ -101,7 +103,7 @@ public class BasketItem {
     public PutBackButton getPutBackButton() {
         int listIndex = Basket.getInstance().getItems().indexOf(this);
         PutBackButton putBackButton = new PutBackButton(this, listIndex);
-        putBackButton.setLayoutY((84+32) + 44 * listIndex);
+        putBackButton.setLayoutY((84+20) + 44 * listIndex);
 
         Basket.getInstance().addPutBackButton(putBackButton);
 
