@@ -46,7 +46,7 @@ import java.io.IOException;
             }
                     title.setText(shoppingItem.getProduct().getName());
                     number.setText(shoppingItem.getAmount() + "");
-                    price.setText(shoppingItem.getProduct().getPrice() + "0 kr");
+                    price.setText(shoppingItem.getProduct().getPrice() * shoppingItem.getAmount() + "0 kr");
                     String name = shoppingItem.getProduct().getImageName();
                     image.setImage(new Image("file:resources/images/products/" + name));
                     setGraphic(mainAnchorPane);

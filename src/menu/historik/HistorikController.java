@@ -56,7 +56,7 @@ public class HistorikController implements Initializable {
                 if (words[j].equals("Wed")) {
                     newWord = "Onsdag " + newWord;
                 }
-                if (words[j].equals("Thur")) {
+                if (words[j].equals("Thu")) {
                     newWord = "Torsdag " + newWord;
                 }
                 if (words[j].equals("Fri")) {
