@@ -322,7 +322,7 @@ public class PaymentController implements Initializable {
     private Image ccGrey = new Image("file:resources/images/paymentImages/cc grey.png");
     private Image ccBlue = new Image("file:resources/images/paymentImages/cc blue.png");
     private Image info = new Image("file:resources/images/paymentImages/information.png");
-    private Image logga = new Image("file:resources/images/iMat.png");
+    private Image logga = new Image("file:src/menu/logotype.png");
     private Image printer = new Image("file:resources/images/paymentImages/printer.png");
     private Image cal = new Image("file:resources/images/paymentImages/calendar.png");
 
