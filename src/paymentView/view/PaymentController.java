@@ -78,7 +78,6 @@ public class PaymentController implements Initializable {
             }
         }
     };
-
     private ChangeListener<Boolean> deliveryFixLastName = new ChangeListener<Boolean>() {
         @Override
         public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
@@ -87,7 +86,6 @@ public class PaymentController implements Initializable {
             }
         }
     };
-
     private ChangeListener<Boolean> deliveryFixAddress = new ChangeListener<Boolean>() {
         @Override
         public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
@@ -96,7 +94,6 @@ public class PaymentController implements Initializable {
             }
         }
     };
-
     private ChangeListener<Boolean> deliveryFixCity = new ChangeListener<Boolean>() {
         @Override
         public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
@@ -105,7 +102,6 @@ public class PaymentController implements Initializable {
             }
         }
     };
-
     private ChangeListener<Boolean> deliveryFixCityCode = new ChangeListener<Boolean>() {
         @Override
         public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
@@ -114,25 +110,23 @@ public class PaymentController implements Initializable {
             }
         }
     };
-
     private ChangeListener<Boolean> deliveryFixPhone = new ChangeListener<Boolean>() {
         @Override
         public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-            if (!newValue && !isPhoneDone()) {
+            if (!newValue && !isPhoneDone() && !phoneTextField.isDisable()) {
+                System.out.println("In change");
                 labelPhone.setText("* Inkorrekt telefonnummer");
             }
         }
     };
-
     private ChangeListener<Boolean> deliveryFixEmail = new ChangeListener<Boolean>() {
         @Override
         public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-            if (!newValue && !isEmailDone()) {
+            if (!newValue && !isEmailDone() && !emailTextField.isDisable()) {
                 labelEmail.setText("* Inkorrekt email");
             }
         }
     };
-
     private ChangeListener<String> deliveryFixed = new ChangeListener<String>() {
         @Override
         public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -159,7 +153,6 @@ public class PaymentController implements Initializable {
             }
         }
     };
-
     private ChangeListener<String> creditCardFixed = new ChangeListener<String>() {
         @Override
         public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -177,7 +170,6 @@ public class PaymentController implements Initializable {
             }
         }
     };
-
     private ChangeListener<Boolean> creditCardFixFirstName = new ChangeListener<Boolean>() {
         @Override
         public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
@@ -186,7 +178,6 @@ public class PaymentController implements Initializable {
             }
         }
     };
-
     private ChangeListener<Boolean> creditCardFixLastName = new ChangeListener<Boolean>() {
         @Override
         public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
@@ -195,7 +186,6 @@ public class PaymentController implements Initializable {
             }
         }
     };
-
     private ChangeListener<Boolean> creditCardFixCardNumber = new ChangeListener<Boolean>() {
         @Override
         public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
@@ -204,7 +194,6 @@ public class PaymentController implements Initializable {
             }
         }
     };
-
     private ChangeListener<Boolean> creditCardFixCVC = new ChangeListener<Boolean>() {
         @Override
         public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
@@ -213,7 +202,6 @@ public class PaymentController implements Initializable {
             }
         }
     };
-
     private ChangeListener<LocalDate> x = new ChangeListener<LocalDate>() {
         @Override
         public void changed(ObservableValue<? extends LocalDate> observable, LocalDate oldValue, LocalDate newValue) {
@@ -455,6 +443,9 @@ public class PaymentController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 setEmailButton(event);
+                if (emailTextField.isDisable()) {
+                    labelEmail.setText("");
+                }
                 if (isFirstNameDone() && isLastNameDone() && isAddressDone() && isCityCodeDone() && isCityDone() && isEmailDone() && isPhoneDone() && (em.isSelected() ||fm.isSelected()) && (datePicker.getValue() != null)) {
                     deliveryButton.toFront();
                     deliveryButton.setDisable(false);
@@ -471,6 +462,9 @@ public class PaymentController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 setPhoneButton(event);
+                if (phoneTextField.isDisable()) {
+                    labelPhone.setText("");
+                }
                 if (isFirstNameDone() && isLastNameDone() && isAddressDone() && isCityCodeDone() && isCityDone() && isEmailDone() && isPhoneDone() && (em.isSelected() ||fm.isSelected()) && (datePicker.getValue() != null)) {
                     deliveryButton.toFront();
                     deliveryButton.setDisable(false);
@@ -945,6 +939,7 @@ public class PaymentController implements Initializable {
         tabNumberFour.setImage(fourGrey);
         confirmation.getStyleClass().add("activeTab");
         delivery.getStyleClass().removeAll("activeTab");
+        recipt.getStyleClass().removeAll("activeTab");
     }
 
     //Sets tab three to selected
