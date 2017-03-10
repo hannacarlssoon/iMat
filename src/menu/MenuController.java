@@ -88,7 +88,7 @@ public class MenuController implements Initializable{
         list.add(new String[] {"DAIRIES"});
         list.add(new String[] {"HOT_DRINKS","COLD_DRINKS"});
         list.add(new String[] {"BREAD"});
-        list.add(new String[] {"FLOUR_SUGAR_SALT","NUTS_AND_SEEDS","PASTA","POTATO_RICE"});
+        list.add(new String[] {"FLOUR_SUGAR_SALT","NUTS_AND_SEEDS","PASTA","POTATO_RICE","POD"});
         list.add(new String[] {"SWEET"});
         list.add(new String[] {});
 
@@ -164,8 +164,11 @@ public class MenuController implements Initializable{
 
         if(itemText.equals("alla"))
             menuItemAction(selectedMainMenuIndex);
-        else
-            productsModel.searchProducts(itemText);
+        else{
+                productsModel.setSubmenuProducts(itemText);
+        }
+            //productsModel.searchProducts(itemText);
+
     }
 
     private void menuItemAction(int i){

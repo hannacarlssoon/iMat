@@ -269,6 +269,7 @@ public class ProductView extends AnchorPane {
 
     //For making the tooltip appear quicker:
     public static void hackTooltipStartTiming(Tooltip tooltip) {
+
         try {
             Field fieldBehavior = tooltip.getClass().getDeclaredField("BEHAVIOR");
             fieldBehavior.setAccessible(true);

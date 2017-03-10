@@ -12,6 +12,9 @@ public class ProductsModel extends Observable{
     //list of products to view
     private List<Product> products;
 
+    //
+    private List<Product> mainProducts;
+
     //list of all products in store
     private List<Product> allProducts = handler.getProducts();
 
@@ -49,6 +52,8 @@ public class ProductsModel extends Observable{
             products.addAll(handler.getProducts(category));
         }
 
+        mainProducts = products;
+
         setChanged();
         notifyObservers();
     }
@@ -60,16 +65,31 @@ public class ProductsModel extends Observable{
      */
     public void setSubmenuProducts(String s){
         List<Product> submenuProducts = new ArrayList<>();
-        String searchStr = s.toLowerCase();
-
-        for(Product p:products){
-            if(p.getName().toLowerCase().equals(searchStr))
-                submenuProducts.add(p);
+        String[] searchStrs = s.toLowerCase().split(" ");
+        for(String searchStr:searchStrs){
+            for(Product p:mainProducts){
+            /*if(p.getName().toLowerCase().equals(searchStr))
+                submenuProducts.add(p);*/
+                if(matchStrings(searchStr,p.getName().toLowerCase()))
+                    submenuProducts.add(p);
+            }
         }
+
+
         products = submenuProducts;
 
         setChanged();
         notifyObservers();
+    }
+
+    private boolean matchStrings(String search, String match){
+        if(match.length()<search.length()) return false;
+        for(int i=0;i<match.length()-search.length()+1;i++){
+            if(match.substring(i,i+search.length()).equals(search)){
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -81,7 +101,7 @@ public class ProductsModel extends Observable{
         String searchStr = s.toLowerCase();
 
         for(Product p:allProducts){
-            if(p.getName().toLowerCase().equals(searchStr)){
+            if(matchStrings(searchStr,p.getName().toLowerCase())){
                 products.add(p);
             }
         }
