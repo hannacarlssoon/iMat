@@ -44,12 +44,12 @@ public class PaymentController implements Initializable {
             if (isCardNumberDone() && isCCLastNameDone() && isCCFistNameDone() && isCVCDone()) {
                 payButton.toFront();
                 payButton.setDisable(false);
-                saveCreditCard.setDisable(false);
+                //saveCreditCard.setDisable(false);
             }
             else {
                 invisiblePayButton.toFront();
                 payButton.setDisable(true);
-                saveCreditCard.setDisable(true);
+                //saveCreditCard.setDisable(true);
             }
         }
     };
@@ -60,12 +60,13 @@ public class PaymentController implements Initializable {
             if (isFirstNameDone() && isLastNameDone() && isAddressDone() && isCityCodeDone() && isCityDone() && isEmailDone() && isPhoneDone() && (em.isSelected() ||fm.isSelected()) && (datePicker.getValue() != null)) {
                 deliveryButton.toFront();
                 deliveryButton.setDisable(false);
-                saveDelivery.setDisable(false);
+
+                //saveDelivery.setDisable(false);
             }
             else {
                 invisibleDeliveryButton.toFront();
                 deliveryButton.setDisable(true);
-                saveDelivery.setDisable(true);
+                //saveDelivery.setDisable(true);
             }
         }
     };
@@ -114,7 +115,6 @@ public class PaymentController implements Initializable {
         @Override
         public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
             if (!newValue && !isPhoneDone() && !phoneTextField.isDisable()) {
-                System.out.println("In change");
                 labelPhone.setText("* Inkorrekt telefonnummer");
             }
         }
@@ -449,12 +449,12 @@ public class PaymentController implements Initializable {
                 if (isFirstNameDone() && isLastNameDone() && isAddressDone() && isCityCodeDone() && isCityDone() && isEmailDone() && isPhoneDone() && (em.isSelected() ||fm.isSelected()) && (datePicker.getValue() != null)) {
                     deliveryButton.toFront();
                     deliveryButton.setDisable(false);
-                    saveDelivery.setDisable(false);
+                    //saveDelivery.setDisable(false);
                 }
                 else {
                     invisibleDeliveryButton.toFront();
                     deliveryButton.setDisable(true);
-                    saveDelivery.setDisable(true);
+                    //saveDelivery.setDisable(true);
                 }
             }
         });
@@ -468,12 +468,12 @@ public class PaymentController implements Initializable {
                 if (isFirstNameDone() && isLastNameDone() && isAddressDone() && isCityCodeDone() && isCityDone() && isEmailDone() && isPhoneDone() && (em.isSelected() ||fm.isSelected()) && (datePicker.getValue() != null)) {
                     deliveryButton.toFront();
                     deliveryButton.setDisable(false);
-                    saveDelivery.setDisable(false);
+                    //saveDelivery.setDisable(false);
                 }
                 else {
                     invisibleDeliveryButton.toFront();
                     deliveryButton.setDisable(true);
-                    saveDelivery.setDisable(true);
+                    //saveDelivery.setDisable(true);
                 }
             }
         });
@@ -671,10 +671,13 @@ public class PaymentController implements Initializable {
 
     //Checks if email is correct
     protected boolean isEmailDone() {
+        System.out.println("In email");
         if (emailTextField.isDisable()) {
+            System.out.println("In disabled email");
             return true;
         }
         if (emailTextField.getText() != null && !emailTextField.getText().isEmpty() && emailTextField.getText().length() > 4) {
+            System.out.println("In correkt email");
             CharSequence c = emailTextField.getCharacters();
             int x = 0;
             for (int i = 0; i < c.length(); i++) {
@@ -705,10 +708,13 @@ public class PaymentController implements Initializable {
 
     //Checks if phone number is correct
     protected boolean isPhoneDone() {
+        System.out.println("In phone");
         if (phoneTextField.isDisable()) {
+            System.out.println("In phone disabled");
             return true;
         }
         if (phoneTextField.getText() != null && !phoneTextField.getText().isEmpty() && phoneTextField.getText().matches("[0-9]*") && phoneTextField.getText().length() == 10) {
+            System.out.println("In correct phone");
             return true;
         }
         return false;
